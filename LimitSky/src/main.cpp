@@ -12,6 +12,7 @@
 #include "entity/player.h"
 #include "util/util.h"
 #include "world/world.h"
+#include "tiles\memtest.h"
 
 void initDisplay();		//	Initialises the display registers
 void loadTiles();		//	Loads the tiles from arrays into the charblocks
@@ -37,6 +38,12 @@ int main()
 	printf("test");
 	while(true){
 		player.onTick();
+
+		if (isKeyDown(KEY_LEFT)){
+			loadHeap1();
+		}else if (isKeyDown(KEY_RIGHT)){
+			loadHeap2();
+		}
 
 		WaitVSync();
 		UpdateObjects();
