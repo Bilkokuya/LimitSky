@@ -1,11 +1,13 @@
+//	Copyright 2012 Gordon D Mckendrick
+//	Author: Gordon D Mckendrick
 //
-//
-//
-//
+//	Player
+//		The user's player entity that tills soil, plants seeds and takes instructions from the keypad
 
 #include "player.h"
-#include "util.h"
-#include "../lib/gba.h"
+#include "../util/util.h"
+#include "../../lib/gba.h"
+#include "../world/world.h"
 
 //	Constructor
 Player::Player(int xPos, int yPos)

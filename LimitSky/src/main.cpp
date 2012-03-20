@@ -1,90 +1,40 @@
+//	Copyright 2012 Gordon D Mckendrick
+//	Author: Gordon D Mckendrick
+//
+//	Main
+
 #include <stdint.h>
 #include <stdlib.h>
+#include <string>
 #include "../lib/gba.h"
 #include "../lib/font.h"
 #include "tiles/tiles.h"
-#include "player.h"
-#include "util.h"
+#include "entity/player.h"
+#include "util/util.h"
+#include "world/world.h"
 
-//	Tile block
-struct Block
-{
-	int x, y;
-	int groundTile;
-	int cropTile;
-	int growth;
-	bool isWalkable;
-	bool isFarmable;
-	bool isTilled;
-	bool isPlanted;
-
-	Block(){
-		x = 0;
-		y = 0;
-		groundTile = 0;
-		isWalkable = false;
-		isFarmable = false;
-		isPlanted = false;
-		isTilled = false;
-		cropTile = 0;
-		growth = 0;
-	}
-
-	Block(int x_, int y_, int groundTile_, bool isWalkable_, bool isFarmable_)
-	{
-		x = x_;
-		y = y_;
-		groundTile = groundTile_;
-		isWalkable = isWalkable_;
-		isFarmable = isFarmable_;
-		isPlanted = false;
-		isTilled = false;
-		cropTile = 0;
-		growth = 0;
-	}
-
-};
-
-
-Block map[32][32];
+void initDisplay();		//	Initialises the display registers
+void loadTiles();		//	Loads the tiles from arrays into the charblocks
+void loadPalletes();	//	Loads the object and background palette
 
 
 int main()
 {
-	REG_DISPCNT = DCNT_MODE0 | DCNT_OBJ | DCNT_OBJ_1D | DCNT_BG0 | DCNT_BG1;
-	
-	REG_BG0CNT = BG_CBB(0) | BG_SBB(30) | BG_8BPP | BG_REG_32x32;
-	REG_BG0HOFS = 0;
-	REG_BG0VOFS = 2;
+	//	Initialise the display, palettes and tiles
+	initDisplay();
+	loadTiles();
+	loadPalletes();
 
-	REG_BG1CNT = BG_CBB(0) | BG_SBB(29) | BG_8BPP | BG_REG_32x32;
-	REG_BG1HOFS = 0;
-	REG_BG1VOFS = 0;
-
-	LoadTile8(0,0,blank_tile);
-	LoadTile8(0,1,green_tile);
-	LoadTile8(0,2,brown_tile);
-	LoadTile8(0,3,blue_tile);
-	LoadTile8(0,4,white_tile);
-
-	LoadTile8(4,1,blue_tile);
-	LoadTile8(4,2,white_tile);	
-	
-	//	Load BG Pallete
-	for (int i=0; i < 256; i++) REG_PALETTE_BG[i] = palette_bg[i];
-
-	//	Load Sprite Pallete
-	for (int i=0; i < 256; i++) REG_PALETTE_OBJ[i] = palette_bg[i];
-
-	for (int y = 0; y < 32; y++){
-		for (int x = 0; x < 32; x++){
-			map[x][y] = Block(x,y,1,true,true);
-			SetTile(29,x,y,1);
+	//	Set up the map of Blocks
+	for (int y = 0; y < MAP_HEIGHT; y++){
+		for (int x = 0; x < MAP_WIDTH; x++){
+			map[x][y] = Block(x,y,1);
+			SetTile(27,x,y,1);
 		}
 	}
 
 	Player player = Player(50,50);
-
+	printf("test");
 	while(true){
 		player.onTick();
 
@@ -95,40 +45,65 @@ int main()
 	return 0;
 }
 
-
-void harvest(int x, int y)
+/**
+*	Function: initDisplay
+*	Initialises the displays registers
+*/
+void initDisplay()
 {
-	Block* block = &map[x][y];
-	block->isPlanted = false;
-	block->cropTile = 0;
-	SetTile(30,x,y,0);
+	REG_DISPCNT = DCNT_MODE0 | DCNT_OBJ | DCNT_OBJ_1D | DCNT_BG0 | DCNT_BG1 | DCNT_BG2 | DCNT_BG3;
+	
+	//	Text UI layer
+	REG_BG0CNT = BG_CBB(0) | BG_SBB(30) | BG_8BPP | BG_REG_32x32;
+	REG_BG0HOFS = 0;
+	REG_BG0VOFS = 0;
+
+	//	UI background layer
+	REG_BG2CNT = BG_CBB(1) | BG_SBB(28) | BG_8BPP | BG_REG_32x32;
+	REG_BG2HOFS = 0;
+	REG_BG2VOFS = 3;
+
+	//	Interactive/Crop layer
+	REG_BG2CNT = BG_CBB(1) | BG_SBB(28) | BG_8BPP | BG_REG_32x32;
+	REG_BG2HOFS = 0;
+	REG_BG2VOFS = 3;
+
+	//	Terrain layer
+	REG_BG3CNT = BG_CBB(1) | BG_SBB(27) | BG_8BPP | BG_REG_32x32;
+	REG_BG3HOFS = 0;
+	REG_BG3VOFS = 0;
 }
 
-void till(int x, int y)
+
+/**
+*	Function: loadTiles
+*	Loads the tiles from arrays into the charblocks
+*/
+void loadTiles()
 {
-	Block* block = &map[x][y];
-	block->isTilled = true;
-	block->groundTile = 2;
-	SetTile(29,x,y,2);
+	//	Load the tiles
+	LoadTile8(1,0,blank_tile);
+	LoadTile8(1,1,green_tile);
+	LoadTile8(1,2,brown_tile);
+	LoadTile8(1,3,blue_tile);
+	LoadTile8(1,4,white_tile);
+
+	LoadTile8(4,1,blue_tile);
+	LoadTile8(4,2,white_tile);	
+
+	//	Load in font tiles to CB1
+	for(int i=0; i < 128; i++) LoadTile8(0,i,font_medium[i]);
 }
 
-void water(int x, int y)
+/**
+*	Function: loadPalettes
+*	Loads the palette data for the objects and background
+*/
+void loadPalletes()
 {
-	Block* block = &map[x][y];
-	if (block->isTilled){
-		block->growth++;
-		block->groundTile = 4;
-		SetTile(29,x,y,4);
-	}
-}
+	//	Load BG Pallete
+	for (int i=0; i < 256; i++) REG_PALETTE_BG[i] = palette_bg[i];
 
-void plant(int x, int y)
-{
-	Block* block = &map[x][y];
-	if (block->isTilled){
-		block->isPlanted = true;
-		block->cropTile = 5;
-		SetTile(30,x,y,3);
-	}
+	//	Load Sprite Pallete
+	for (int i=0; i < 256; i++) REG_PALETTE_OBJ[i] = palette_bg[i];
 }
-

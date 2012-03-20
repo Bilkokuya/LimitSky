@@ -20,7 +20,11 @@ TARGET		:=	dist/$(shell basename $(CURDIR))
 BUILD		:=	build
 SOURCES		:=	src \
 				lib \
+				src/entity \
+				src/item \
 				src/tiles \
+				src/util \
+				src/world \
 
 DATA		:=
 GRAPHICS	:=	

@@ -1,3 +1,9 @@
+//	Copyright 2012 Gordon D Mckendrick
+//	Author: Gordon D Mckendrick
+//
+//	Util
+//		Utility functions used throughout the game
+
 #include "util.h"
 #include "../lib/gba.h"
 
