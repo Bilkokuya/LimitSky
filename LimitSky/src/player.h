@@ -16,9 +16,14 @@ class Player
 	};
 
 public:
-	int x, y;	//	X and Y positions in pixels
-	int sprite;	//	Sprite number for accessing the 
+	int x, y;		//	X and Y positions in pixels
+	int sprite;		//	Sprite number for accessing the 
 	int animCounter;
+	int items[10];	//	Array of item inventory
+	int tools[10];	//	Array of tool inventory
+	int currentTool;//	The tool that is currently selected
+	int currentItem;//	The item that is currently selected
+
 	static const int animCounterStart = 30;
 	PlayerState state;
 

@@ -99,14 +99,14 @@ void Player::updatePosition()
 void Player::getInputs()
 {
 	//	Process movement keys
-	if (isKeyDown(KEY_UP)) y--;
-	else if (isKeyDown (KEY_DOWN)) y++;
-	else if (isKeyDown(KEY_LEFT)) x--;
-	else if (isKeyDown(KEY_RIGHT)) x++;
+	if (isKeyDown(KEY_UP))			y--;
+	else if (isKeyDown (KEY_DOWN))	y++;
+	else if (isKeyDown(KEY_LEFT))	x--;
+	else if (isKeyDown(KEY_RIGHT))	x++;
 
 	//	Process the action keys
-	if (isKeyDown(KEY_A)) tillSoil();
-	else if (isKeyDown(KEY_B)) waterSoil();
-	else if (isKeyDown(KEY_L)) plantSeeds();
-	else if (isKeyDown(KEY_R)) harvestCrops();
+	if (isKeyDown(KEY_A))		tillSoil();
+	else if (isKeyDown(KEY_B))	waterSoil();
+	else if (isKeyDown(KEY_L))	plantSeeds();
+	else if (isKeyDown(KEY_R))	harvestCrops();
 }

@@ -115,15 +115,20 @@ void till(int x, int y)
 void water(int x, int y)
 {
 	Block* block = &map[x][y];
-	block->growth++;
-	block->groundTile = 4;
-	SetTile(29,x,y,4);
+	if (block->isTilled){
+		block->growth++;
+		block->groundTile = 4;
+		SetTile(29,x,y,4);
+	}
 }
 
 void plant(int x, int y)
 {
 	Block* block = &map[x][y];
-	block->cropTile = 5;
-	SetTile(30,x,y,3);
+	if (block->isTilled){
+		block->isPlanted = true;
+		block->cropTile = 5;
+		SetTile(30,x,y,3);
+	}
 }
 
