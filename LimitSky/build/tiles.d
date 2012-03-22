@@ -1,5 +1,4 @@
-tiles.o:  \
- y:/1107505/Computer_and_Graphics_Architecture/LimitSky/LimitSky/src/tiles/tiles.cpp \
-  y:/1107505/Computer_and_Graphics_Architecture/LimitSky/LimitSky/src/tiles/tiles.h
+tiles.o: c:/Projects/LimitSky/LimitSky/resources/tiles/tiles.cpp \
+ c:/Projects/LimitSky/LimitSky/resources/tiles/tiles.h
 
-y:/1107505/Computer_and_Graphics_Architecture/LimitSky/LimitSky/src/tiles/tiles.h:
+c:/Projects/LimitSky/LimitSky/resources/tiles/tiles.h:

@@ -18,11 +18,12 @@ include $(DEVKITARM)/gba_rules
 #---------------------------------------------------------------------------------
 TARGET		:=	dist/$(shell basename $(CURDIR))
 BUILD		:=	build
-SOURCES		:=	src \
+SOURCES		:=	resources/maps \
+				resources/tiles \
 				lib \
+				src \
 				src/entity \
 				src/item \
-				src/tiles \
 				src/util \
 				src/world \
 
@@ -174,5 +175,10 @@ $(OUTPUT).elf	:	$(OFILES)
 endif
 #---------------------------------------------------------------------------------
 
+doxygen:
+	doxygen Doxyfile
+
 run: $(BUILD)
 	$(DEVKITPRO)/emuVBA/vba $(OUTPUT).gba
+
+
