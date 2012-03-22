@@ -55,7 +55,7 @@ struct Block
 	//	Sets byte in flags to either true or false
 	//	Set if this block can be walked on
 	void setWalkable(bool b){ 
-		unsigned char mask = (1 << WALKABLE_OFFSET);
+		unsigned char mask = (unsigned char)(1 << WALKABLE_OFFSET);
 		mask = ~ (mask & 0xFFFF);
 		flags = flags & mask;
 		flags = flags | (b << WALKABLE_OFFSET);
