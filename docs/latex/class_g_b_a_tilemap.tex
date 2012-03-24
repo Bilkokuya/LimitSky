@@ -1,0 +1,139 @@
+\hypertarget{class_g_b_a_tilemap}{\section{G\-B\-A\-Tilemap Class Reference}
+\label{class_g_b_a_tilemap}\index{G\-B\-A\-Tilemap@{G\-B\-A\-Tilemap}}
+}
+
+
+Represents an entire background register for the display with simple functions for easy access to contained information.  
+
+
+
+
+{\ttfamily \#include $<$tilemap.\-h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_g_b_a_tilemap_af97e2847378557845a9677a22f54b3c8}{G\-B\-A\-Tilemap} (int bg\-Number, int x\-Off=0, int y\-Off=0)
+\begin{DoxyCompactList}\small\item\em Initialises this B\-G, using standard charblock and screenblock numbering. \end{DoxyCompactList}\item 
+\hyperlink{class_g_b_a_tilemap_a478fb5b5fe0274b6eba638b2643dd7a7}{G\-B\-A\-Tilemap} (int bg\-Number, int x\-Off, int y\-Off, int charblock, int screenblock)
+\begin{DoxyCompactList}\small\item\em Initialises this B\-G, with specified charblock and screenblock numbering. \end{DoxyCompactList}\item 
+void \hyperlink{class_g_b_a_tilemap_aa965c5ff1b0738466d2336ee02a329f4}{set\-Offset} (int x\-Off, int y\-Off)
+\begin{DoxyCompactList}\small\item\em Sets the offset of this B\-G in absolute terms. \end{DoxyCompactList}\item 
+void \hyperlink{class_g_b_a_tilemap_a153737902839590c84c81fc84415a39b}{offset} (int dx, int dy)
+\begin{DoxyCompactList}\small\item\em Offsets this B\-G, relative to where it is. \end{DoxyCompactList}\item 
+\hypertarget{class_g_b_a_tilemap_a682ab6f960941dfde2bfc9c2f0e05796}{int \hyperlink{class_g_b_a_tilemap_a682ab6f960941dfde2bfc9c2f0e05796}{X} ()}\label{class_g_b_a_tilemap_a682ab6f960941dfde2bfc9c2f0e05796}
+
+\begin{DoxyCompactList}\small\item\em Getter for the current x value. \end{DoxyCompactList}\item 
+\hypertarget{class_g_b_a_tilemap_a6107b365da9ce64dec7eba818e889046}{int \hyperlink{class_g_b_a_tilemap_a6107b365da9ce64dec7eba818e889046}{Y} ()}\label{class_g_b_a_tilemap_a6107b365da9ce64dec7eba818e889046}
+
+\begin{DoxyCompactList}\small\item\em Getter for the current y value. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Represents an entire background register for the display with simple functions for easy access to contained information. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_g_b_a_tilemap_af97e2847378557845a9677a22f54b3c8}{\index{G\-B\-A\-Tilemap@{G\-B\-A\-Tilemap}!G\-B\-A\-Tilemap@{G\-B\-A\-Tilemap}}
+\index{G\-B\-A\-Tilemap@{G\-B\-A\-Tilemap}!GBATilemap@{G\-B\-A\-Tilemap}}
+\subsubsection[{G\-B\-A\-Tilemap}]{\setlength{\rightskip}{0pt plus 5cm}{\bf G\-B\-A\-Tilemap\-::\-G\-B\-A\-Tilemap} (
+\begin{DoxyParamCaption}
+\item[{int}]{bg\-Number, }
+\item[{int}]{x\-Off = {\ttfamily 0}, }
+\item[{int}]{y\-Off = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{class_g_b_a_tilemap_af97e2847378557845a9677a22f54b3c8}
+
+
+Initialises this B\-G, using standard charblock and screenblock numbering. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em bg\-Number} & A number between 0 and 3, for which background layer this is \\
+\hline
+{\em x\-Off} & The starting horizontal offset to the left \\
+\hline
+{\em y\-Off} & The starting vertical offset, downwards \\
+\hline
+\end{DoxyParams}
+\begin{DoxyWarning}{Warning}
+bg\-Numbers out of the 0-\/$>$3 range are placed at the ends of this range to avoid running off memory 
+\end{DoxyWarning}
+\hypertarget{class_g_b_a_tilemap_a478fb5b5fe0274b6eba638b2643dd7a7}{\index{G\-B\-A\-Tilemap@{G\-B\-A\-Tilemap}!G\-B\-A\-Tilemap@{G\-B\-A\-Tilemap}}
+\index{G\-B\-A\-Tilemap@{G\-B\-A\-Tilemap}!GBATilemap@{G\-B\-A\-Tilemap}}
+\subsubsection[{G\-B\-A\-Tilemap}]{\setlength{\rightskip}{0pt plus 5cm}{\bf G\-B\-A\-Tilemap\-::\-G\-B\-A\-Tilemap} (
+\begin{DoxyParamCaption}
+\item[{int}]{bg\-Number, }
+\item[{int}]{x\-Off, }
+\item[{int}]{y\-Off, }
+\item[{int}]{charblock, }
+\item[{int}]{screenblock}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{class_g_b_a_tilemap_a478fb5b5fe0274b6eba638b2643dd7a7}
+
+
+Initialises this B\-G, with specified charblock and screenblock numbering. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em bg\-Number} & A number between 0 and 3, for which background layer this is \\
+\hline
+{\em x\-Off} & The starting horizontal offset to the left \\
+\hline
+{\em y\-Off} & The starting vertical offset, downwards \\
+\hline
+{\em charblock} & the charblock to be used for this background \\
+\hline
+{\em screenblock} & the screenblock to be used for this background \\
+\hline
+\end{DoxyParams}
+\begin{DoxyWarning}{Warning}
+bg\-Numbers and charblocks are forced into the range 0-\/$>$3, use charblock 0 first and ascend. 
+
+screenblocks are forced into the range 30-\/$>$0; use screenblock 30 first and then descend. 
+\end{DoxyWarning}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_g_b_a_tilemap_a153737902839590c84c81fc84415a39b}{\index{G\-B\-A\-Tilemap@{G\-B\-A\-Tilemap}!offset@{offset}}
+\index{offset@{offset}!GBATilemap@{G\-B\-A\-Tilemap}}
+\subsubsection[{offset}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf G\-B\-A\-Tilemap\-::offset} (
+\begin{DoxyParamCaption}
+\item[{int}]{dx, }
+\item[{int}]{dy}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{class_g_b_a_tilemap_a153737902839590c84c81fc84415a39b}
+
+
+Offsets this B\-G, relative to where it is. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dx} & the offset to be added to the left \\
+\hline
+{\em dy} & the offset to be added downwards \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_g_b_a_tilemap_aa965c5ff1b0738466d2336ee02a329f4}{\index{G\-B\-A\-Tilemap@{G\-B\-A\-Tilemap}!set\-Offset@{set\-Offset}}
+\index{set\-Offset@{set\-Offset}!GBATilemap@{G\-B\-A\-Tilemap}}
+\subsubsection[{set\-Offset}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf G\-B\-A\-Tilemap\-::set\-Offset} (
+\begin{DoxyParamCaption}
+\item[{int}]{x\-Off, }
+\item[{int}]{y\-Off}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{class_g_b_a_tilemap_aa965c5ff1b0738466d2336ee02a329f4}
+
+
+Sets the offset of this B\-G in absolute terms. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x\-Off} & the x offset of this B\-G, to the left \\
+\hline
+{\em y\-Off} & the y offset of this B\-G, downwards \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+G\-B\-A/include/platform/gba/tilemap.\-h\end{DoxyCompactItemize}

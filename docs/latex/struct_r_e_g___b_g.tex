@@ -1,0 +1,144 @@
+\hypertarget{struct_r_e_g___b_g}{\section{R\-E\-G\-\_\-\-B\-G Struct Reference}
+\label{struct_r_e_g___b_g}\index{R\-E\-G\-\_\-\-B\-G@{R\-E\-G\-\_\-\-B\-G}}
+}
+
+
+Represents an entire background register for the display with simple functions for easy access to contained information.  
+
+
+
+
+{\ttfamily \#include $<$tilemap.\-h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{struct_r_e_g___b_g_a9b51fd4ac8e9235a5d2edd4f8e9afb55}{R\-E\-G\-\_\-\-B\-G} (int bg\-Number, int x\-Off=0, int y\-Off=0)
+\begin{DoxyCompactList}\small\item\em Initialises this B\-G, using standard charblock and screenblock numbering. \end{DoxyCompactList}\item 
+\hyperlink{struct_r_e_g___b_g_a9455b73581d6fa020fd374ce66ae4fae}{R\-E\-G\-\_\-\-B\-G} (int bg\-Number, int x\-Off, int y\-Off, int charblock, int screenblock)
+\begin{DoxyCompactList}\small\item\em Initialises this B\-G, with specified charblock and screenblock numbering. \end{DoxyCompactList}\item 
+void \hyperlink{struct_r_e_g___b_g_a86e916e2b8d11a9c365ff36ee26b6608}{set\-Offset} (int x\-Off, int y\-Off)
+\begin{DoxyCompactList}\small\item\em Sets the offset of this B\-G in absolute terms. \end{DoxyCompactList}\item 
+void \hyperlink{struct_r_e_g___b_g_a84b41c1f3a19dbdf20364f11a49f6b31}{offset} (int dx, int dy)
+\begin{DoxyCompactList}\small\item\em Offsets this B\-G, relative to where it is. \end{DoxyCompactList}\item 
+\hypertarget{struct_r_e_g___b_g_a8fb9190f13de2741ae495950725efdf3}{int \hyperlink{struct_r_e_g___b_g_a8fb9190f13de2741ae495950725efdf3}{X} ()}\label{struct_r_e_g___b_g_a8fb9190f13de2741ae495950725efdf3}
+
+\begin{DoxyCompactList}\small\item\em Getter for the current x value. \end{DoxyCompactList}\item 
+\hypertarget{struct_r_e_g___b_g_a7a20685db7b3f91acb12cdf9aa8b9f03}{int \hyperlink{struct_r_e_g___b_g_a7a20685db7b3f91acb12cdf9aa8b9f03}{Y} ()}\label{struct_r_e_g___b_g_a7a20685db7b3f91acb12cdf9aa8b9f03}
+
+\begin{DoxyCompactList}\small\item\em Getter for the current y value. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Represents an entire background register for the display with simple functions for easy access to contained information. 
+
+\begin{DoxyWarning}{Warning}
+Name may suggest this is R\-E\-G\-I\-S\-T\-E\-R, it is simply a struct. It replaces direct register access, and so maintains the naming conventions previously used there from A.\-Sampson's \hyperlink{gba_8h_source}{gba.\-h} library. 
+\end{DoxyWarning}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{struct_r_e_g___b_g_a9b51fd4ac8e9235a5d2edd4f8e9afb55}{\index{R\-E\-G\-\_\-\-B\-G@{R\-E\-G\-\_\-\-B\-G}!R\-E\-G\-\_\-\-B\-G@{R\-E\-G\-\_\-\-B\-G}}
+\index{R\-E\-G\-\_\-\-B\-G@{R\-E\-G\-\_\-\-B\-G}!REG_BG@{R\-E\-G\-\_\-\-B\-G}}
+\subsubsection[{R\-E\-G\-\_\-\-B\-G}]{\setlength{\rightskip}{0pt plus 5cm}{\bf R\-E\-G\-\_\-\-B\-G\-::\-R\-E\-G\-\_\-\-B\-G} (
+\begin{DoxyParamCaption}
+\item[{int}]{bg\-Number, }
+\item[{int}]{x\-Off = {\ttfamily 0}, }
+\item[{int}]{y\-Off = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{struct_r_e_g___b_g_a9b51fd4ac8e9235a5d2edd4f8e9afb55}
+
+
+Initialises this B\-G, using standard charblock and screenblock numbering. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em bg\-Number} & A number between 0 and 3, for which background layer this is \\
+\hline
+{\em x\-Off} & The starting horizontal offset to the left \\
+\hline
+{\em y\-Off} & The starting vertical offset, downwards \\
+\hline
+\end{DoxyParams}
+\begin{DoxyWarning}{Warning}
+bg\-Numbers out of the 0-\/$>$3 range are placed at the ends of this range to avoid running off memory 
+\end{DoxyWarning}
+\hypertarget{struct_r_e_g___b_g_a9455b73581d6fa020fd374ce66ae4fae}{\index{R\-E\-G\-\_\-\-B\-G@{R\-E\-G\-\_\-\-B\-G}!R\-E\-G\-\_\-\-B\-G@{R\-E\-G\-\_\-\-B\-G}}
+\index{R\-E\-G\-\_\-\-B\-G@{R\-E\-G\-\_\-\-B\-G}!REG_BG@{R\-E\-G\-\_\-\-B\-G}}
+\subsubsection[{R\-E\-G\-\_\-\-B\-G}]{\setlength{\rightskip}{0pt plus 5cm}{\bf R\-E\-G\-\_\-\-B\-G\-::\-R\-E\-G\-\_\-\-B\-G} (
+\begin{DoxyParamCaption}
+\item[{int}]{bg\-Number, }
+\item[{int}]{x\-Off, }
+\item[{int}]{y\-Off, }
+\item[{int}]{charblock, }
+\item[{int}]{screenblock}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{struct_r_e_g___b_g_a9455b73581d6fa020fd374ce66ae4fae}
+
+
+Initialises this B\-G, with specified charblock and screenblock numbering. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em bg\-Number} & A number between 0 and 3, for which background layer this is \\
+\hline
+{\em x\-Off} & The starting horizontal offset to the left \\
+\hline
+{\em y\-Off} & The starting vertical offset, downwards \\
+\hline
+{\em charblock} & the charblock to be used for this background \\
+\hline
+{\em screenblock} & the screenblock to be used for this background \\
+\hline
+\end{DoxyParams}
+\begin{DoxyWarning}{Warning}
+bg\-Numbers and charblocks are forced into the range 0-\/$>$3, use charblock 0 first and ascend. 
+
+screenblocks are forced into the range 30-\/$>$0; use screenblock 30 first and then descend. 
+\end{DoxyWarning}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{struct_r_e_g___b_g_a84b41c1f3a19dbdf20364f11a49f6b31}{\index{R\-E\-G\-\_\-\-B\-G@{R\-E\-G\-\_\-\-B\-G}!offset@{offset}}
+\index{offset@{offset}!REG_BG@{R\-E\-G\-\_\-\-B\-G}}
+\subsubsection[{offset}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf R\-E\-G\-\_\-\-B\-G\-::offset} (
+\begin{DoxyParamCaption}
+\item[{int}]{dx, }
+\item[{int}]{dy}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{struct_r_e_g___b_g_a84b41c1f3a19dbdf20364f11a49f6b31}
+
+
+Offsets this B\-G, relative to where it is. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dx} & the offset to be added to the left \\
+\hline
+{\em dy} & the offset to be added downwards \\
+\hline
+\end{DoxyParams}
+\hypertarget{struct_r_e_g___b_g_a86e916e2b8d11a9c365ff36ee26b6608}{\index{R\-E\-G\-\_\-\-B\-G@{R\-E\-G\-\_\-\-B\-G}!set\-Offset@{set\-Offset}}
+\index{set\-Offset@{set\-Offset}!REG_BG@{R\-E\-G\-\_\-\-B\-G}}
+\subsubsection[{set\-Offset}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf R\-E\-G\-\_\-\-B\-G\-::set\-Offset} (
+\begin{DoxyParamCaption}
+\item[{int}]{x\-Off, }
+\item[{int}]{y\-Off}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{struct_r_e_g___b_g_a86e916e2b8d11a9c365ff36ee26b6608}
+
+
+Sets the offset of this B\-G in absolute terms. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x\-Off} & the x offset of this B\-G, to the left \\
+\hline
+{\em y\-Off} & the y offset of this B\-G, downwards \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this struct was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+G\-B\-A/src/platform/gba/tilemap.\-h\end{DoxyCompactItemize}

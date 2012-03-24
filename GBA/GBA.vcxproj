@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="lib\font.cpp" />
+    <ClCompile Include="lib\gba.cpp" />
+    <ClCompile Include="resources\tiles\tiles.cpp" />
+    <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\platform\gba\platform.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="lib\font.h" />
+    <ClInclude Include="lib\gba.h" />
+    <ClInclude Include="include\platform\gba\controls.h" />
+    <ClInclude Include="include\platform\gba\sprite.h" />
+    <ClInclude Include="include\platform\gba\tile.h" />
+    <ClInclude Include="include\platform\gba\tilemap.h" />
+    <ClInclude Include="include\platform\gba\timing.h" />
+    <ClInclude Include="include\platform\gba\platform.h" />
+    <ClInclude Include="resources\tiles\tiles.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Codebase\Codebase.vcxproj">
+      <Project>{0a488bad-ee86-4652-8390-92a2232a5d29}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{11AF9E6D-DB97-4FBA-83B9-C502B2304C4E}</ProjectGuid>
+    <Keyword>MakeFileProj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Makefile</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Makefile</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <NMakeBuildCommandLine>make</NMakeBuildCommandLine>
+    <NMakeOutput>GBA.exe</NMakeOutput>
+    <NMakeCleanCommandLine>clean</NMakeCleanCommandLine>
+    <NMakeReBuildCommandLine>make clean</NMakeReBuildCommandLine>
+    <NMakePreprocessorDefinitions>ARMA7;WIN32;_DEBUG;$(NMakePreprocessorDefinitions)</NMakePreprocessorDefinitions>
+    <NMakeIncludeSearchPath>C:\Projects\LimitSky\GBA\include;C:\Projects\LimitSky\Codebase\include;$(NMakeIncludeSearchPath)</NMakeIncludeSearchPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <NMakeBuildCommandLine>make</NMakeBuildCommandLine>
+    <NMakeOutput>GBA.exe</NMakeOutput>
+    <NMakeCleanCommandLine>clean</NMakeCleanCommandLine>
+    <NMakeReBuildCommandLine>make clean</NMakeReBuildCommandLine>
+    <NMakePreprocessorDefinitions>ARMA7;WIN32;NDEBUG;$(NMakePreprocessorDefinitions)</NMakePreprocessorDefinitions>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
