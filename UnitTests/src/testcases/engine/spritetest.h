@@ -13,6 +13,20 @@ TEST(Sprite,constructor)
 	EXPECT_EQ(180,s.rotation());
 	EXPECT_EQ(1,s.scaleX());
 	EXPECT_EQ(2,s.scaleY());
+
+	EXPECT_EQ(0, s.bitmap().height());
+	EXPECT_EQ(0, s.bitmap().width());
+}
+
+///\brief ensure the Sprite bitmap functions are correct
+///		Initialises and loads in a new bitmap to the Sprite and checks it's sizes
+TEST(Sprite,bitmap)
+{
+	Sprite s = Sprite(10, 7, 180, 1, 2);
+	Bitmap b = Bitmap(8,16);
+	s.bitmap(b);
+	EXPECT_EQ(8, s.bitmap().width());
+	EXPECT_EQ(16, s.bitmap().height());
 }
 
 ///\brief Test to ensure Sprite movement works correctly
