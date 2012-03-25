@@ -29,5 +29,8 @@
     <ClInclude Include="include\platform\test\platform.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\testcases\bitmaptest.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

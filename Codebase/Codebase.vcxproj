@@ -11,7 +11,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\engine\animation.h" />
     <ClInclude Include="include\engine\engine.h" />
+    <ClInclude Include="include\engine\game.h" />
     <ClInclude Include="include\engine\sprite.h" />
     <ClInclude Include="include\engine\tile.h" />
     <ClInclude Include="include\engine\tilemap.h" />
@@ -29,6 +31,7 @@
     <ClCompile Include="src\engine\resources\bitmap.cpp" />
     <ClCompile Include="src\engine\resources\sound.cpp" />
     <ClCompile Include="src\entity\player.cpp" />
+    <ClCompile Include="src\engine\game\game.cpp" />
     <ClCompile Include="src\world\world.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

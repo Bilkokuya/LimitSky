@@ -7,9 +7,14 @@
 
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
-
-<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/search.js"></script>
 <script type="text/javascript">
   $(document).ready(function() { searchBox.OnSelectItem(0); });
@@ -75,12 +80,26 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="functions.html"><span>Class&#160;Members</span></a></li>
     </ul>
   </div>
+</div>
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+  initNavTree('struct_obj_affine.html','');
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Defines</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -89,29 +108,31 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </iframe>
 </div>
 
-</div>
 <div class="header">
   <div class="headertitle">
 <div class="title">ObjAffine Member List</div>  </div>
 </div><!--header-->
 <div class="contents">
 This is the complete list of members for <a class="el" href="struct_obj_affine.html">ObjAffine</a>, including all inherited members.<table>
-  <tr bgcolor="#f0f0f0"><td><b>pa</b> (defined in <a class="el" href="struct_obj_affine.html">ObjAffine</a>)</td><td><a class="el" href="struct_obj_affine.html">ObjAffine</a></td><td></td></tr>
-  <tr bgcolor="#f0f0f0"><td><b>pad0</b> (defined in <a class="el" href="struct_obj_affine.html">ObjAffine</a>)</td><td><a class="el" href="struct_obj_affine.html">ObjAffine</a></td><td></td></tr>
-  <tr bgcolor="#f0f0f0"><td><b>pad1</b> (defined in <a class="el" href="struct_obj_affine.html">ObjAffine</a>)</td><td><a class="el" href="struct_obj_affine.html">ObjAffine</a></td><td></td></tr>
-  <tr bgcolor="#f0f0f0"><td><b>pad2</b> (defined in <a class="el" href="struct_obj_affine.html">ObjAffine</a>)</td><td><a class="el" href="struct_obj_affine.html">ObjAffine</a></td><td></td></tr>
-  <tr bgcolor="#f0f0f0"><td><b>pad3</b> (defined in <a class="el" href="struct_obj_affine.html">ObjAffine</a>)</td><td><a class="el" href="struct_obj_affine.html">ObjAffine</a></td><td></td></tr>
-  <tr bgcolor="#f0f0f0"><td><b>pb</b> (defined in <a class="el" href="struct_obj_affine.html">ObjAffine</a>)</td><td><a class="el" href="struct_obj_affine.html">ObjAffine</a></td><td></td></tr>
-  <tr bgcolor="#f0f0f0"><td><b>pc</b> (defined in <a class="el" href="struct_obj_affine.html">ObjAffine</a>)</td><td><a class="el" href="struct_obj_affine.html">ObjAffine</a></td><td></td></tr>
-  <tr bgcolor="#f0f0f0"><td><b>pd</b> (defined in <a class="el" href="struct_obj_affine.html">ObjAffine</a>)</td><td><a class="el" href="struct_obj_affine.html">ObjAffine</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="struct_obj_affine.html#ae972edc100334aa968f79bb844763564">pa</a></td><td><a class="el" href="struct_obj_affine.html">ObjAffine</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="struct_obj_affine.html#a5fdab3616d01dfd6d8440bc61f02a0e4">pad0</a></td><td><a class="el" href="struct_obj_affine.html">ObjAffine</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="struct_obj_affine.html#a88ec2e52a1bdabd87a59c8246e30a2ec">pad1</a></td><td><a class="el" href="struct_obj_affine.html">ObjAffine</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="struct_obj_affine.html#af6e35040fbfc316b1fa138e11752fa46">pad2</a></td><td><a class="el" href="struct_obj_affine.html">ObjAffine</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="struct_obj_affine.html#af0a9dcf2ed70d86454ed49f44a894021">pad3</a></td><td><a class="el" href="struct_obj_affine.html">ObjAffine</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="struct_obj_affine.html#a1f9024df291f5a7c32ce2444c8446144">pb</a></td><td><a class="el" href="struct_obj_affine.html">ObjAffine</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="struct_obj_affine.html#a2fd9f343a9c4a1dd3911f94db706e7ff">pc</a></td><td><a class="el" href="struct_obj_affine.html">ObjAffine</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="struct_obj_affine.html#a1ae4cd5cf780b89479e4fe39d2377798">pd</a></td><td><a class="el" href="struct_obj_affine.html">ObjAffine</a></td><td></td></tr>
 </table></div><!-- contents -->
+</div>
+  <div id="nav-path" class="navpath">
+    <ul>
 
+    <li class="footer">Generated on Sun Mar 25 2012 00:57:36 for LimitSky by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.0 </li>
+   </ul>
+ </div>
 
-<hr class="footer"/><address class="footer"><small>
-Generated on Sat Mar 24 2012 22:58:06 for LimitSky by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.0
-</small></address>
 
 </body>
 </html>

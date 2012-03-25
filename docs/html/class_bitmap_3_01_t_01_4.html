@@ -111,15 +111,14 @@ Public Member Functions</h2></td></tr>
 &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bitmap_3_01_t_01_4.html#a639b3eb5055babcb2a24c1fc84539cb4">Bitmap</a> ()</td></tr>
 <tr class="memdesc:a639b3eb5055babcb2a24c1fc84539cb4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default Constructor for array initialisation. <br/></td></tr>
 <tr class="memitem:a87c905c83a3d6241363d10f32c97b5ac"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a87c905c83a3d6241363d10f32c97b5ac"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Bitmap</b> (T *<a class="el" href="class_bitmap_3_01_t_01_4.html#ae6775d0558eb794f625b3353abd52dac">bitmapData</a>, int <a class="el" href="class_bitmap_3_01_t_01_4.html#aa9d9619b37ce2339ee1db4c4a3068fcb">width</a>, int <a class="el" href="class_bitmap_3_01_t_01_4.html#a08ed36c28aedf05e2cb37cc73fe77022">height</a>)</td></tr>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bitmap_3_01_t_01_4.html#a87c905c83a3d6241363d10f32c97b5ac">Bitmap</a> (T *<a class="el" href="class_bitmap_3_01_t_01_4.html#ae6775d0558eb794f625b3353abd52dac">bitmapData</a>, int <a class="el" href="class_bitmap_3_01_t_01_4.html#aa9d9619b37ce2339ee1db4c4a3068fcb">width</a>, int <a class="el" href="class_bitmap_3_01_t_01_4.html#a08ed36c28aedf05e2cb37cc73fe77022">height</a>)</td></tr>
+<tr class="memdesc:a87c905c83a3d6241363d10f32c97b5ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Usable constructor for majority of cases. <br/></td></tr>
 <tr class="memitem:aa9d9619b37ce2339ee1db4c4a3068fcb"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bitmap_3_01_t_01_4.html#aa9d9619b37ce2339ee1db4c4a3068fcb">width</a> ()</td></tr>
-<tr class="memdesc:aa9d9619b37ce2339ee1db4c4a3068fcb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Usable constructor for majority of cases.  <a href="#aa9d9619b37ce2339ee1db4c4a3068fcb"></a><br/></td></tr>
 <tr class="memitem:a08ed36c28aedf05e2cb37cc73fe77022"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bitmap_3_01_t_01_4.html#a08ed36c28aedf05e2cb37cc73fe77022">height</a> ()</td></tr>
 <tr class="memitem:a1b469bd5c8f4ecc1ada64e67a4892ed1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bitmap_3_01_t_01_4.html#a1b469bd5c8f4ecc1ada64e67a4892ed1">width</a> (int w)</td></tr>
 <tr class="memitem:ad848451ebb0a8ed1386012e98b6b5374"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bitmap_3_01_t_01_4.html#ad848451ebb0a8ed1386012e98b6b5374">height</a> (int h)</td></tr>
 <tr class="memitem:ae6775d0558eb794f625b3353abd52dac"><td class="memItemLeft" align="right" valign="top">T *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bitmap_3_01_t_01_4.html#ae6775d0558eb794f625b3353abd52dac">bitmapData</a> ()</td></tr>
-<tr class="memitem:a0b930d95addaa750b52efb8cc308de81"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0b930d95addaa750b52efb8cc308de81"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>bitmapData</b> (T *data)</td></tr>
+<tr class="memitem:a0b930d95addaa750b52efb8cc308de81"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bitmap_3_01_t_01_4.html#a0b930d95addaa750b52efb8cc308de81">bitmapData</a> (T *data)</td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>Bitmap Resource, comprising of non-platform specific bitmapData, and size data. On the GBA, the sizes are specifically limited to 8x8 amounts, as this is tile data. </p>
@@ -143,7 +142,30 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>bitmapData</b> (T *da
       </table>
 </div>
 <div class="memdoc">
-<dl class="section return"><dt>Returns:</dt><dd>T* The pointer to the bitmap data </dd></dl>
+<dl class="section return"><dt>Returns:</dt><dd>A pointer to the bitmap data </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a0b930d95addaa750b52efb8cc308de81"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="class_bitmap_3_01_t_01_4.html#a639b3eb5055babcb2a24c1fc84539cb4">Bitmap</a>&lt; T &gt;::<a class="el" href="class_bitmap_3_01_t_01_4.html#ae6775d0558eb794f625b3353abd52dac">bitmapData</a> </td>
+          <td>(</td>
+          <td class="paramtype">T *&#160;</td>
+          <td class="paramname"><em>data</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<dl class="params"><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">T*</td><td>Sets the bitmapdata of this bitmap </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -160,7 +182,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>bitmapData</b> (T *da
       </table>
 </div>
 <div class="memdoc">
-<dl class="section return"><dt>Returns:</dt><dd>int The height of this bitmap in pixels </dd></dl>
+<dl class="section return"><dt>Returns:</dt><dd>The height of this bitmap in pixels </dd></dl>
 
 </div>
 </div>
@@ -200,9 +222,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>bitmapData</b> (T *da
       </table>
 </div>
 <div class="memdoc">
-
-<p>Usable constructor for majority of cases. </p>
-<dl class="section return"><dt>Returns:</dt><dd>int The width of this bitmap in pixels </dd></dl>
+<dl class="section return"><dt>Returns:</dt><dd>The width of this bitmap in pixels </dd></dl>
 
 </div>
 </div>
@@ -236,7 +256,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>bitmapData</b> (T *da
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Mar 24 2012 22:58:06 for LimitSky by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Mar 24 2012 23:13:09 for LimitSky by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.0
 </small></address>

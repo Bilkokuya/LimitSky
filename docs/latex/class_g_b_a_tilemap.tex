@@ -21,12 +21,30 @@ void \hyperlink{class_g_b_a_tilemap_aa965c5ff1b0738466d2336ee02a329f4}{set\-Offs
 \begin{DoxyCompactList}\small\item\em Sets the offset of this B\-G in absolute terms. \end{DoxyCompactList}\item 
 void \hyperlink{class_g_b_a_tilemap_a153737902839590c84c81fc84415a39b}{offset} (int dx, int dy)
 \begin{DoxyCompactList}\small\item\em Offsets this B\-G, relative to where it is. \end{DoxyCompactList}\item 
-\hypertarget{class_g_b_a_tilemap_a682ab6f960941dfde2bfc9c2f0e05796}{int \hyperlink{class_g_b_a_tilemap_a682ab6f960941dfde2bfc9c2f0e05796}{X} ()}\label{class_g_b_a_tilemap_a682ab6f960941dfde2bfc9c2f0e05796}
-
+int \hyperlink{class_g_b_a_tilemap_a682ab6f960941dfde2bfc9c2f0e05796}{X} ()
 \begin{DoxyCompactList}\small\item\em Getter for the current x value. \end{DoxyCompactList}\item 
-\hypertarget{class_g_b_a_tilemap_a6107b365da9ce64dec7eba818e889046}{int \hyperlink{class_g_b_a_tilemap_a6107b365da9ce64dec7eba818e889046}{Y} ()}\label{class_g_b_a_tilemap_a6107b365da9ce64dec7eba818e889046}
-
+int \hyperlink{class_g_b_a_tilemap_a6107b365da9ce64dec7eba818e889046}{Y} ()
 \begin{DoxyCompactList}\small\item\em Getter for the current y value. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_g_b_a_tilemap_afc7eca23b7e262ac23465e68c9a9d23d}{init} (int bg\-Number, int x\-Off, int y\-Off, int charblock, int screenblock)
+\begin{DoxyCompactList}\small\item\em Initialises the registers Params are all from constructor, check there for definition. \end{DoxyCompactList}\item 
+void \hyperlink{class_g_b_a_tilemap_a0af625c6abcfb8e709f9719812ad0f46}{update\-Offset} ()
+\begin{DoxyCompactList}\small\item\em Updates the offset registers to the current x and y values To be called straight after any changes to x or y are made. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+volatile unsigned short $\ast$ \hyperlink{class_g_b_a_tilemap_a6582976ee722879c1f1c8424fedfa6dc}{control}
+\begin{DoxyCompactList}\small\item\em Pointer to the control Register that specifies the charblock used etc. \end{DoxyCompactList}\item 
+volatile unsigned short $\ast$ \hyperlink{class_g_b_a_tilemap_a4e59c0ad01395ffaa5b3e6ce978c41cf}{h\-Offset}
+\begin{DoxyCompactList}\small\item\em Pointer to the Horizontal Offset register for this background. \end{DoxyCompactList}\item 
+volatile unsigned short $\ast$ \hyperlink{class_g_b_a_tilemap_a1adc8cd141d27745c504a0f04ad107a1}{v\-Offset}
+\begin{DoxyCompactList}\small\item\em Pointer to the Vertical Offset register for this background. \end{DoxyCompactList}\item 
+int \hyperlink{class_g_b_a_tilemap_ae83d6511d021d12d55c9fa4613113998}{x}
+\item 
+int \hyperlink{class_g_b_a_tilemap_aa18154630ab0e96309fab9e7226a02a0}{y}
+\begin{DoxyCompactList}\small\item\em Current x and y offsets. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
@@ -94,6 +112,21 @@ screenblocks are forced into the range 30-\/$>$0; use screenblock 30 first and t
 
 
 \subsection{Member Function Documentation}
+\hypertarget{class_g_b_a_tilemap_afc7eca23b7e262ac23465e68c9a9d23d}{\index{G\-B\-A\-Tilemap@{G\-B\-A\-Tilemap}!init@{init}}
+\index{init@{init}!GBATilemap@{G\-B\-A\-Tilemap}}
+\subsubsection[{init}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf G\-B\-A\-Tilemap\-::init} (
+\begin{DoxyParamCaption}
+\item[{int}]{bg\-Number, }
+\item[{int}]{x\-Off, }
+\item[{int}]{y\-Off, }
+\item[{int}]{charblock, }
+\item[{int}]{screenblock}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline, private\mbox{]}}}}\label{class_g_b_a_tilemap_afc7eca23b7e262ac23465e68c9a9d23d}
+
+
+Initialises the registers Params are all from constructor, check there for definition. 
+
 \hypertarget{class_g_b_a_tilemap_a153737902839590c84c81fc84415a39b}{\index{G\-B\-A\-Tilemap@{G\-B\-A\-Tilemap}!offset@{offset}}
 \index{offset@{offset}!GBATilemap@{G\-B\-A\-Tilemap}}
 \subsubsection[{offset}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf G\-B\-A\-Tilemap\-::offset} (
@@ -132,8 +165,75 @@ Sets the offset of this B\-G in absolute terms.
 {\em y\-Off} & the y offset of this B\-G, downwards \\
 \hline
 \end{DoxyParams}
+\hypertarget{class_g_b_a_tilemap_a0af625c6abcfb8e709f9719812ad0f46}{\index{G\-B\-A\-Tilemap@{G\-B\-A\-Tilemap}!update\-Offset@{update\-Offset}}
+\index{update\-Offset@{update\-Offset}!GBATilemap@{G\-B\-A\-Tilemap}}
+\subsubsection[{update\-Offset}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf G\-B\-A\-Tilemap\-::update\-Offset} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline, private\mbox{]}}}}\label{class_g_b_a_tilemap_a0af625c6abcfb8e709f9719812ad0f46}
+
+
+Updates the offset registers to the current x and y values To be called straight after any changes to x or y are made. 
+
+\hypertarget{class_g_b_a_tilemap_a682ab6f960941dfde2bfc9c2f0e05796}{\index{G\-B\-A\-Tilemap@{G\-B\-A\-Tilemap}!X@{X}}
+\index{X@{X}!GBATilemap@{G\-B\-A\-Tilemap}}
+\subsubsection[{X}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf G\-B\-A\-Tilemap\-::\-X} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{class_g_b_a_tilemap_a682ab6f960941dfde2bfc9c2f0e05796}
+
+
+Getter for the current x value. 
+
+\hypertarget{class_g_b_a_tilemap_a6107b365da9ce64dec7eba818e889046}{\index{G\-B\-A\-Tilemap@{G\-B\-A\-Tilemap}!Y@{Y}}
+\index{Y@{Y}!GBATilemap@{G\-B\-A\-Tilemap}}
+\subsubsection[{Y}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf G\-B\-A\-Tilemap\-::\-Y} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{class_g_b_a_tilemap_a6107b365da9ce64dec7eba818e889046}
+
+
+Getter for the current y value. 
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_g_b_a_tilemap_a6582976ee722879c1f1c8424fedfa6dc}{\index{G\-B\-A\-Tilemap@{G\-B\-A\-Tilemap}!control@{control}}
+\index{control@{control}!GBATilemap@{G\-B\-A\-Tilemap}}
+\subsubsection[{control}]{\setlength{\rightskip}{0pt plus 5cm}volatile unsigned short$\ast$ {\bf G\-B\-A\-Tilemap\-::control}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{class_g_b_a_tilemap_a6582976ee722879c1f1c8424fedfa6dc}
+
+
+Pointer to the control Register that specifies the charblock used etc. 
+
+\hypertarget{class_g_b_a_tilemap_a4e59c0ad01395ffaa5b3e6ce978c41cf}{\index{G\-B\-A\-Tilemap@{G\-B\-A\-Tilemap}!h\-Offset@{h\-Offset}}
+\index{h\-Offset@{h\-Offset}!GBATilemap@{G\-B\-A\-Tilemap}}
+\subsubsection[{h\-Offset}]{\setlength{\rightskip}{0pt plus 5cm}volatile unsigned short$\ast$ {\bf G\-B\-A\-Tilemap\-::h\-Offset}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{class_g_b_a_tilemap_a4e59c0ad01395ffaa5b3e6ce978c41cf}
+
+
+Pointer to the Horizontal Offset register for this background. 
+
+\hypertarget{class_g_b_a_tilemap_a1adc8cd141d27745c504a0f04ad107a1}{\index{G\-B\-A\-Tilemap@{G\-B\-A\-Tilemap}!v\-Offset@{v\-Offset}}
+\index{v\-Offset@{v\-Offset}!GBATilemap@{G\-B\-A\-Tilemap}}
+\subsubsection[{v\-Offset}]{\setlength{\rightskip}{0pt plus 5cm}volatile unsigned short$\ast$ {\bf G\-B\-A\-Tilemap\-::v\-Offset}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{class_g_b_a_tilemap_a1adc8cd141d27745c504a0f04ad107a1}
+
+
+Pointer to the Vertical Offset register for this background. 
+
+\hypertarget{class_g_b_a_tilemap_ae83d6511d021d12d55c9fa4613113998}{\index{G\-B\-A\-Tilemap@{G\-B\-A\-Tilemap}!x@{x}}
+\index{x@{x}!GBATilemap@{G\-B\-A\-Tilemap}}
+\subsubsection[{x}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf G\-B\-A\-Tilemap\-::x}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{class_g_b_a_tilemap_ae83d6511d021d12d55c9fa4613113998}
+\hypertarget{class_g_b_a_tilemap_aa18154630ab0e96309fab9e7226a02a0}{\index{G\-B\-A\-Tilemap@{G\-B\-A\-Tilemap}!y@{y}}
+\index{y@{y}!GBATilemap@{G\-B\-A\-Tilemap}}
+\subsubsection[{y}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf G\-B\-A\-Tilemap\-::y}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{class_g_b_a_tilemap_aa18154630ab0e96309fab9e7226a02a0}
+
+
+Current x and y offsets. 
+
 
 
 The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
 \item 
-G\-B\-A/include/platform/gba/tilemap.\-h\end{DoxyCompactItemize}
+G\-B\-A/include/platform/gba/\hyperlink{_g_b_a_2include_2platform_2gba_2tilemap_8h}{tilemap.\-h}\end{DoxyCompactItemize}

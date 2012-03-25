@@ -3,7 +3,8 @@
 
 #include "engine\sprite.h"
 
-
+///\brief Test to ensure the Sprite constructor functions correctly
+///		Loads in a simple constructor and checks member variable values
 TEST(Sprite,constructor)
 {
 	Sprite s = Sprite(10, 7, 180, 1, 2);
@@ -14,6 +15,8 @@ TEST(Sprite,constructor)
 	EXPECT_EQ(2,s.scaleY());
 }
 
+///\brief Test to ensure Sprite movement works correctly
+///		Moves the Sprite using the various methods and checks position at each point
 TEST(Sprite,movement)
 {
 	Sprite s = Sprite(10, 7, 180, 1, 2);
@@ -34,6 +37,8 @@ TEST(Sprite,movement)
 	EXPECT_EQ(50, s.y());
 }
 
+///\brief Test to ensure Sprite rotation works correctly
+///		Rotates the Sprite using the various methods and checks rotation wraps correctly
 TEST(Sprite,rotation)
 {
 	Sprite s = Sprite(10, 7, 180, 1, 2);
@@ -49,6 +54,8 @@ TEST(Sprite,rotation)
 	EXPECT_EQ(330, s.rotation());
 }
 
+///\brief Test to ensure Sprite scaling works correctly
+///		Scales the sprite using the various methods and ensures the correct scale is achieved each time
 TEST(Sprite,scaling)
 {
 	Sprite s = Sprite(10, 7, 180, 1, 2);

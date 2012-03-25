@@ -7,9 +7,14 @@
 
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
-
-<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/search.js"></script>
 <script type="text/javascript">
   $(document).ready(function() { searchBox.OnSelectItem(0); });
@@ -70,15 +75,29 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
       <li><a href="files.html"><span>File&#160;List</span></a></li>
+      <li><a href="globals.html"><span>File&#160;Members</span></a></li>
     </ul>
   </div>
 </div>
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+  initNavTree('_codebase_2include_2engine_2sprite_8h.html','');
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Defines</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -92,52 +111,56 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">Codebase/include/engine/sprite.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="preprocessor">#ifndef LS_SPRITE</span>
+<a href="_codebase_2include_2engine_2sprite_8h.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="preprocessor">#ifndef LS_SPRITE</span>
 <a name="l00002"></a>00002 <span class="preprocessor"></span><span class="preprocessor">#define LS_SPRITE</span>
 <a name="l00003"></a>00003 <span class="preprocessor"></span>
 <a name="l00006"></a><a class="code" href="class_sprite.html">00006</a> <span class="keyword">class </span><a class="code" href="class_sprite.html" title="A 2D sprite graphic that can be moved, rotated and scaled Is non specific to any platform; making cal...">Sprite</a> 
 <a name="l00007"></a>00007 {
 <a name="l00008"></a>00008 <span class="keyword">public</span>:
 <a name="l00009"></a>00009 
-<a name="l00010"></a>00010         <a class="code" href="class_sprite.html" title="A 2D sprite graphic that can be moved, rotated and scaled Is non specific to any platform; making cal...">Sprite</a>(<span class="keywordtype">int</span> xPos = 0, <span class="keywordtype">int</span> yPos = 0, <span class="keywordtype">int</span> angle = 0, <span class="keywordtype">float</span> xScale = 1, <span class="keywordtype">float</span> yScale = 1);
-<a name="l00011"></a>00011         ~<a class="code" href="class_sprite.html" title="A 2D sprite graphic that can be moved, rotated and scaled Is non specific to any platform; making cal...">Sprite</a>();
+<a name="l00010"></a>00010         <a class="code" href="class_sprite.html#a95a52b9a6911e359de3064fa6d3a5617">Sprite</a>(<span class="keywordtype">int</span> xPos = 0, <span class="keywordtype">int</span> yPos = 0, <span class="keywordtype">int</span> angle = 0, <span class="keywordtype">float</span> xScale = 1, <span class="keywordtype">float</span> yScale = 1);
+<a name="l00011"></a>00011         <a class="code" href="class_sprite.html#a8accab430f9d90ae5117b57d67e32b84">~Sprite</a>();
 <a name="l00012"></a>00012 
-<a name="l00013"></a>00013         <span class="keywordtype">int</span>     x();
-<a name="l00014"></a>00014         <span class="keywordtype">int</span>     y();
+<a name="l00013"></a>00013         <span class="keywordtype">int</span>     <a class="code" href="class_sprite.html#a94fe4c517497ba88a93b73cde72b29e8">x</a>();
+<a name="l00014"></a>00014         <span class="keywordtype">int</span>     <a class="code" href="class_sprite.html#a2c5cebdd000b4c406432da3ce3a71cd6">y</a>();
 <a name="l00015"></a>00015 
-<a name="l00016"></a>00016         <span class="keywordtype">void</span> x(<span class="keywordtype">int</span> xPosition);
-<a name="l00017"></a>00017         <span class="keywordtype">void</span> y(<span class="keywordtype">int</span> yPosition);
+<a name="l00016"></a>00016         <span class="keywordtype">void</span> <a class="code" href="class_sprite.html#a94fe4c517497ba88a93b73cde72b29e8">x</a>(<span class="keywordtype">int</span> xPosition);
+<a name="l00017"></a>00017         <span class="keywordtype">void</span> <a class="code" href="class_sprite.html#a2c5cebdd000b4c406432da3ce3a71cd6">y</a>(<span class="keywordtype">int</span> yPosition);
 <a name="l00018"></a>00018 
-<a name="l00019"></a>00019         <span class="keywordtype">void</span> move(<span class="keywordtype">int</span> dx, <span class="keywordtype">int</span> dy);
-<a name="l00020"></a>00020         <span class="keywordtype">void</span> moveTo(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y);
+<a name="l00019"></a>00019         <span class="keywordtype">void</span> <a class="code" href="class_sprite.html#a2b89a3db5c84c3ae082cf71ec292f18b">move</a>(<span class="keywordtype">int</span> dx, <span class="keywordtype">int</span> dy);
+<a name="l00020"></a>00020         <span class="keywordtype">void</span> <a class="code" href="class_sprite.html#a751b76bd42d5f922cee4f6890003b849">moveTo</a>(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y);
 <a name="l00021"></a>00021 
-<a name="l00022"></a>00022         <span class="keywordtype">int</span>     rotation();
-<a name="l00023"></a>00023         <span class="keywordtype">void</span> rotate(<span class="keywordtype">int</span> dw);
-<a name="l00024"></a>00024         <span class="keywordtype">void</span> rotation(<span class="keywordtype">int</span> angle);
+<a name="l00022"></a>00022         <span class="keywordtype">int</span>     <a class="code" href="class_sprite.html#a6e4553db94d974d88543b5a658f6c0c7">rotation</a>();
+<a name="l00023"></a>00023         <span class="keywordtype">void</span> <a class="code" href="class_sprite.html#a52ff92ae9e183b44153f1832b0fe8d9c">rotate</a>(<span class="keywordtype">int</span> dw);
+<a name="l00024"></a>00024         <span class="keywordtype">void</span> <a class="code" href="class_sprite.html#a6e4553db94d974d88543b5a658f6c0c7">rotation</a>(<span class="keywordtype">int</span> angle);
 <a name="l00025"></a>00025 
-<a name="l00026"></a>00026         <span class="keywordtype">float</span> scaleX();
-<a name="l00027"></a>00027         <span class="keywordtype">float</span> scaleY();
-<a name="l00028"></a>00028         <span class="keywordtype">void</span> scaleX(<span class="keywordtype">float</span>);
-<a name="l00029"></a>00029         <span class="keywordtype">void</span> scaleY(<span class="keywordtype">float</span>);
-<a name="l00030"></a>00030         <span class="keywordtype">void</span> scale(<span class="keywordtype">float</span> dx, <span class="keywordtype">float</span> dy);
-<a name="l00031"></a>00031         <span class="keywordtype">void</span> scaleTo(<span class="keywordtype">float</span> xScale, <span class="keywordtype">float</span> yScale);
+<a name="l00026"></a>00026         <span class="keywordtype">float</span> <a class="code" href="class_sprite.html#a2163af37f17518f7c2a294f8ecc12b1d">scaleX</a>();
+<a name="l00027"></a>00027         <span class="keywordtype">float</span> <a class="code" href="class_sprite.html#a683509398c5d1098b0503eb223dd21f5">scaleY</a>();
+<a name="l00028"></a>00028         <span class="keywordtype">void</span> <a class="code" href="class_sprite.html#a2163af37f17518f7c2a294f8ecc12b1d">scaleX</a>(<span class="keywordtype">float</span>);
+<a name="l00029"></a>00029         <span class="keywordtype">void</span> <a class="code" href="class_sprite.html#a683509398c5d1098b0503eb223dd21f5">scaleY</a>(<span class="keywordtype">float</span>);
+<a name="l00030"></a>00030         <span class="keywordtype">void</span> <a class="code" href="class_sprite.html#a09ad4f5df5c625c44e31f02e625a40d0">scale</a>(<span class="keywordtype">float</span> dx, <span class="keywordtype">float</span> dy);
+<a name="l00031"></a>00031         <span class="keywordtype">void</span> <a class="code" href="class_sprite.html#a625a3ba4a2e647cf1a4d88afe9237bb3">scaleTo</a>(<span class="keywordtype">float</span> xScale, <span class="keywordtype">float</span> yScale);
 <a name="l00032"></a>00032 
 <a name="l00033"></a>00033 <span class="keyword">private</span>:
-<a name="l00034"></a>00034         <span class="keywordtype">int</span> x_, y_, rotation_;
-<a name="l00035"></a>00035         <span class="keywordtype">float</span> scaleX_, scaleY_;
+<a name="l00034"></a><a class="code" href="class_sprite.html#afd9f444fcd6f2d3d6bb0d7686e09d16e">00034</a>         <span class="keywordtype">int</span> <a class="code" href="class_sprite.html#ae4b1f0a19b406ffccc78e18f5e40e6f6">x_</a>, <a class="code" href="class_sprite.html#afd9f444fcd6f2d3d6bb0d7686e09d16e">y_</a>, <a class="code" href="class_sprite.html#af429cf5ba45033ece6afa3371ae1ca32">rotation_</a>;
+<a name="l00035"></a><a class="code" href="class_sprite.html#a26863cb8bcd854eb4f4c8777a79ce379">00035</a>         <span class="keywordtype">float</span> <a class="code" href="class_sprite.html#aab809e2cb3503cd71f3acf00cb8bf03a">scaleX_</a>, <a class="code" href="class_sprite.html#a26863cb8bcd854eb4f4c8777a79ce379">scaleY_</a>;
 <a name="l00036"></a>00036 
-<a name="l00037"></a>00037         <span class="keywordtype">void</span> wrapRotation();
+<a name="l00037"></a>00037         <span class="keywordtype">void</span> <a class="code" href="class_sprite.html#ac00655a46db80a5b8b76bce11b351fd1" title="Ensure rotation is in the range 0-&gt;360 by wrapping around.">wrapRotation</a>();
 <a name="l00038"></a>00038 };
 <a name="l00039"></a>00039 
 <a name="l00040"></a>00040 <span class="preprocessor">#endif</span>
 </pre></div></div><!-- contents -->
+</div>
+  <div id="nav-path" class="navpath">
+    <ul>
+      <li class="navelem"><a class="el" href="_codebase_2include_2engine_2sprite_8h.html">sprite.h</a>      </li>
 
+    <li class="footer">Generated on Sun Mar 25 2012 00:57:34 for LimitSky by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.0 </li>
+   </ul>
+ </div>
 
-<hr class="footer"/><address class="footer"><small>
-Generated on Sat Mar 24 2012 22:58:06 for LimitSky by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.0
-</small></address>
 
 </body>
 </html>

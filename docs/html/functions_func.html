@@ -7,9 +7,14 @@
 
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
-
-<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/search.js"></script>
 <script type="text/javascript">
   $(document).ready(function() { searchBox.OnSelectItem(0); });
@@ -79,15 +84,50 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="functions.html"><span>All</span></a></li>
       <li class="current"><a href="functions_func.html"><span>Functions</span></a></li>
+      <li><a href="functions_vars.html"><span>Variables</span></a></li>
+      <li><a href="functions_enum.html"><span>Enumerations</span></a></li>
+      <li><a href="functions_eval.html"><span>Enumerator</span></a></li>
+    </ul>
+  </div>
+  <div id="navrow4" class="tabs3">
+    <ul class="tablist">
+      <li><a href="#index_b"><span>b</span></a></li>
+      <li><a href="#index_g"><span>g</span></a></li>
+      <li><a href="#index_h"><span>h</span></a></li>
+      <li><a href="#index_i"><span>i</span></a></li>
+      <li><a href="#index_m"><span>m</span></a></li>
+      <li><a href="#index_o"><span>o</span></a></li>
+      <li><a href="#index_p"><span>p</span></a></li>
+      <li><a href="#index_r"><span>r</span></a></li>
+      <li><a href="#index_s"><span>s</span></a></li>
+      <li><a href="#index_t"><span>t</span></a></li>
+      <li><a href="#index_u"><span>u</span></a></li>
+      <li><a href="#index_w"><span>w</span></a></li>
+      <li><a href="#index_x"><span>x</span></a></li>
+      <li><a href="#index_y"><span>y</span></a></li>
+      <li><a href="#index_0x7e"><span>~</span></a></li>
     </ul>
   </div>
 </div>
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+  initNavTree('functions_func.html','');
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Defines</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -97,43 +137,208 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 
 <div class="contents">
-&#160;<ul>
+&#160;
+
+<h3><a class="anchor" id="index_b"></a>- b -</h3><ul>
 <li>Bitmap()
-: <a class="el" href="class_bitmap_3_01_t_01_4.html#a639b3eb5055babcb2a24c1fc84539cb4">Bitmap&lt; T &gt;</a>
+: <a class="el" href="class_bitmap.html#a639b3eb5055babcb2a24c1fc84539cb4">Bitmap&lt; T &gt;</a>
 </li>
 <li>bitmapData()
-: <a class="el" href="class_bitmap_3_01_t_01_4.html#ae6775d0558eb794f625b3353abd52dac">Bitmap&lt; T &gt;</a>
+: <a class="el" href="class_bitmap.html#a0b930d95addaa750b52efb8cc308de81">Bitmap&lt; T &gt;</a>
 </li>
+<li>Block()
+: <a class="el" href="struct_block.html#a148c2816eb1e9eae9e956512eb3e7025">Block</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_g"></a>- g -</h3><ul>
 <li>GBATilemap()
 : <a class="el" href="class_g_b_a_tilemap.html#af97e2847378557845a9677a22f54b3c8">GBATilemap</a>
 </li>
-<li>height()
-: <a class="el" href="class_bitmap_3_01_t_01_4.html#a08ed36c28aedf05e2cb37cc73fe77022">Bitmap&lt; T &gt;</a>
+<li>getInputs()
+: <a class="el" href="class_player.html#a6818aa1ce188127d3e9d0209cdcbcdb4">Player</a>
 </li>
+</ul>
+
+
+<h3><a class="anchor" id="index_h"></a>- h -</h3><ul>
+<li>harvestCrops()
+: <a class="el" href="class_player.html#a5a013cb0ff7607a6968048780f25505b">Player</a>
+</li>
+<li>height()
+: <a class="el" href="class_bitmap.html#ad848451ebb0a8ed1386012e98b6b5374">Bitmap&lt; T &gt;</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_i"></a>- i -</h3><ul>
+<li>init()
+: <a class="el" href="class_g_b_a_tilemap.html#afc7eca23b7e262ac23465e68c9a9d23d">GBATilemap</a>
+</li>
+<li>isFarmable()
+: <a class="el" href="struct_block.html#a761d37f4e22b28282e5b73796221a8c5">Block</a>
+</li>
+<li>isPlanted()
+: <a class="el" href="struct_block.html#a89e330e315f0f352f164618ca661ea49">Block</a>
+</li>
+<li>isTilled()
+: <a class="el" href="struct_block.html#a72df9b60b3b8437046ff11532db590b0">Block</a>
+</li>
+<li>isWalkable()
+: <a class="el" href="struct_block.html#a5538b540df19626cdc7b218311af6b7c">Block</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_m"></a>- m -</h3><ul>
+<li>move()
+: <a class="el" href="class_sprite.html#a2b89a3db5c84c3ae082cf71ec292f18b">Sprite</a>
+</li>
+<li>moveTo()
+: <a class="el" href="class_sprite.html#a751b76bd42d5f922cee4f6890003b849">Sprite</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_o"></a>- o -</h3><ul>
 <li>offset()
 : <a class="el" href="class_g_b_a_tilemap.html#a153737902839590c84c81fc84415a39b">GBATilemap</a>
+</li>
+<li>onTick()
+: <a class="el" href="class_player.html#aa6a9d06e481e62626da52db9a6c79023">Player</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_p"></a>- p -</h3><ul>
+<li>plantSeeds()
+: <a class="el" href="class_player.html#a552c0385003f06eae35485994b64b990">Player</a>
+</li>
+<li>Player()
+: <a class="el" href="class_player.html#a23d14d23255d0c0b291d750f6e9982b1">Player</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_r"></a>- r -</h3><ul>
+<li>registerSprite()
+: <a class="el" href="class_platform.html#ae1ce123f017fbf5949220a295320e11c">Platform</a>
+, <a class="el" href="class_g_b_a_platform.html#a729112c50ab619376961006ae074452a">GBAPlatform</a>
+, <a class="el" href="class_test_platform.html#ad20f3c7467d6bee028cfc55bf437fd11">TestPlatform</a>
+</li>
+<li>rotate()
+: <a class="el" href="class_sprite.html#a52ff92ae9e183b44153f1832b0fe8d9c">Sprite</a>
+</li>
+<li>rotation()
+: <a class="el" href="class_sprite.html#a6e4553db94d974d88543b5a658f6c0c7">Sprite</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_s"></a>- s -</h3><ul>
+<li>scale()
+: <a class="el" href="class_sprite.html#a09ad4f5df5c625c44e31f02e625a40d0">Sprite</a>
+</li>
+<li>scaleTo()
+: <a class="el" href="class_sprite.html#a625a3ba4a2e647cf1a4d88afe9237bb3">Sprite</a>
+</li>
+<li>scaleX()
+: <a class="el" href="class_sprite.html#ae03819f524c4b85cc2b735a677ff6c25">Sprite</a>
+</li>
+<li>scaleY()
+: <a class="el" href="class_sprite.html#a683509398c5d1098b0503eb223dd21f5">Sprite</a>
+</li>
+<li>setFarmable()
+: <a class="el" href="struct_block.html#a76ff73a12407b56484089d13cbf16c57">Block</a>
 </li>
 <li>setOffset()
 : <a class="el" href="class_g_b_a_tilemap.html#aa965c5ff1b0738466d2336ee02a329f4">GBATilemap</a>
 </li>
-<li>width()
-: <a class="el" href="class_bitmap_3_01_t_01_4.html#aa9d9619b37ce2339ee1db4c4a3068fcb">Bitmap&lt; T &gt;</a>
+<li>setPlanted()
+: <a class="el" href="struct_block.html#a2f89a54fa20a792694de988f86d47e19">Block</a>
 </li>
+<li>setTilled()
+: <a class="el" href="struct_block.html#a11a7aff3576e1a56480a4eeca5092a5f">Block</a>
+</li>
+<li>setWalkable()
+: <a class="el" href="struct_block.html#a495e5a9b45f4208e8cee275fe2678748">Block</a>
+</li>
+<li>Sprite()
+: <a class="el" href="class_sprite.html#a95a52b9a6911e359de3064fa6d3a5617">Sprite</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_t"></a>- t -</h3><ul>
+<li>tillSoil()
+: <a class="el" href="class_player.html#abe2b38c7cda8362dcf1063eb1546d778">Player</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_u"></a>- u -</h3><ul>
+<li>updateOffset()
+: <a class="el" href="class_g_b_a_tilemap.html#a0af625c6abcfb8e709f9719812ad0f46">GBATilemap</a>
+</li>
+<li>updatePosition()
+: <a class="el" href="class_player.html#a1cb7ff18fe3b07cc1dcd27519bde8329">Player</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_w"></a>- w -</h3><ul>
+<li>waterSoil()
+: <a class="el" href="class_player.html#a210c9c1c4ae5a84ceb467ed39d9117c3">Player</a>
+</li>
+<li>width()
+: <a class="el" href="class_bitmap.html#aa9d9619b37ce2339ee1db4c4a3068fcb">Bitmap&lt; T &gt;</a>
+</li>
+<li>wrapRotation()
+: <a class="el" href="class_sprite.html#ac00655a46db80a5b8b76bce11b351fd1">Sprite</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_x"></a>- x -</h3><ul>
 <li>X()
 : <a class="el" href="class_g_b_a_tilemap.html#a682ab6f960941dfde2bfc9c2f0e05796">GBATilemap</a>
+</li>
+<li>x()
+: <a class="el" href="class_sprite.html#ad8d8da2bddcc3819ad6c1c43384b0349">Sprite</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_y"></a>- y -</h3><ul>
+<li>y()
+: <a class="el" href="class_sprite.html#a2c5cebdd000b4c406432da3ce3a71cd6">Sprite</a>
 </li>
 <li>Y()
 : <a class="el" href="class_g_b_a_tilemap.html#a6107b365da9ce64dec7eba818e889046">GBATilemap</a>
 </li>
+<li>y()
+: <a class="el" href="class_sprite.html#a3cc9eb64901a1b5a109a3fd1c7f548b5">Sprite</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_0x7e"></a>- ~ -</h3><ul>
+<li>~Sprite()
+: <a class="el" href="class_sprite.html#a8accab430f9d90ae5117b57d67e32b84">Sprite</a>
+</li>
 </ul>
 </div><!-- contents -->
+</div>
+  <div id="nav-path" class="navpath">
+    <ul>
 
+    <li class="footer">Generated on Sun Mar 25 2012 00:57:36 for LimitSky by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.0 </li>
+   </ul>
+ </div>
 
-<hr class="footer"/><address class="footer"><small>
-Generated on Sat Mar 24 2012 22:58:06 for LimitSky by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.0
-</small></address>
 
 </body>
 </html>

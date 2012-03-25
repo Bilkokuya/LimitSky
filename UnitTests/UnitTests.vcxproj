@@ -85,6 +85,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\testcases\bitmaptest.h" />
     <ClInclude Include="src\testcases\enginetest.h" />
     <ClInclude Include="include\platform\test\platform.h" />
     <ClInclude Include="src\testcases\spritetest.h" />

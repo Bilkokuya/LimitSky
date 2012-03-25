@@ -7,9 +7,14 @@
 
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
-
-<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/search.js"></script>
 <script type="text/javascript">
   $(document).ready(function() { searchBox.OnSelectItem(0); });
@@ -70,15 +75,29 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
       <li><a href="files.html"><span>File&#160;List</span></a></li>
+      <li><a href="globals.html"><span>File&#160;Members</span></a></li>
     </ul>
   </div>
 </div>
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+  initNavTree('bitmap_8h.html','');
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Defines</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -92,42 +111,53 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">Codebase/include/engine/bitmap.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="comment">//      Visual Studio hack for Intellisense</span>
-<a name="l00002"></a>00002 <span class="preprocessor">#define ENABLEINTELLISENSE</span>
+<a href="bitmap_8h.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="comment">//      Visual Studio hack for Intellisense</span>
+<a name="l00002"></a><a class="code" href="bitmap_8h.html#a4c7323b061431336257226a2c1e535e5">00002</a> <span class="preprocessor">#define ENABLEINTELLISENSE</span>
 <a name="l00003"></a>00003 <span class="preprocessor"></span><span class="preprocessor">#undef  ENABLEINTELLISENSE</span>
 <a name="l00004"></a>00004 <span class="preprocessor"></span>
 <a name="l00005"></a>00005 <span class="preprocessor">#ifndef LS_BITMAP</span>
-<a name="l00006"></a>00006 <span class="preprocessor"></span><span class="preprocessor">#define LS_BITMAP</span>
+<a name="l00006"></a><a class="code" href="bitmap_8h.html#a807ab484214b735ddabe3210ff935f3d">00006</a> <span class="preprocessor"></span><span class="preprocessor">#define LS_BITMAP</span>
 <a name="l00007"></a>00007 <span class="preprocessor"></span>
-<a name="l00011"></a><a class="code" href="class_bitmap_3_01_t_01_4.html">00011</a> <span class="keyword">class </span>Bitmap &lt;T&gt;
-<a name="l00012"></a>00012 {
-<a name="l00013"></a>00013 <span class="keyword">public</span>:
-<a name="l00014"></a>00014         Bitmap();       
-<a name="l00015"></a>00015         Bitmap(T* bitmapData, <span class="keywordtype">int</span> width, <span class="keywordtype">int</span> height);   
-<a name="l00016"></a>00016 
-<a name="l00017"></a>00017         <span class="keywordtype">int</span> width();    
-<a name="l00018"></a>00018         <span class="keywordtype">int</span> height();   
-<a name="l00019"></a>00019 
-<a name="l00020"></a>00020         <span class="keywordtype">void</span> width(<span class="keywordtype">int</span> w);      
-<a name="l00021"></a>00021         <span class="keywordtype">void</span> height(<span class="keywordtype">int</span> h);     
-<a name="l00022"></a>00022 
-<a name="l00023"></a>00023         T* bitmapData();                        
-<a name="l00024"></a>00024         <span class="keywordtype">void</span> bitmapData(T* data);       
+<a name="l00011"></a>00011 <span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt; 
+<a name="l00012"></a><a class="code" href="class_bitmap.html">00012</a> <span class="keyword">class </span><a class="code" href="class_bitmap.html" title="Bitmap Resource, comprising of non-platform specific bitmapData, and size data. On the GBA...">Bitmap</a>
+<a name="l00013"></a>00013 {
+<a name="l00014"></a>00014 <span class="keyword">public</span>:
+<a name="l00015"></a>00015 
+<a name="l00017"></a>00017         <a class="code" href="class_bitmap.html#a639b3eb5055babcb2a24c1fc84539cb4" title="Default Constructor for array initialisation.">Bitmap</a>();       
+<a name="l00018"></a>00018 
+<a name="l00023"></a>00023         <a class="code" href="class_bitmap.html#a639b3eb5055babcb2a24c1fc84539cb4" title="Default Constructor for array initialisation.">Bitmap</a>(T* <a class="code" href="class_bitmap.html#afe7336697101154d5e19cc1953760f5d" title="Getter: Gets the bitmapData pointer.">bitmapData</a>, <span class="keywordtype">int</span> <a class="code" href="class_bitmap.html#aa9d9619b37ce2339ee1db4c4a3068fcb" title="Getter: Gets the width of this bitmap.">width</a>, <span class="keywordtype">int</span> <a class="code" href="class_bitmap.html#a08ed36c28aedf05e2cb37cc73fe77022" title="Getter: Gets the height of this bitmap.">height</a>);   
+<a name="l00024"></a>00024 
 <a name="l00025"></a>00025 
-<a name="l00026"></a>00026 <span class="keyword">private</span>:
-<a name="l00027"></a>00027         <span class="keywordtype">int</span> width_, height_;    
-<a name="l00028"></a>00028         T* bitmapData_;                 
-<a name="l00029"></a>00029 };
-<a name="l00030"></a>00030 
-<a name="l00031"></a>00031 <span class="preprocessor">#endif</span>
+<a name="l00028"></a>00028         <span class="keywordtype">int</span> <a class="code" href="class_bitmap.html#aa9d9619b37ce2339ee1db4c4a3068fcb" title="Getter: Gets the width of this bitmap.">width</a>();    
+<a name="l00029"></a>00029 
+<a name="l00032"></a>00032         <span class="keywordtype">int</span> <a class="code" href="class_bitmap.html#a08ed36c28aedf05e2cb37cc73fe77022" title="Getter: Gets the height of this bitmap.">height</a>();   
+<a name="l00033"></a>00033 
+<a name="l00036"></a>00036         <span class="keywordtype">void</span> <a class="code" href="class_bitmap.html#aa9d9619b37ce2339ee1db4c4a3068fcb" title="Getter: Gets the width of this bitmap.">width</a>(<span class="keywordtype">int</span> w);
+<a name="l00037"></a>00037 
+<a name="l00040"></a>00040         <span class="keywordtype">void</span> <a class="code" href="class_bitmap.html#a08ed36c28aedf05e2cb37cc73fe77022" title="Getter: Gets the height of this bitmap.">height</a>(<span class="keywordtype">int</span> h);     
+<a name="l00041"></a>00041 
+<a name="l00044"></a>00044         T* <a class="code" href="class_bitmap.html#afe7336697101154d5e19cc1953760f5d" title="Getter: Gets the bitmapData pointer.">bitmapData</a>();
+<a name="l00045"></a>00045 
+<a name="l00049"></a>00049         <span class="keywordtype">void</span> <a class="code" href="class_bitmap.html#afe7336697101154d5e19cc1953760f5d" title="Getter: Gets the bitmapData pointer.">bitmapData</a>(T* data);       
+<a name="l00050"></a>00050 
+<a name="l00051"></a>00051 <span class="keyword">private</span>:
+<a name="l00052"></a><a class="code" href="class_bitmap.html#a6f70d201f71c812dac30ac163281fd72">00052</a>         <span class="keywordtype">int</span> <a class="code" href="class_bitmap.html#a6f70d201f71c812dac30ac163281fd72">width_</a>, <a class="code" href="class_bitmap.html#a33d3c580113e2bf4a8b4767db2b936e2" title="The width and height of this resource in pixels.">height_</a>;    
+<a name="l00053"></a><a class="code" href="class_bitmap.html#a063f3b42510eef125294a08767147574">00053</a>         T* <a class="code" href="class_bitmap.html#a063f3b42510eef125294a08767147574" title="A pointer to the bitmap data for this bitmap resource.">bitmapData_</a>;                 
+<a name="l00054"></a>00054 };
+<a name="l00055"></a>00055 
+<a name="l00056"></a>00056 <span class="preprocessor">#endif</span>
 </pre></div></div><!-- contents -->
+</div>
+  <div id="nav-path" class="navpath">
+    <ul>
+      <li class="navelem"><a class="el" href="bitmap_8h.html">bitmap.h</a>      </li>
 
+    <li class="footer">Generated on Sun Mar 25 2012 00:57:34 for LimitSky by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.0 </li>
+   </ul>
+ </div>
 
-<hr class="footer"/><address class="footer"><small>
-Generated on Sat Mar 24 2012 22:58:05 for LimitSky by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.0
-</small></address>
 
 </body>
 </html>

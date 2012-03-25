@@ -1,0 +1,207 @@
+\hypertarget{class_bitmap}{\section{Bitmap$<$ T $>$ Class Template Reference}
+\label{class_bitmap}\index{Bitmap$<$ T $>$@{Bitmap$<$ T $>$}}
+}
+
+
+\hyperlink{class_bitmap}{Bitmap} Resource, comprising of non-\/platform specific bitmap\-Data, and size data. On the G\-B\-A, the sizes are specifically limited to 8x8 amounts, as this is tile data.  
+
+
+
+
+{\ttfamily \#include $<$bitmap.\-h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_bitmap_a639b3eb5055babcb2a24c1fc84539cb4}{Bitmap} ()
+\begin{DoxyCompactList}\small\item\em Default Constructor for array initialisation. \end{DoxyCompactList}\item 
+\hyperlink{class_bitmap_a87c905c83a3d6241363d10f32c97b5ac}{Bitmap} (T $\ast$\hyperlink{class_bitmap_afe7336697101154d5e19cc1953760f5d}{bitmap\-Data}, int \hyperlink{class_bitmap_aa9d9619b37ce2339ee1db4c4a3068fcb}{width}, int \hyperlink{class_bitmap_a08ed36c28aedf05e2cb37cc73fe77022}{height})
+\begin{DoxyCompactList}\small\item\em Usable constructor for majority of cases. \end{DoxyCompactList}\item 
+int \hyperlink{class_bitmap_aa9d9619b37ce2339ee1db4c4a3068fcb}{width} ()
+\begin{DoxyCompactList}\small\item\em Getter\-: Gets the width of this bitmap. \end{DoxyCompactList}\item 
+int \hyperlink{class_bitmap_a08ed36c28aedf05e2cb37cc73fe77022}{height} ()
+\begin{DoxyCompactList}\small\item\em Getter\-: Gets the height of this bitmap. \end{DoxyCompactList}\item 
+void \hyperlink{class_bitmap_a1b469bd5c8f4ecc1ada64e67a4892ed1}{width} (int w)
+\begin{DoxyCompactList}\small\item\em Setter\-: Sets the width of this bitmap. \end{DoxyCompactList}\item 
+void \hyperlink{class_bitmap_ad848451ebb0a8ed1386012e98b6b5374}{height} (int h)
+\begin{DoxyCompactList}\small\item\em Setter\-: Sets the height of this bitmap. \end{DoxyCompactList}\item 
+T $\ast$ \hyperlink{class_bitmap_afe7336697101154d5e19cc1953760f5d}{bitmap\-Data} ()
+\begin{DoxyCompactList}\small\item\em Getter\-: Gets the bitmap\-Data pointer. \end{DoxyCompactList}\item 
+void \hyperlink{class_bitmap_a0b930d95addaa750b52efb8cc308de81}{bitmap\-Data} (T $\ast$data)
+\begin{DoxyCompactList}\small\item\em Setter\-: Sets the pointer to the bitmap\-Data On the G\-B\-A, this is the pointer to a const uint8\-\_\-t array of indexed colours. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{class_bitmap_a6f70d201f71c812dac30ac163281fd72}{width\-\_\-}
+\item 
+int \hyperlink{class_bitmap_a33d3c580113e2bf4a8b4767db2b936e2}{height\-\_\-}
+\begin{DoxyCompactList}\small\item\em The width and height of this resource in pixels. \end{DoxyCompactList}\item 
+T $\ast$ \hyperlink{class_bitmap_a063f3b42510eef125294a08767147574}{bitmap\-Data\-\_\-}
+\begin{DoxyCompactList}\small\item\em A pointer to the bitmap data for this bitmap resource. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class T$>$class Bitmap$<$ T $>$}
+
+\hyperlink{class_bitmap}{Bitmap} Resource, comprising of non-\/platform specific bitmap\-Data, and size data. On the G\-B\-A, the sizes are specifically limited to 8x8 amounts, as this is tile data. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em T} & The type of bitmap\-Data to be used. On the G\-B\-A this is uint8\-\_\-t (unsigned char), due to indexed pixels \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_bitmap_a639b3eb5055babcb2a24c1fc84539cb4}{\index{Bitmap@{Bitmap}!Bitmap@{Bitmap}}
+\index{Bitmap@{Bitmap}!Bitmap@{Bitmap}}
+\subsubsection[{Bitmap}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T $>$ {\bf Bitmap}$<$ T $>$\-::{\bf Bitmap} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_bitmap_a639b3eb5055babcb2a24c1fc84539cb4}
+
+
+Default Constructor for array initialisation. 
+
+\hypertarget{class_bitmap_a87c905c83a3d6241363d10f32c97b5ac}{\index{Bitmap@{Bitmap}!Bitmap@{Bitmap}}
+\index{Bitmap@{Bitmap}!Bitmap@{Bitmap}}
+\subsubsection[{Bitmap}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T $>$ {\bf Bitmap}$<$ T $>$\-::{\bf Bitmap} (
+\begin{DoxyParamCaption}
+\item[{T $\ast$}]{bitmap\-Data, }
+\item[{int}]{width, }
+\item[{int}]{height}
+\end{DoxyParamCaption}
+)}}\label{class_bitmap_a87c905c83a3d6241363d10f32c97b5ac}
+
+
+Usable constructor for majority of cases. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em bitmap\-Data} & Initialises the pointer to the bitmap data to be used \\
+\hline
+{\em width} & Initialises the width of this bitmap in pixels \\
+\hline
+{\em height} & Initialises the height of this bitmap in pixels \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_bitmap_afe7336697101154d5e19cc1953760f5d}{\index{Bitmap@{Bitmap}!bitmap\-Data@{bitmap\-Data}}
+\index{bitmap\-Data@{bitmap\-Data}!Bitmap@{Bitmap}}
+\subsubsection[{bitmap\-Data}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T $>$ T $\ast$ {\bf Bitmap}$<$ T $>$\-::{\bf bitmap\-Data} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_bitmap_afe7336697101154d5e19cc1953760f5d}
+
+
+Getter\-: Gets the bitmap\-Data pointer. 
+
+\begin{DoxyReturn}{Returns}
+A pointer to the bitmap data 
+\end{DoxyReturn}
+\hypertarget{class_bitmap_a0b930d95addaa750b52efb8cc308de81}{\index{Bitmap@{Bitmap}!bitmap\-Data@{bitmap\-Data}}
+\index{bitmap\-Data@{bitmap\-Data}!Bitmap@{Bitmap}}
+\subsubsection[{bitmap\-Data}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T $>$ void {\bf Bitmap}$<$ T $>$\-::{\bf bitmap\-Data} (
+\begin{DoxyParamCaption}
+\item[{T $\ast$}]{data}
+\end{DoxyParamCaption}
+)}}\label{class_bitmap_a0b930d95addaa750b52efb8cc308de81}
+
+
+Setter\-: Sets the pointer to the bitmap\-Data On the G\-B\-A, this is the pointer to a const uint8\-\_\-t array of indexed colours. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em T$\ast$} & Sets the bitmapdata of this bitmap \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_bitmap_a08ed36c28aedf05e2cb37cc73fe77022}{\index{Bitmap@{Bitmap}!height@{height}}
+\index{height@{height}!Bitmap@{Bitmap}}
+\subsubsection[{height}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T $>$ int {\bf Bitmap}$<$ T $>$\-::{\bf height} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_bitmap_a08ed36c28aedf05e2cb37cc73fe77022}
+
+
+Getter\-: Gets the height of this bitmap. 
+
+\begin{DoxyReturn}{Returns}
+The height of this bitmap in pixels 
+\end{DoxyReturn}
+\hypertarget{class_bitmap_ad848451ebb0a8ed1386012e98b6b5374}{\index{Bitmap@{Bitmap}!height@{height}}
+\index{height@{height}!Bitmap@{Bitmap}}
+\subsubsection[{height}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T $>$ void {\bf Bitmap}$<$ T $>$\-::{\bf height} (
+\begin{DoxyParamCaption}
+\item[{int}]{h}
+\end{DoxyParamCaption}
+)}}\label{class_bitmap_ad848451ebb0a8ed1386012e98b6b5374}
+
+
+Setter\-: Sets the height of this bitmap. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em h} & The new height of this bitmap in pixels \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_bitmap_aa9d9619b37ce2339ee1db4c4a3068fcb}{\index{Bitmap@{Bitmap}!width@{width}}
+\index{width@{width}!Bitmap@{Bitmap}}
+\subsubsection[{width}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T $>$ int {\bf Bitmap}$<$ T $>$\-::{\bf width} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_bitmap_aa9d9619b37ce2339ee1db4c4a3068fcb}
+
+
+Getter\-: Gets the width of this bitmap. 
+
+\begin{DoxyReturn}{Returns}
+The width of this bitmap in pixels 
+\end{DoxyReturn}
+\hypertarget{class_bitmap_a1b469bd5c8f4ecc1ada64e67a4892ed1}{\index{Bitmap@{Bitmap}!width@{width}}
+\index{width@{width}!Bitmap@{Bitmap}}
+\subsubsection[{width}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T $>$ void {\bf Bitmap}$<$ T $>$\-::{\bf width} (
+\begin{DoxyParamCaption}
+\item[{int}]{w}
+\end{DoxyParamCaption}
+)}}\label{class_bitmap_a1b469bd5c8f4ecc1ada64e67a4892ed1}
+
+
+Setter\-: Sets the width of this bitmap. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em w} & The new width of this bitmap in pixels \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_bitmap_a063f3b42510eef125294a08767147574}{\index{Bitmap@{Bitmap}!bitmap\-Data\-\_\-@{bitmap\-Data\-\_\-}}
+\index{bitmap\-Data\-\_\-@{bitmap\-Data\-\_\-}!Bitmap@{Bitmap}}
+\subsubsection[{bitmap\-Data\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ T$\ast$ {\bf Bitmap}$<$ T $>$\-::{\bf bitmap\-Data\-\_\-}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{class_bitmap_a063f3b42510eef125294a08767147574}
+
+
+A pointer to the bitmap data for this bitmap resource. 
+
+\hypertarget{class_bitmap_a33d3c580113e2bf4a8b4767db2b936e2}{\index{Bitmap@{Bitmap}!height\-\_\-@{height\-\_\-}}
+\index{height\-\_\-@{height\-\_\-}!Bitmap@{Bitmap}}
+\subsubsection[{height\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ int {\bf Bitmap}$<$ T $>$\-::{\bf height\-\_\-}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{class_bitmap_a33d3c580113e2bf4a8b4767db2b936e2}
+
+
+The width and height of this resource in pixels. 
+
+\hypertarget{class_bitmap_a6f70d201f71c812dac30ac163281fd72}{\index{Bitmap@{Bitmap}!width\-\_\-@{width\-\_\-}}
+\index{width\-\_\-@{width\-\_\-}!Bitmap@{Bitmap}}
+\subsubsection[{width\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ int {\bf Bitmap}$<$ T $>$\-::{\bf width\-\_\-}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{class_bitmap_a6f70d201f71c812dac30ac163281fd72}
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+Codebase/include/engine/\hyperlink{bitmap_8h}{bitmap.\-h}\item 
+Codebase/src/engine/resources/\hyperlink{bitmap_8cpp}{bitmap.\-cpp}\end{DoxyCompactItemize}

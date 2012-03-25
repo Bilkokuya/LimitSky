@@ -7,9 +7,14 @@
 
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
-
-<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/search.js"></script>
 <script type="text/javascript">
   $(document).ready(function() { searchBox.OnSelectItem(0); });
@@ -75,12 +80,26 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="functions.html"><span>Class&#160;Members</span></a></li>
     </ul>
   </div>
+</div>
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+  initNavTree('class_g_b_a_tilemap.html','');
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Defines</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -89,27 +108,36 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </iframe>
 </div>
 
-</div>
 <div class="header">
   <div class="headertitle">
 <div class="title">GBATilemap Member List</div>  </div>
 </div><!--header-->
 <div class="contents">
 This is the complete list of members for <a class="el" href="class_g_b_a_tilemap.html">GBATilemap</a>, including all inherited members.<table>
+  <tr class="memlist"><td><a class="el" href="class_g_b_a_tilemap.html#a6582976ee722879c1f1c8424fedfa6dc">control</a></td><td><a class="el" href="class_g_b_a_tilemap.html">GBATilemap</a></td><td><code> [private]</code></td></tr>
   <tr class="memlist"><td><a class="el" href="class_g_b_a_tilemap.html#af97e2847378557845a9677a22f54b3c8">GBATilemap</a>(int bgNumber, int xOff=0, int yOff=0)</td><td><a class="el" href="class_g_b_a_tilemap.html">GBATilemap</a></td><td><code> [inline]</code></td></tr>
   <tr class="memlist"><td><a class="el" href="class_g_b_a_tilemap.html#a478fb5b5fe0274b6eba638b2643dd7a7">GBATilemap</a>(int bgNumber, int xOff, int yOff, int charblock, int screenblock)</td><td><a class="el" href="class_g_b_a_tilemap.html">GBATilemap</a></td><td><code> [inline]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_g_b_a_tilemap.html#a4e59c0ad01395ffaa5b3e6ce978c41cf">hOffset</a></td><td><a class="el" href="class_g_b_a_tilemap.html">GBATilemap</a></td><td><code> [private]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_g_b_a_tilemap.html#afc7eca23b7e262ac23465e68c9a9d23d">init</a>(int bgNumber, int xOff, int yOff, int charblock, int screenblock)</td><td><a class="el" href="class_g_b_a_tilemap.html">GBATilemap</a></td><td><code> [inline, private]</code></td></tr>
   <tr class="memlist"><td><a class="el" href="class_g_b_a_tilemap.html#a153737902839590c84c81fc84415a39b">offset</a>(int dx, int dy)</td><td><a class="el" href="class_g_b_a_tilemap.html">GBATilemap</a></td><td><code> [inline]</code></td></tr>
   <tr class="memlist"><td><a class="el" href="class_g_b_a_tilemap.html#aa965c5ff1b0738466d2336ee02a329f4">setOffset</a>(int xOff, int yOff)</td><td><a class="el" href="class_g_b_a_tilemap.html">GBATilemap</a></td><td><code> [inline]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_g_b_a_tilemap.html#a0af625c6abcfb8e709f9719812ad0f46">updateOffset</a>()</td><td><a class="el" href="class_g_b_a_tilemap.html">GBATilemap</a></td><td><code> [inline, private]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_g_b_a_tilemap.html#a1adc8cd141d27745c504a0f04ad107a1">vOffset</a></td><td><a class="el" href="class_g_b_a_tilemap.html">GBATilemap</a></td><td><code> [private]</code></td></tr>
   <tr class="memlist"><td><a class="el" href="class_g_b_a_tilemap.html#a682ab6f960941dfde2bfc9c2f0e05796">X</a>()</td><td><a class="el" href="class_g_b_a_tilemap.html">GBATilemap</a></td><td><code> [inline]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_g_b_a_tilemap.html#ae83d6511d021d12d55c9fa4613113998">x</a></td><td><a class="el" href="class_g_b_a_tilemap.html">GBATilemap</a></td><td><code> [private]</code></td></tr>
   <tr class="memlist"><td><a class="el" href="class_g_b_a_tilemap.html#a6107b365da9ce64dec7eba818e889046">Y</a>()</td><td><a class="el" href="class_g_b_a_tilemap.html">GBATilemap</a></td><td><code> [inline]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_g_b_a_tilemap.html#aa18154630ab0e96309fab9e7226a02a0">y</a></td><td><a class="el" href="class_g_b_a_tilemap.html">GBATilemap</a></td><td><code> [private]</code></td></tr>
 </table></div><!-- contents -->
+</div>
+  <div id="nav-path" class="navpath">
+    <ul>
 
+    <li class="footer">Generated on Sun Mar 25 2012 00:57:36 for LimitSky by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.0 </li>
+   </ul>
+ </div>
 
-<hr class="footer"/><address class="footer"><small>
-Generated on Sat Mar 24 2012 22:58:06 for LimitSky by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.0
-</small></address>
 
 </body>
 </html>
