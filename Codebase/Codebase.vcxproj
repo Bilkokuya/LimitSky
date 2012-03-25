@@ -12,9 +12,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\engine\animation.h" />
+    <ClInclude Include="include\engine\displaylist.h" />
     <ClInclude Include="include\engine\engine.h" />
     <ClInclude Include="include\engine\game.h" />
     <ClInclude Include="include\engine\sprite.h" />
+    <ClInclude Include="include\engine\stage.h" />
     <ClInclude Include="include\engine\tile.h" />
     <ClInclude Include="include\engine\tilemap.h" />
     <ClInclude Include="include\engine\platform.h" />
@@ -25,6 +27,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\engine\engine.cpp" />
+    <ClCompile Include="src\engine\graphics\displaylist.cpp" />
     <ClCompile Include="src\engine\graphics\sprite.cpp" />
     <ClCompile Include="src\engine\graphics\tile.cpp" />
     <ClCompile Include="src\engine\graphics\tilemap.cpp" />

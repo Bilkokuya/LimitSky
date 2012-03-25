@@ -1,9 +1,11 @@
 #ifndef LS_DISPLAYLIST
 #define LS_DISPLAYLIST
-
+#include "sprite.h"
 #include <list>
+
 class DisplayList
 {
+public:
 	std::list<Sprite*> spriteList;
 
 	///\brief Adds the given sprite to the list of sprites

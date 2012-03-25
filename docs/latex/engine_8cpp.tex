@@ -8,24 +8,17 @@
 \begin{DoxyCompactItemize}
 \item 
 void \hyperlink{engine_8cpp_ac00b5b9b9b6ba79fcad74baec6adeab5}{set\-Platform} (\hyperlink{class_platform}{Platform} p)
-\item 
-void \hyperlink{engine_8cpp_a37ac4a4be26e0c04fc76272f695aaad4}{register\-Sprite} (\hyperlink{class_sprite}{Sprite} s)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Sets the platform for development. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
 \hyperlink{class_platform}{Platform} \hyperlink{engine_8cpp_a06826d0f95d583ccbc0a9a310ef202f5}{platform}
-\end{DoxyCompactItemize}
+\item 
+\hyperlink{class_display_list}{Display\-List} \hyperlink{engine_8cpp_a8cf8440bbe6bf3eb7aab8fb14f53c7ef}{display\-List}
+\begin{DoxyCompactList}\small\item\em The display list that all drawn objects are sent to. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Function Documentation}
-\hypertarget{engine_8cpp_a37ac4a4be26e0c04fc76272f695aaad4}{\index{engine.\-cpp@{engine.\-cpp}!register\-Sprite@{register\-Sprite}}
-\index{register\-Sprite@{register\-Sprite}!engine.cpp@{engine.\-cpp}}
-\subsubsection[{register\-Sprite}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf register\-Sprite} (
-\begin{DoxyParamCaption}
-\item[{{\bf Sprite}}]{s}
-\end{DoxyParamCaption}
-)}}\label{engine_8cpp_a37ac4a4be26e0c04fc76272f695aaad4}
 \hypertarget{engine_8cpp_ac00b5b9b9b6ba79fcad74baec6adeab5}{\index{engine.\-cpp@{engine.\-cpp}!set\-Platform@{set\-Platform}}
 \index{set\-Platform@{set\-Platform}!engine.cpp@{engine.\-cpp}}
 \subsubsection[{set\-Platform}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf set\-Platform} (
@@ -35,7 +28,24 @@ void \hyperlink{engine_8cpp_a37ac4a4be26e0c04fc76272f695aaad4}{register\-Sprite}
 )}}\label{engine_8cpp_ac00b5b9b9b6ba79fcad74baec6adeab5}
 
 
+Sets the platform for development. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & The platform to set up the engine for. \\
+\hline
+\end{DoxyParams}
+
+
 \subsection{Variable Documentation}
+\hypertarget{engine_8cpp_a8cf8440bbe6bf3eb7aab8fb14f53c7ef}{\index{engine.\-cpp@{engine.\-cpp}!display\-List@{display\-List}}
+\index{display\-List@{display\-List}!engine.cpp@{engine.\-cpp}}
+\subsubsection[{display\-List}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Display\-List} {\bf display\-List}}}\label{engine_8cpp_a8cf8440bbe6bf3eb7aab8fb14f53c7ef}
+
+
+The display list that all drawn objects are sent to. 
+
 \hypertarget{engine_8cpp_a06826d0f95d583ccbc0a9a310ef202f5}{\index{engine.\-cpp@{engine.\-cpp}!platform@{platform}}
 \index{platform@{platform}!engine.cpp@{engine.\-cpp}}
 \subsubsection[{platform}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Platform} {\bf platform}}}\label{engine_8cpp_a06826d0f95d583ccbc0a9a310ef202f5}
+brief The platform being linked into the engine for development Takes calls from the engine and processes them for the specific platform hardware 

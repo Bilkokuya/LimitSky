@@ -1,7 +1,8 @@
 var hierarchy =
 [
-    [ "Bitmap< T >", "class_bitmap.html", null ],
+    [ "Bitmap", "class_bitmap.html", null ],
     [ "Block", "struct_block.html", null ],
+    [ "DisplayList", "class_display_list.html", null ],
     [ "GBASprite", "class_g_b_a_sprite.html", null ],
     [ "GBATilemap", "class_g_b_a_tilemap.html", null ],
     [ "ObjAffine", "struct_obj_affine.html", null ],

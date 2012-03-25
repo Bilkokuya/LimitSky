@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>LimitSky: UnitTests/src/testcases/bitmaptest.h Source File</title>
+<title>LimitSky: UnitTests/src/testcases/engine/bitmaptest.h Source File</title>
 
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
@@ -108,7 +108,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div class="header">
   <div class="headertitle">
-<div class="title">UnitTests/src/testcases/bitmaptest.h</div>  </div>
+<div class="title">UnitTests/src/testcases/engine/bitmaptest.h</div>  </div>
 </div><!--header-->
 <div class="contents">
 <a href="bitmaptest_8h.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a><a class="code" href="bitmaptest_8h.html#a4c7323b061431336257226a2c1e535e5">00001</a> <span class="preprocessor">#define ENABLEINTELLISENSE</span>
@@ -123,43 +123,33 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00012"></a><a class="code" href="bitmaptest_8h.html#aae3a571659c681cc69c9da68ef1bc25c">00012</a> <a class="code" href="_unit_tests_2src_2main_8cpp.html#a0407a865f51ccaece133bad9330f0c82">TEST</a>(<a class="code" href="class_bitmap.html" title="Bitmap Resource, comprising of non-platform specific bitmapData, and size data. On the GBA...">Bitmap</a>,empty_constructor)
 <a name="l00013"></a>00013 {
 <a name="l00014"></a>00014         <span class="comment">//      Check empty consutructor assigns correctly</span>
-<a name="l00015"></a>00015         <a class="code" href="class_bitmap.html" title="Bitmap Resource, comprising of non-platform specific bitmapData, and size data. On the GBA...">Bitmap&lt;unsigned char&gt;</a> b = <a class="code" href="class_bitmap.html" title="Bitmap Resource, comprising of non-platform specific bitmapData, and size data. On the GBA...">Bitmap&lt;unsigned char&gt;</a>();
-<a name="l00016"></a>00016         EXPECT_EQ(NULL, b.<a class="code" href="class_bitmap.html#afe7336697101154d5e19cc1953760f5d" title="Getter: Gets the bitmapData pointer.">bitmapData</a>());
-<a name="l00017"></a>00017         EXPECT_EQ(0, b.<a class="code" href="class_bitmap.html#aa9d9619b37ce2339ee1db4c4a3068fcb" title="Getter: Gets the width of this bitmap.">width</a>());
-<a name="l00018"></a>00018         EXPECT_EQ(0, b.<a class="code" href="class_bitmap.html#a08ed36c28aedf05e2cb37cc73fe77022" title="Getter: Gets the height of this bitmap.">height</a>());
-<a name="l00019"></a>00019 
-<a name="l00020"></a>00020         <span class="comment">//      Check array instantiates Bitmap correctly</span>
-<a name="l00021"></a>00021         <a class="code" href="class_bitmap.html" title="Bitmap Resource, comprising of non-platform specific bitmapData, and size data. On the GBA...">Bitmap&lt;unsigned char&gt;</a> bitmaps[5];
-<a name="l00022"></a>00022         EXPECT_EQ(NULL, bitmaps[3].bitmapData());
-<a name="l00023"></a>00023         EXPECT_EQ(0, bitmaps[3].width());
-<a name="l00024"></a>00024         EXPECT_EQ(0, bitmaps[3].height());
-<a name="l00025"></a>00025 }
-<a name="l00026"></a>00026 
-<a name="l00029"></a><a class="code" href="bitmaptest_8h.html#a3b6ee73c4b46eb0d352c476ddb6134c4">00029</a> <a class="code" href="_unit_tests_2src_2main_8cpp.html#a0407a865f51ccaece133bad9330f0c82">TEST</a>(<a class="code" href="class_bitmap.html" title="Bitmap Resource, comprising of non-platform specific bitmapData, and size data. On the GBA...">Bitmap</a>,constructor)
-<a name="l00030"></a>00030 {
-<a name="l00031"></a>00031         <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> data = 5;
-<a name="l00032"></a>00032 
-<a name="l00033"></a>00033         <span class="comment">//      Check array instantiates Bitmap correctly</span>
-<a name="l00034"></a>00034         <a class="code" href="class_bitmap.html" title="Bitmap Resource, comprising of non-platform specific bitmapData, and size data. On the GBA...">Bitmap&lt;unsigned char&gt;</a> bitmap = <a class="code" href="class_bitmap.html" title="Bitmap Resource, comprising of non-platform specific bitmapData, and size data. On the GBA...">Bitmap&lt;unsigned char&gt;</a>(&amp;data,10,7);
-<a name="l00035"></a>00035         
-<a name="l00036"></a>00036         EXPECT_EQ(10, bitmap.<a class="code" href="class_bitmap.html#aa9d9619b37ce2339ee1db4c4a3068fcb" title="Getter: Gets the width of this bitmap.">width</a>() );
-<a name="l00037"></a>00037         EXPECT_EQ(7, bitmap.<a class="code" href="class_bitmap.html#a08ed36c28aedf05e2cb37cc73fe77022" title="Getter: Gets the height of this bitmap.">height</a>() );
-<a name="l00038"></a>00038 
-<a name="l00039"></a>00039         <span class="comment">//      Ensure the bitmapData pointer is correct</span>
-<a name="l00040"></a>00040         <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>* p = bitmap.<a class="code" href="class_bitmap.html#afe7336697101154d5e19cc1953760f5d" title="Getter: Gets the bitmapData pointer.">bitmapData</a>();
-<a name="l00041"></a>00041         <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> pvalue = *p;
-<a name="l00042"></a>00042         EXPECT_EQ(data, pvalue);
-<a name="l00043"></a>00043         EXPECT_EQ(&amp;data, bitmap.<a class="code" href="class_bitmap.html#afe7336697101154d5e19cc1953760f5d" title="Getter: Gets the bitmapData pointer.">bitmapData</a>() );
-<a name="l00044"></a>00044 }
-<a name="l00045"></a>00045 
-<a name="l00046"></a>00046 <span class="preprocessor">#endif</span>
+<a name="l00015"></a>00015         <a class="code" href="class_bitmap.html" title="Bitmap Resource, comprising of non-platform specific bitmapData, and size data. On the GBA...">Bitmap</a> b = <a class="code" href="class_bitmap.html" title="Bitmap Resource, comprising of non-platform specific bitmapData, and size data. On the GBA...">Bitmap</a>();
+<a name="l00016"></a>00016         EXPECT_EQ(0, b.<a class="code" href="class_bitmap.html#ac62a2cfe38ad61efc376d41fc6a86626" title="Getter: Gets the width of this bitmap.">width</a>());
+<a name="l00017"></a>00017         EXPECT_EQ(0, b.<a class="code" href="class_bitmap.html#aa3c108177eab78db3bcadafa59d8ea4f" title="Getter: Gets the height of this bitmap.">height</a>());
+<a name="l00018"></a>00018 
+<a name="l00019"></a>00019         <span class="comment">//      Check array instantiates Bitmap correctly</span>
+<a name="l00020"></a>00020         <a class="code" href="class_bitmap.html" title="Bitmap Resource, comprising of non-platform specific bitmapData, and size data. On the GBA...">Bitmap</a> bitmaps[5];
+<a name="l00021"></a>00021         EXPECT_EQ(0, bitmaps[3].width());
+<a name="l00022"></a>00022         EXPECT_EQ(0, bitmaps[3].height());
+<a name="l00023"></a>00023 }
+<a name="l00024"></a>00024 
+<a name="l00027"></a><a class="code" href="bitmaptest_8h.html#a3b6ee73c4b46eb0d352c476ddb6134c4">00027</a> <a class="code" href="_unit_tests_2src_2main_8cpp.html#a0407a865f51ccaece133bad9330f0c82">TEST</a>(<a class="code" href="class_bitmap.html" title="Bitmap Resource, comprising of non-platform specific bitmapData, and size data. On the GBA...">Bitmap</a>,constructor)
+<a name="l00028"></a>00028 {
+<a name="l00029"></a>00029         <span class="comment">//      Check array instantiates Bitmap correctly</span>
+<a name="l00030"></a>00030         <a class="code" href="class_bitmap.html" title="Bitmap Resource, comprising of non-platform specific bitmapData, and size data. On the GBA...">Bitmap</a> bitmap = <a class="code" href="class_bitmap.html" title="Bitmap Resource, comprising of non-platform specific bitmapData, and size data. On the GBA...">Bitmap</a>(10,7);
+<a name="l00031"></a>00031         
+<a name="l00032"></a>00032         EXPECT_EQ(10, bitmap.<a class="code" href="class_bitmap.html#ac62a2cfe38ad61efc376d41fc6a86626" title="Getter: Gets the width of this bitmap.">width</a>() );
+<a name="l00033"></a>00033         EXPECT_EQ(7, bitmap.<a class="code" href="class_bitmap.html#aa3c108177eab78db3bcadafa59d8ea4f" title="Getter: Gets the height of this bitmap.">height</a>() );
+<a name="l00034"></a>00034 }
+<a name="l00035"></a>00035 
+<a name="l00036"></a>00036 <span class="preprocessor">#endif</span>
 </pre></div></div><!-- contents -->
 </div>
   <div id="nav-path" class="navpath">
     <ul>
       <li class="navelem"><a class="el" href="bitmaptest_8h.html">bitmaptest.h</a>      </li>
 
-    <li class="footer">Generated on Sun Mar 25 2012 00:57:34 for LimitSky by
+    <li class="footer">Generated on Sun Mar 25 2012 21:49:38 for LimitSky by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.0 </li>
    </ul>

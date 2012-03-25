@@ -1,7 +1,8 @@
 var annotated =
 [
-    [ "Bitmap< T >", "class_bitmap.html", "class_bitmap" ],
+    [ "Bitmap", "class_bitmap.html", "class_bitmap" ],
     [ "Block", "struct_block.html", "struct_block" ],
+    [ "DisplayList", "class_display_list.html", "class_display_list" ],
     [ "GBAPlatform", "class_g_b_a_platform.html", "class_g_b_a_platform" ],
     [ "GBASprite", "class_g_b_a_sprite.html", "class_g_b_a_sprite" ],
     [ "GBATilemap", "class_g_b_a_tilemap.html", "class_g_b_a_tilemap" ],

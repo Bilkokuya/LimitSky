@@ -115,24 +115,35 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00002"></a>00002 <span class="preprocessor">#ifndef LS_ENGINE</span>
 <a name="l00003"></a>00003 <span class="preprocessor"></span><span class="preprocessor">#define LS_ENGINE</span>
 <a name="l00004"></a>00004 <span class="preprocessor"></span>
-<a name="l00005"></a>00005 <span class="preprocessor">#include &quot;<a class="code" href="_codebase_2include_2engine_2sprite_8h.html">sprite.h</a>&quot;</span>
-<a name="l00006"></a>00006 <span class="preprocessor">#include &quot;<a class="code" href="_codebase_2include_2engine_2platform_8h.html">platform.h</a>&quot;</span>
-<a name="l00007"></a>00007 
-<a name="l00008"></a>00008 <span class="keyword">extern</span> <a class="code" href="class_platform.html">Platform</a> <a class="code" href="engine_8h.html#a06826d0f95d583ccbc0a9a310ef202f5">platform</a>;
+<a name="l00005"></a>00005 <span class="preprocessor">#include &quot;<a class="code" href="_codebase_2include_2engine_2platform_8h.html">platform.h</a>&quot;</span>
+<a name="l00006"></a>00006 <span class="preprocessor">#include &quot;<a class="code" href="displaylist_8h.html">displaylist.h</a>&quot;</span>
+<a name="l00007"></a>00007 <span class="preprocessor">#include &quot;<a class="code" href="_codebase_2include_2engine_2sprite_8h.html">sprite.h</a>&quot;</span>
+<a name="l00008"></a>00008 <span class="preprocessor">#include &quot;<a class="code" href="_codebase_2include_2engine_2tile_8h.html">tile.h</a>&quot;</span>
 <a name="l00009"></a>00009 
-<a name="l00010"></a>00010 <span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="engine_8h.html#ac00b5b9b9b6ba79fcad74baec6adeab5">setPlatform</a>(<a class="code" href="class_platform.html">Platform</a> p);
-<a name="l00011"></a>00011 
-<a name="l00012"></a>00012 <span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="engine_8h.html#a39d06d2ee579dcc720534747915d0590">SetTile</a>(<span class="keywordtype">int</span> a, <span class="keywordtype">int</span> b, <span class="keywordtype">int</span> c, <span class="keywordtype">int</span> d);
-<a name="l00013"></a>00013 
-<a name="l00014"></a>00014 
-<a name="l00015"></a>00015 <span class="preprocessor">#endif</span>
+<a name="l00011"></a>00011 <span class="comment">//      Temporary - please remove as soon as possible</span>
+<a name="l00012"></a>00012 <span class="comment">//      Used only by the world, as it has outdated function calls</span>
+<a name="l00013"></a>00013 <span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="engine_8h.html#a39d06d2ee579dcc720534747915d0590">SetTile</a>(<span class="keywordtype">int</span> a, <span class="keywordtype">int</span> b, <span class="keywordtype">int</span> c, <span class="keywordtype">int</span> d);
+<a name="l00015"></a>00015 
+<a name="l00018"></a>00018 <span class="keyword">extern</span> <a class="code" href="class_platform.html">Platform</a> <a class="code" href="engine_8h.html#a06826d0f95d583ccbc0a9a310ef202f5">platform</a>;
+<a name="l00019"></a>00019 
+<a name="l00021"></a>00021 <span class="keyword">extern</span> <a class="code" href="class_display_list.html">DisplayList</a> <a class="code" href="engine_8h.html#a8cf8440bbe6bf3eb7aab8fb14f53c7ef" title="The display list that all drawn objects are sent to.">displayList</a>;
+<a name="l00022"></a>00022 
+<a name="l00023"></a>00023 
+<a name="l00026"></a>00026 <span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="engine_8h.html#ac00b5b9b9b6ba79fcad74baec6adeab5" title="Sets the platform for development.">setPlatform</a>(<a class="code" href="class_platform.html">Platform</a> p);
+<a name="l00027"></a>00027 
+<a name="l00030"></a>00030 <span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="engine_8h.html#a0195fe1e10473eb39f75c0d35e81000f" title="Adds this sprite to the displaylist of sprites.">newSprite</a>(<a class="code" href="class_sprite.html" title="A 2D sprite graphic that can be moved, rotated and scaled Is non specific to any platform; making cal...">Sprite</a> s);
+<a name="l00031"></a>00031 
+<a name="l00034"></a>00034 <span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="engine_8h.html#af3f66c5984ad269df8f9412d24fde154" title="Adds a new tile into the game.">newTile</a>(<a class="code" href="class_tile.html">Tile</a> t);
+<a name="l00035"></a>00035 
+<a name="l00036"></a>00036 
+<a name="l00037"></a>00037 <span class="preprocessor">#endif</span>
 </pre></div></div><!-- contents -->
 </div>
   <div id="nav-path" class="navpath">
     <ul>
       <li class="navelem"><a class="el" href="engine_8h.html">engine.h</a>      </li>
 
-    <li class="footer">Generated on Sun Mar 25 2012 00:57:34 for LimitSky by
+    <li class="footer">Generated on Sun Mar 25 2012 21:49:38 for LimitSky by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.0 </li>
    </ul>

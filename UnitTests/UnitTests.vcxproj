@@ -88,6 +88,9 @@
     <ClInclude Include="src\testcases\bitmaptest.h" />
     <ClInclude Include="src\testcases\enginetest.h" />
     <ClInclude Include="include\platform\test\platform.h" />
+    <ClInclude Include="src\testcases\engine\bitmaptest.h" />
+    <ClInclude Include="src\testcases\engine\enginetest.h" />
+    <ClInclude Include="src\testcases\engine\spritetest.h" />
     <ClInclude Include="src\testcases\spritetest.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -3,13 +3,9 @@
 #include "engine\sprite.h"
 
 Platform platform;
+DisplayList displayList;
 
 void setPlatform(Platform p)
 {
 	platform = p;
-}
-
-void registerSprite(Sprite s)
-{
-	platform.registerSprite(s);
 }

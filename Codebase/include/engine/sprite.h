@@ -8,8 +8,13 @@
 class Sprite
 {
 public:
+	///\brief Default Constructor for array use.
+	///\warning	Does not automatically add to the DisplayList.
+	Sprite();
+
 	///\brief Constructor with simple initialised values
-	Sprite(int xPos = 0, int yPos = 0, int angle = 0, float xScale = 1, float yScale = 1);
+	///\warning Will automatically be added to the DisplayList
+	Sprite(int xPos, int yPos, int angle = 0, float xScale = 1, float yScale = 1);
 
 	///\brief Getter: For the x co-ordinate of this Sprite
 	///\return The x co-ordinate as an int
