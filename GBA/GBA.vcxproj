@@ -33,6 +33,9 @@
       <Project>{0a488bad-ee86-4652-8390-92a2232a5d29}</Project>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Makefile" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{11AF9E6D-DB97-4FBA-83B9-C502B2304C4E}</ProjectGuid>
     <Keyword>MakeFileProj</Keyword>
@@ -57,12 +60,12 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <NMakeBuildCommandLine>make</NMakeBuildCommandLine>
+    <NMakeBuildCommandLine>g:\RunMake "$(CURRENT_DIRECTORY)" run</NMakeBuildCommandLine>
     <NMakeOutput>GBA.exe</NMakeOutput>
-    <NMakeCleanCommandLine>clean</NMakeCleanCommandLine>
-    <NMakeReBuildCommandLine>make clean</NMakeReBuildCommandLine>
+    <NMakeCleanCommandLine>g:\RunMake "$(CURRENT_DIRECTORY)" clean</NMakeCleanCommandLine>
+    <NMakeReBuildCommandLine>g:\RunMake "$(CURRENT_DIRECTORY)" run clean</NMakeReBuildCommandLine>
     <NMakePreprocessorDefinitions>ARMA7;WIN32;_DEBUG;$(NMakePreprocessorDefinitions)</NMakePreprocessorDefinitions>
-    <NMakeIncludeSearchPath>C:\Projects\LimitSky\GBA\include;C:\Projects\LimitSky\Codebase\include;$(NMakeIncludeSearchPath)</NMakeIncludeSearchPath>
+    <NMakeIncludeSearchPath>M:\Projects\LimitSky\GBA\include;M:\Projects\LimitSky\Codebase\include;$(NMakeIncludeSearchPath)</NMakeIncludeSearchPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <NMakeBuildCommandLine>make</NMakeBuildCommandLine>

@@ -2,3 +2,5 @@
 /build/
 /dist/
 /obj/
+/GBA.vcxproj
+/GBA.vcxproj.filters
