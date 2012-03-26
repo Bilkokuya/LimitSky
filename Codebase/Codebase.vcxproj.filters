@@ -49,15 +49,21 @@
       <Filter>Header Files</Filter>
     </ClInclude>
 <<<<<<< HEAD
+<<<<<<< HEAD
     <ClInclude Include="include\engine\stage.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\engine\displaylist.h">
 =======
+=======
+>>>>>>> origin/master
     <ClInclude Include="include\engine\displaylist.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\engine\stage.h">
+<<<<<<< HEAD
+>>>>>>> origin/master
+=======
 >>>>>>> origin/master
       <Filter>Header Files</Filter>
     </ClInclude>

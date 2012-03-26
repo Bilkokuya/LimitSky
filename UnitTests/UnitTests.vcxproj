@@ -89,8 +89,11 @@
     <ClInclude Include="src\testcases\engine\enginetest.h" />
     <ClInclude Include="include\platform\test\platform.h" />
 <<<<<<< HEAD
+<<<<<<< HEAD
     <ClInclude Include="src\testcases\engine\spritetest.h" />
 =======
+=======
+>>>>>>> origin/master
     <ClInclude Include="src\testcases\engine\bitmaptest.h" />
     <ClInclude Include="src\testcases\engine\enginetest.h" />
     <ClInclude Include="src\testcases\engine\spritetest.h" />

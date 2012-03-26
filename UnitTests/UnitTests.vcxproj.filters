@@ -41,5 +41,14 @@
     <ClInclude Include="src\testcases\engine\spritetest.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\testcases\engine\bitmaptest.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\testcases\engine\enginetest.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\testcases\engine\spritetest.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
