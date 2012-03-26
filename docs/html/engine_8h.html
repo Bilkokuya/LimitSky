@@ -114,20 +114,79 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">Codebase/include/engine/engine.h File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &quot;<a class="el" href="_codebase_2include_2engine_2sprite_8h_source.html">sprite.h</a>&quot;</code><br/>
-<code>#include &quot;<a class="el" href="_codebase_2include_2engine_2platform_8h_source.html">platform.h</a>&quot;</code><br/>
+<div class="textblock"><code>#include &quot;<a class="el" href="_codebase_2include_2engine_2platform_8h_source.html">platform.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="displaylist_8h_source.html">displaylist.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="_codebase_2include_2engine_2sprite_8h_source.html">sprite.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="_codebase_2include_2engine_2tile_8h_source.html">tile.h</a>&quot;</code><br/>
 </div>
 <p><a href="engine_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ac00b5b9b9b6ba79fcad74baec6adeab5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="engine_8h.html#ac00b5b9b9b6ba79fcad74baec6adeab5">setPlatform</a> (<a class="el" href="class_platform.html">Platform</a> p)</td></tr>
 <tr class="memitem:a39d06d2ee579dcc720534747915d0590"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="engine_8h.html#a39d06d2ee579dcc720534747915d0590">SetTile</a> (int a, int b, int c, int d)</td></tr>
+<tr class="memitem:ac00b5b9b9b6ba79fcad74baec6adeab5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="engine_8h.html#ac00b5b9b9b6ba79fcad74baec6adeab5">setPlatform</a> (<a class="el" href="class_platform.html">Platform</a> p)</td></tr>
+<tr class="memdesc:ac00b5b9b9b6ba79fcad74baec6adeab5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the platform for development.  <a href="#ac00b5b9b9b6ba79fcad74baec6adeab5"></a><br/></td></tr>
+<tr class="memitem:a0195fe1e10473eb39f75c0d35e81000f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="engine_8h.html#a0195fe1e10473eb39f75c0d35e81000f">newSprite</a> (<a class="el" href="class_sprite.html">Sprite</a> s)</td></tr>
+<tr class="memdesc:a0195fe1e10473eb39f75c0d35e81000f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds this sprite to the displaylist of sprites.  <a href="#a0195fe1e10473eb39f75c0d35e81000f"></a><br/></td></tr>
+<tr class="memitem:af3f66c5984ad269df8f9412d24fde154"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="engine_8h.html#af3f66c5984ad269df8f9412d24fde154">newTile</a> (<a class="el" href="class_tile.html">Tile</a> t)</td></tr>
+<tr class="memdesc:af3f66c5984ad269df8f9412d24fde154"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a new tile into the game.  <a href="#af3f66c5984ad269df8f9412d24fde154"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="var-members"></a>
 Variables</h2></td></tr>
 <tr class="memitem:a06826d0f95d583ccbc0a9a310ef202f5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_platform.html">Platform</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="engine_8h.html#a06826d0f95d583ccbc0a9a310ef202f5">platform</a></td></tr>
+<tr class="memitem:a8cf8440bbe6bf3eb7aab8fb14f53c7ef"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_display_list.html">DisplayList</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="engine_8h.html#a8cf8440bbe6bf3eb7aab8fb14f53c7ef">displayList</a></td></tr>
+<tr class="memdesc:a8cf8440bbe6bf3eb7aab8fb14f53c7ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">The display list that all drawn objects are sent to.  <a href="#a8cf8440bbe6bf3eb7aab8fb14f53c7ef"></a><br/></td></tr>
 </table>
 <hr/><h2>Function Documentation</h2>
+<a class="anchor" id="a0195fe1e10473eb39f75c0d35e81000f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="engine_8h.html#a0195fe1e10473eb39f75c0d35e81000f">newSprite</a> </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_sprite.html">Sprite</a>&#160;</td>
+          <td class="paramname"><em>s</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Adds this sprite to the displaylist of sprites. </p>
+<dl class="params"><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">s</td><td>The sprite to be added into the display list </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="af3f66c5984ad269df8f9412d24fde154"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="engine_8h.html#af3f66c5984ad269df8f9412d24fde154">newTile</a> </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_tile.html">Tile</a>&#160;</td>
+          <td class="paramname"><em>t</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Adds a new tile into the game. </p>
+<dl class="params"><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">t</td><td>The tile to be added </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a class="anchor" id="ac00b5b9b9b6ba79fcad74baec6adeab5"></a>
 <div class="memitem">
 <div class="memproto">
@@ -142,6 +201,14 @@ Variables</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
+
+<p>Sets the platform for development. </p>
+<dl class="params"><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">p</td><td>The platform to set up the engine for. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -185,6 +252,21 @@ Variables</h2></td></tr>
 </div>
 </div>
 <hr/><h2>Variable Documentation</h2>
+<a class="anchor" id="a8cf8440bbe6bf3eb7aab8fb14f53c7ef"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_display_list.html">DisplayList</a> <a class="el" href="engine_8cpp.html#a8cf8440bbe6bf3eb7aab8fb14f53c7ef">displayList</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>The display list that all drawn objects are sent to. </p>
+
+</div>
+</div>
 <a class="anchor" id="a06826d0f95d583ccbc0a9a310ef202f5"></a>
 <div class="memitem">
 <div class="memproto">
@@ -195,6 +277,7 @@ Variables</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
+<p>brief The platform being linked into the engine for development Takes calls from the engine and processes them for the specific platform hardware </p>
 
 </div>
 </div>
@@ -204,7 +287,7 @@ Variables</h2></td></tr>
     <ul>
       <li class="navelem"><a class="el" href="engine_8h.html">engine.h</a>      </li>
 
-    <li class="footer">Generated on Sun Mar 25 2012 00:57:35 for LimitSky by
+    <li class="footer">Generated on Sun Mar 25 2012 21:49:38 for LimitSky by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.0 </li>
    </ul>

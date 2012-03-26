@@ -13,85 +13,135 @@ A 2\-D sprite graphic that can be moved, rotated and scaled Is non specific to a
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{class_sprite_a95a52b9a6911e359de3064fa6d3a5617}{Sprite} (int x\-Pos=0, int y\-Pos=0, int angle=0, float x\-Scale=1, float y\-Scale=1)
-\item 
-\hyperlink{class_sprite_a8accab430f9d90ae5117b57d67e32b84}{$\sim$\-Sprite} ()
-\item 
+\hyperlink{class_sprite_a12cba3ac1868418add3c4d95ce87e615}{Sprite} ()
+\begin{DoxyCompactList}\small\item\em Default Constructor for array use. \end{DoxyCompactList}\item 
+\hyperlink{class_sprite_a9e3a21ed23d34859c74680cc18052838}{Sprite} (int x\-Pos, int y\-Pos, int angle=0, float x\-Scale=1, float y\-Scale=1)
+\begin{DoxyCompactList}\small\item\em Constructor with simple initialised values. \end{DoxyCompactList}\item 
 int \hyperlink{class_sprite_a94fe4c517497ba88a93b73cde72b29e8}{x} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Getter\-: For the x co-\/ordinate of this \hyperlink{class_sprite}{Sprite}. \end{DoxyCompactList}\item 
 int \hyperlink{class_sprite_a2c5cebdd000b4c406432da3ce3a71cd6}{y} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Getter\-: For the y co-\/ordinate of this \hyperlink{class_sprite}{Sprite}. \end{DoxyCompactList}\item 
 void \hyperlink{class_sprite_ad8d8da2bddcc3819ad6c1c43384b0349}{x} (int x\-Position)
-\item 
+\begin{DoxyCompactList}\small\item\em Setter\-: Sets the x co-\/ordinate. \end{DoxyCompactList}\item 
 void \hyperlink{class_sprite_a3cc9eb64901a1b5a109a3fd1c7f548b5}{y} (int y\-Position)
-\item 
+\begin{DoxyCompactList}\small\item\em Setter\-: Sets the y co-\/ordinate. \end{DoxyCompactList}\item 
 void \hyperlink{class_sprite_a2b89a3db5c84c3ae082cf71ec292f18b}{move} (int dx, int dy)
-\item 
+\begin{DoxyCompactList}\small\item\em Setter\-: Moves the sprite within the world. \end{DoxyCompactList}\item 
 void \hyperlink{class_sprite_a751b76bd42d5f922cee4f6890003b849}{move\-To} (int \hyperlink{class_sprite_a94fe4c517497ba88a93b73cde72b29e8}{x}, int \hyperlink{class_sprite_a2c5cebdd000b4c406432da3ce3a71cd6}{y})
-\item 
+\begin{DoxyCompactList}\small\item\em Setter\-: Moves the sprite to this absolute co-\/ordinate. \end{DoxyCompactList}\item 
 int \hyperlink{class_sprite_a6e4553db94d974d88543b5a658f6c0c7}{rotation} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Getter\-: Gets the current rotation in degrees. \end{DoxyCompactList}\item 
 void \hyperlink{class_sprite_a52ff92ae9e183b44153f1832b0fe8d9c}{rotate} (int dw)
-\item 
+\begin{DoxyCompactList}\small\item\em Setter\-: Rotates the sprite by the given angle. \end{DoxyCompactList}\item 
 void \hyperlink{class_sprite_aceb65d178240d6abf04cd9c27ed0e095}{rotation} (int angle)
-\item 
+\begin{DoxyCompactList}\small\item\em Setter\-: Sets the rotation of the sprite in degrees. \end{DoxyCompactList}\item 
 float \hyperlink{class_sprite_a2163af37f17518f7c2a294f8ecc12b1d}{scale\-X} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Getter\-: Returns the current scale in the x-\/axis, where 1 is no scaling. \end{DoxyCompactList}\item 
 float \hyperlink{class_sprite_a683509398c5d1098b0503eb223dd21f5}{scale\-Y} ()
-\item 
-void \hyperlink{class_sprite_ae03819f524c4b85cc2b735a677ff6c25}{scale\-X} (float)
-\item 
-void \hyperlink{class_sprite_a874153ccccd9304af8d7c19c51dedd74}{scale\-Y} (float)
-\item 
+\begin{DoxyCompactList}\small\item\em Getter\-: Returns the current scale in the y-\/axis, where 1 is no scaling. \end{DoxyCompactList}\item 
+void \hyperlink{class_sprite_aacbeb81ef49aef2e1bd35e559553dd19}{scale\-X} (float \hyperlink{class_sprite_a09ad4f5df5c625c44e31f02e625a40d0}{scale})
+\begin{DoxyCompactList}\small\item\em Setter\-: Sets the scale of the object in the x-\/axis. \end{DoxyCompactList}\item 
+void \hyperlink{class_sprite_a9264d4d9df6995a374f3b4a0a1c8d7c8}{scale\-Y} (float \hyperlink{class_sprite_a09ad4f5df5c625c44e31f02e625a40d0}{scale})
+\begin{DoxyCompactList}\small\item\em Setter\-: Sets the scale of the object in the y-\/axis. \end{DoxyCompactList}\item 
 void \hyperlink{class_sprite_a09ad4f5df5c625c44e31f02e625a40d0}{scale} (float dx, float dy)
-\item 
+\begin{DoxyCompactList}\small\item\em Setter\-: Scales the sprite by a factor in each axis. \end{DoxyCompactList}\item 
 void \hyperlink{class_sprite_a625a3ba4a2e647cf1a4d88afe9237bb3}{scale\-To} (float x\-Scale, float y\-Scale)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Setter\-: Sets the scale of the sprite in absolute terms. \end{DoxyCompactList}\item 
+\hyperlink{class_bitmap}{Bitmap} \hyperlink{class_sprite_a641153dcd9716e11fb1ae5ba0bfb75d3}{bitmap} ()
+\begin{DoxyCompactList}\small\item\em Getter\-: Gets the \hyperlink{class_bitmap}{Bitmap} resource this sprite is using. \end{DoxyCompactList}\item 
+void \hyperlink{class_sprite_a82a1a9856c2045fe3028163941942d58}{bitmap} (\hyperlink{class_bitmap}{Bitmap} bmp)
+\begin{DoxyCompactList}\small\item\em Setter\-: Sets the \hyperlink{class_bitmap}{Bitmap} resource to be used by this sprite. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 void \hyperlink{class_sprite_ac00655a46db80a5b8b76bce11b351fd1}{wrap\-Rotation} ()
-\begin{DoxyCompactList}\small\item\em Ensure rotation is in the range 0-\/$>$360 by wrapping around. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Helper function that wraps the rotation around 360 degrees Ensures that the rotation functions do not bring values that will ever be out of range 0-\/$>$360. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
 int \hyperlink{class_sprite_ae4b1f0a19b406ffccc78e18f5e40e6f6}{x\-\_\-}
-\item 
+\begin{DoxyCompactList}\small\item\em The x co-\/ordinate of this sprite. \end{DoxyCompactList}\item 
 int \hyperlink{class_sprite_afd9f444fcd6f2d3d6bb0d7686e09d16e}{y\-\_\-}
-\item 
+\begin{DoxyCompactList}\small\item\em The y co-\/ordinate of this sprite. \end{DoxyCompactList}\item 
 int \hyperlink{class_sprite_af429cf5ba45033ece6afa3371ae1ca32}{rotation\-\_\-}
-\item 
+\begin{DoxyCompactList}\small\item\em Rotation in degrees from the positive x-\/axis. \end{DoxyCompactList}\item 
 float \hyperlink{class_sprite_aab809e2cb3503cd71f3acf00cb8bf03a}{scale\-X\-\_\-}
-\item 
+\begin{DoxyCompactList}\small\item\em Scale in the x-\/axis, where 1 is no scaling. \end{DoxyCompactList}\item 
 float \hyperlink{class_sprite_a26863cb8bcd854eb4f4c8777a79ce379}{scale\-Y\-\_\-}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Scale in the y-\/axis, where 1 is no scaling. \end{DoxyCompactList}\item 
+\hyperlink{class_bitmap}{Bitmap} \hyperlink{class_sprite_acc220b22693eaa6ca50174b1a11a22d0}{bitmap\-\_\-}
+\begin{DoxyCompactList}\small\item\em The bitmap resource for this sprite. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
 A 2\-D sprite graphic that can be moved, rotated and scaled Is non specific to any platform; making calls to the engine once a platform has been created. 
 
 \subsection{Constructor \& Destructor Documentation}
-\hypertarget{class_sprite_a95a52b9a6911e359de3064fa6d3a5617}{\index{Sprite@{Sprite}!Sprite@{Sprite}}
+\hypertarget{class_sprite_a12cba3ac1868418add3c4d95ce87e615}{\index{Sprite@{Sprite}!Sprite@{Sprite}}
 \index{Sprite@{Sprite}!Sprite@{Sprite}}
 \subsubsection[{Sprite}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Sprite\-::\-Sprite} (
 \begin{DoxyParamCaption}
-\item[{int}]{x\-Pos = {\ttfamily 0}, }
-\item[{int}]{y\-Pos = {\ttfamily 0}, }
+{}
+\end{DoxyParamCaption}
+)}}\label{class_sprite_a12cba3ac1868418add3c4d95ce87e615}
+
+
+Default Constructor for array use. 
+
+\begin{DoxyWarning}{Warning}
+Does not automatically add to the \hyperlink{class_display_list}{Display\-List}. 
+\end{DoxyWarning}
+\hypertarget{class_sprite_a9e3a21ed23d34859c74680cc18052838}{\index{Sprite@{Sprite}!Sprite@{Sprite}}
+\index{Sprite@{Sprite}!Sprite@{Sprite}}
+\subsubsection[{Sprite}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Sprite\-::\-Sprite} (
+\begin{DoxyParamCaption}
+\item[{int}]{x\-Pos, }
+\item[{int}]{y\-Pos, }
 \item[{int}]{angle = {\ttfamily 0}, }
 \item[{float}]{x\-Scale = {\ttfamily 1}, }
 \item[{float}]{y\-Scale = {\ttfamily 1}}
 \end{DoxyParamCaption}
-)}}\label{class_sprite_a95a52b9a6911e359de3064fa6d3a5617}
-\hypertarget{class_sprite_a8accab430f9d90ae5117b57d67e32b84}{\index{Sprite@{Sprite}!$\sim$\-Sprite@{$\sim$\-Sprite}}
-\index{$\sim$\-Sprite@{$\sim$\-Sprite}!Sprite@{Sprite}}
-\subsubsection[{$\sim$\-Sprite}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Sprite\-::$\sim$\-Sprite} (
-\begin{DoxyParamCaption}
-{}
-\end{DoxyParamCaption}
-)}}\label{class_sprite_a8accab430f9d90ae5117b57d67e32b84}
+)}}\label{class_sprite_a9e3a21ed23d34859c74680cc18052838}
+
+
+Constructor with simple initialised values. 
+
+\begin{DoxyWarning}{Warning}
+Will automatically be added to the \hyperlink{class_display_list}{Display\-List} 
+\end{DoxyWarning}
 
 
 \subsection{Member Function Documentation}
+\hypertarget{class_sprite_a641153dcd9716e11fb1ae5ba0bfb75d3}{\index{Sprite@{Sprite}!bitmap@{bitmap}}
+\index{bitmap@{bitmap}!Sprite@{Sprite}}
+\subsubsection[{bitmap}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Bitmap} {\bf Sprite\-::bitmap} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_sprite_a641153dcd9716e11fb1ae5ba0bfb75d3}
+
+
+Getter\-: Gets the \hyperlink{class_bitmap}{Bitmap} resource this sprite is using. 
+
+\begin{DoxyReturn}{Returns}
+The \hyperlink{class_bitmap}{Bitmap} resource being used by this sprite 
+\end{DoxyReturn}
+\hypertarget{class_sprite_a82a1a9856c2045fe3028163941942d58}{\index{Sprite@{Sprite}!bitmap@{bitmap}}
+\index{bitmap@{bitmap}!Sprite@{Sprite}}
+\subsubsection[{bitmap}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf Sprite\-::bitmap} (
+\begin{DoxyParamCaption}
+\item[{{\bf Bitmap}}]{bmp}
+\end{DoxyParamCaption}
+)}}\label{class_sprite_a82a1a9856c2045fe3028163941942d58}
+
+
+Setter\-: Sets the \hyperlink{class_bitmap}{Bitmap} resource to be used by this sprite. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em bmp} & The bitmap to be used by the sprite \\
+\hline
+\end{DoxyParams}
 \hypertarget{class_sprite_a2b89a3db5c84c3ae082cf71ec292f18b}{\index{Sprite@{Sprite}!move@{move}}
 \index{move@{move}!Sprite@{Sprite}}
 \subsubsection[{move}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf Sprite\-::move} (
@@ -100,6 +150,17 @@ A 2\-D sprite graphic that can be moved, rotated and scaled Is non specific to a
 \item[{int}]{dy}
 \end{DoxyParamCaption}
 )}}\label{class_sprite_a2b89a3db5c84c3ae082cf71ec292f18b}
+
+
+Setter\-: Moves the sprite within the world. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dx} & The amount to move the sprite in the x direction \\
+\hline
+{\em dy} & The amount to move the sprite in the y direction \\
+\hline
+\end{DoxyParams}
 \hypertarget{class_sprite_a751b76bd42d5f922cee4f6890003b849}{\index{Sprite@{Sprite}!move\-To@{move\-To}}
 \index{move\-To@{move\-To}!Sprite@{Sprite}}
 \subsubsection[{move\-To}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf Sprite\-::move\-To} (
@@ -108,6 +169,17 @@ A 2\-D sprite graphic that can be moved, rotated and scaled Is non specific to a
 \item[{int}]{y}
 \end{DoxyParamCaption}
 )}}\label{class_sprite_a751b76bd42d5f922cee4f6890003b849}
+
+
+Setter\-: Moves the sprite to this absolute co-\/ordinate. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & the new x co-\/ordinate of the \hyperlink{class_sprite}{Sprite} \\
+\hline
+{\em y} & the new y co-\/ordinate of the \hyperlink{class_sprite}{Sprite} \\
+\hline
+\end{DoxyParams}
 \hypertarget{class_sprite_a52ff92ae9e183b44153f1832b0fe8d9c}{\index{Sprite@{Sprite}!rotate@{rotate}}
 \index{rotate@{rotate}!Sprite@{Sprite}}
 \subsubsection[{rotate}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf Sprite\-::rotate} (
@@ -115,6 +187,15 @@ A 2\-D sprite graphic that can be moved, rotated and scaled Is non specific to a
 \item[{int}]{dw}
 \end{DoxyParamCaption}
 )}}\label{class_sprite_a52ff92ae9e183b44153f1832b0fe8d9c}
+
+
+Setter\-: Rotates the sprite by the given angle. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dw} & The amount to rotate the sprite anti-\/clockwise in degrees \\
+\hline
+\end{DoxyParams}
 \hypertarget{class_sprite_a6e4553db94d974d88543b5a658f6c0c7}{\index{Sprite@{Sprite}!rotation@{rotation}}
 \index{rotation@{rotation}!Sprite@{Sprite}}
 \subsubsection[{rotation}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf Sprite\-::rotation} (
@@ -122,6 +203,13 @@ A 2\-D sprite graphic that can be moved, rotated and scaled Is non specific to a
 {}
 \end{DoxyParamCaption}
 )}}\label{class_sprite_a6e4553db94d974d88543b5a658f6c0c7}
+
+
+Getter\-: Gets the current rotation in degrees. 
+
+\begin{DoxyReturn}{Returns}
+The angle of rotation with the positive x-\/axis of this \hyperlink{class_sprite}{Sprite}, in degrees 
+\end{DoxyReturn}
 \hypertarget{class_sprite_aceb65d178240d6abf04cd9c27ed0e095}{\index{Sprite@{Sprite}!rotation@{rotation}}
 \index{rotation@{rotation}!Sprite@{Sprite}}
 \subsubsection[{rotation}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf Sprite\-::rotation} (
@@ -129,6 +217,15 @@ A 2\-D sprite graphic that can be moved, rotated and scaled Is non specific to a
 \item[{int}]{angle}
 \end{DoxyParamCaption}
 )}}\label{class_sprite_aceb65d178240d6abf04cd9c27ed0e095}
+
+
+Setter\-: Sets the rotation of the sprite in degrees. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em angle} & The new angle to set the sprite to, in degrees \\
+\hline
+\end{DoxyParams}
 \hypertarget{class_sprite_a09ad4f5df5c625c44e31f02e625a40d0}{\index{Sprite@{Sprite}!scale@{scale}}
 \index{scale@{scale}!Sprite@{Sprite}}
 \subsubsection[{scale}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf Sprite\-::scale} (
@@ -137,6 +234,17 @@ A 2\-D sprite graphic that can be moved, rotated and scaled Is non specific to a
 \item[{float}]{dy}
 \end{DoxyParamCaption}
 )}}\label{class_sprite_a09ad4f5df5c625c44e31f02e625a40d0}
+
+
+Setter\-: Scales the sprite by a factor in each axis. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dx} & The factor to be scaled in the x-\/axis, where 1 is no change \\
+\hline
+{\em dy} & The factor to be scaled in the y-\/axis, where 1 is no change \\
+\hline
+\end{DoxyParams}
 \hypertarget{class_sprite_a625a3ba4a2e647cf1a4d88afe9237bb3}{\index{Sprite@{Sprite}!scale\-To@{scale\-To}}
 \index{scale\-To@{scale\-To}!Sprite@{Sprite}}
 \subsubsection[{scale\-To}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf Sprite\-::scale\-To} (
@@ -145,6 +253,17 @@ A 2\-D sprite graphic that can be moved, rotated and scaled Is non specific to a
 \item[{float}]{y\-Scale}
 \end{DoxyParamCaption}
 )}}\label{class_sprite_a625a3ba4a2e647cf1a4d88afe9237bb3}
+
+
+Setter\-: Sets the scale of the sprite in absolute terms. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x\-Scale} & the new value of scale in the x-\/axis \\
+\hline
+{\em y\-Scale} & the new value of scale in the y-\/axis \\
+\hline
+\end{DoxyParams}
 \hypertarget{class_sprite_a2163af37f17518f7c2a294f8ecc12b1d}{\index{Sprite@{Sprite}!scale\-X@{scale\-X}}
 \index{scale\-X@{scale\-X}!Sprite@{Sprite}}
 \subsubsection[{scale\-X}]{\setlength{\rightskip}{0pt plus 5cm}float {\bf Sprite\-::scale\-X} (
@@ -152,13 +271,29 @@ A 2\-D sprite graphic that can be moved, rotated and scaled Is non specific to a
 {}
 \end{DoxyParamCaption}
 )}}\label{class_sprite_a2163af37f17518f7c2a294f8ecc12b1d}
-\hypertarget{class_sprite_ae03819f524c4b85cc2b735a677ff6c25}{\index{Sprite@{Sprite}!scale\-X@{scale\-X}}
+
+
+Getter\-: Returns the current scale in the x-\/axis, where 1 is no scaling. 
+
+\begin{DoxyReturn}{Returns}
+the current amount the sprite is scaled by in the x-\/axis 
+\end{DoxyReturn}
+\hypertarget{class_sprite_aacbeb81ef49aef2e1bd35e559553dd19}{\index{Sprite@{Sprite}!scale\-X@{scale\-X}}
 \index{scale\-X@{scale\-X}!Sprite@{Sprite}}
 \subsubsection[{scale\-X}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf Sprite\-::scale\-X} (
 \begin{DoxyParamCaption}
 \item[{float}]{scale}
 \end{DoxyParamCaption}
-)}}\label{class_sprite_ae03819f524c4b85cc2b735a677ff6c25}
+)}}\label{class_sprite_aacbeb81ef49aef2e1bd35e559553dd19}
+
+
+Setter\-: Sets the scale of the object in the x-\/axis. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em scale} & Sets the scale in the x-\/axis to this new scale value \\
+\hline
+\end{DoxyParams}
 \hypertarget{class_sprite_a683509398c5d1098b0503eb223dd21f5}{\index{Sprite@{Sprite}!scale\-Y@{scale\-Y}}
 \index{scale\-Y@{scale\-Y}!Sprite@{Sprite}}
 \subsubsection[{scale\-Y}]{\setlength{\rightskip}{0pt plus 5cm}float {\bf Sprite\-::scale\-Y} (
@@ -166,13 +301,29 @@ A 2\-D sprite graphic that can be moved, rotated and scaled Is non specific to a
 {}
 \end{DoxyParamCaption}
 )}}\label{class_sprite_a683509398c5d1098b0503eb223dd21f5}
-\hypertarget{class_sprite_a874153ccccd9304af8d7c19c51dedd74}{\index{Sprite@{Sprite}!scale\-Y@{scale\-Y}}
+
+
+Getter\-: Returns the current scale in the y-\/axis, where 1 is no scaling. 
+
+\begin{DoxyReturn}{Returns}
+the current amount the sprite is scaled by in the y-\/axis 
+\end{DoxyReturn}
+\hypertarget{class_sprite_a9264d4d9df6995a374f3b4a0a1c8d7c8}{\index{Sprite@{Sprite}!scale\-Y@{scale\-Y}}
 \index{scale\-Y@{scale\-Y}!Sprite@{Sprite}}
 \subsubsection[{scale\-Y}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf Sprite\-::scale\-Y} (
 \begin{DoxyParamCaption}
 \item[{float}]{scale}
 \end{DoxyParamCaption}
-)}}\label{class_sprite_a874153ccccd9304af8d7c19c51dedd74}
+)}}\label{class_sprite_a9264d4d9df6995a374f3b4a0a1c8d7c8}
+
+
+Setter\-: Sets the scale of the object in the y-\/axis. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em scale} & Sets the scale in the y-\/axis to this new scale value \\
+\hline
+\end{DoxyParams}
 \hypertarget{class_sprite_ac00655a46db80a5b8b76bce11b351fd1}{\index{Sprite@{Sprite}!wrap\-Rotation@{wrap\-Rotation}}
 \index{wrap\-Rotation@{wrap\-Rotation}!Sprite@{Sprite}}
 \subsubsection[{wrap\-Rotation}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf Sprite\-::wrap\-Rotation} (
@@ -182,7 +333,7 @@ A 2\-D sprite graphic that can be moved, rotated and scaled Is non specific to a
 )\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{class_sprite_ac00655a46db80a5b8b76bce11b351fd1}
 
 
-Ensure rotation is in the range 0-\/$>$360 by wrapping around. 
+Helper function that wraps the rotation around 360 degrees Ensures that the rotation functions do not bring values that will ever be out of range 0-\/$>$360. 
 
 \hypertarget{class_sprite_a94fe4c517497ba88a93b73cde72b29e8}{\index{Sprite@{Sprite}!x@{x}}
 \index{x@{x}!Sprite@{Sprite}}
@@ -191,6 +342,13 @@ Ensure rotation is in the range 0-\/$>$360 by wrapping around.
 {}
 \end{DoxyParamCaption}
 )}}\label{class_sprite_a94fe4c517497ba88a93b73cde72b29e8}
+
+
+Getter\-: For the x co-\/ordinate of this \hyperlink{class_sprite}{Sprite}. 
+
+\begin{DoxyReturn}{Returns}
+The x co-\/ordinate as an int 
+\end{DoxyReturn}
 \hypertarget{class_sprite_ad8d8da2bddcc3819ad6c1c43384b0349}{\index{Sprite@{Sprite}!x@{x}}
 \index{x@{x}!Sprite@{Sprite}}
 \subsubsection[{x}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf Sprite\-::x} (
@@ -198,6 +356,15 @@ Ensure rotation is in the range 0-\/$>$360 by wrapping around.
 \item[{int}]{x\-Position}
 \end{DoxyParamCaption}
 )}}\label{class_sprite_ad8d8da2bddcc3819ad6c1c43384b0349}
+
+
+Setter\-: Sets the x co-\/ordinate. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x\-Position} & The new x co-\/ordinate to be set \\
+\hline
+\end{DoxyParams}
 \hypertarget{class_sprite_a2c5cebdd000b4c406432da3ce3a71cd6}{\index{Sprite@{Sprite}!y@{y}}
 \index{y@{y}!Sprite@{Sprite}}
 \subsubsection[{y}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf Sprite\-::y} (
@@ -205,6 +372,13 @@ Ensure rotation is in the range 0-\/$>$360 by wrapping around.
 {}
 \end{DoxyParamCaption}
 )}}\label{class_sprite_a2c5cebdd000b4c406432da3ce3a71cd6}
+
+
+Getter\-: For the y co-\/ordinate of this \hyperlink{class_sprite}{Sprite}. 
+
+\begin{DoxyReturn}{Returns}
+The y co-\/ordinate as an int 
+\end{DoxyReturn}
 \hypertarget{class_sprite_a3cc9eb64901a1b5a109a3fd1c7f548b5}{\index{Sprite@{Sprite}!y@{y}}
 \index{y@{y}!Sprite@{Sprite}}
 \subsubsection[{y}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf Sprite\-::y} (
@@ -214,22 +388,58 @@ Ensure rotation is in the range 0-\/$>$360 by wrapping around.
 )}}\label{class_sprite_a3cc9eb64901a1b5a109a3fd1c7f548b5}
 
 
+Setter\-: Sets the y co-\/ordinate. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em y\-Position} & The new y co-\/ordinate to be set \\
+\hline
+\end{DoxyParams}
+
+
 \subsection{Member Data Documentation}
+\hypertarget{class_sprite_acc220b22693eaa6ca50174b1a11a22d0}{\index{Sprite@{Sprite}!bitmap\-\_\-@{bitmap\-\_\-}}
+\index{bitmap\-\_\-@{bitmap\-\_\-}!Sprite@{Sprite}}
+\subsubsection[{bitmap\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Bitmap} {\bf Sprite\-::bitmap\-\_\-}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{class_sprite_acc220b22693eaa6ca50174b1a11a22d0}
+
+
+The bitmap resource for this sprite. 
+
 \hypertarget{class_sprite_af429cf5ba45033ece6afa3371ae1ca32}{\index{Sprite@{Sprite}!rotation\-\_\-@{rotation\-\_\-}}
 \index{rotation\-\_\-@{rotation\-\_\-}!Sprite@{Sprite}}
 \subsubsection[{rotation\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf Sprite\-::rotation\-\_\-}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{class_sprite_af429cf5ba45033ece6afa3371ae1ca32}
+
+
+Rotation in degrees from the positive x-\/axis. 
+
 \hypertarget{class_sprite_aab809e2cb3503cd71f3acf00cb8bf03a}{\index{Sprite@{Sprite}!scale\-X\-\_\-@{scale\-X\-\_\-}}
 \index{scale\-X\-\_\-@{scale\-X\-\_\-}!Sprite@{Sprite}}
 \subsubsection[{scale\-X\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}float {\bf Sprite\-::scale\-X\-\_\-}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{class_sprite_aab809e2cb3503cd71f3acf00cb8bf03a}
+
+
+Scale in the x-\/axis, where 1 is no scaling. 
+
 \hypertarget{class_sprite_a26863cb8bcd854eb4f4c8777a79ce379}{\index{Sprite@{Sprite}!scale\-Y\-\_\-@{scale\-Y\-\_\-}}
 \index{scale\-Y\-\_\-@{scale\-Y\-\_\-}!Sprite@{Sprite}}
 \subsubsection[{scale\-Y\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}float {\bf Sprite\-::scale\-Y\-\_\-}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{class_sprite_a26863cb8bcd854eb4f4c8777a79ce379}
+
+
+Scale in the y-\/axis, where 1 is no scaling. 
+
 \hypertarget{class_sprite_ae4b1f0a19b406ffccc78e18f5e40e6f6}{\index{Sprite@{Sprite}!x\-\_\-@{x\-\_\-}}
 \index{x\-\_\-@{x\-\_\-}!Sprite@{Sprite}}
 \subsubsection[{x\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf Sprite\-::x\-\_\-}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{class_sprite_ae4b1f0a19b406ffccc78e18f5e40e6f6}
+
+
+The x co-\/ordinate of this sprite. 
+
 \hypertarget{class_sprite_afd9f444fcd6f2d3d6bb0d7686e09d16e}{\index{Sprite@{Sprite}!y\-\_\-@{y\-\_\-}}
 \index{y\-\_\-@{y\-\_\-}!Sprite@{Sprite}}
 \subsubsection[{y\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf Sprite\-::y\-\_\-}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}\label{class_sprite_afd9f444fcd6f2d3d6bb0d7686e09d16e}
+
+
+The y co-\/ordinate of this sprite. 
+
 
 
 The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}

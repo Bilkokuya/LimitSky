@@ -1,6 +1,16 @@
 #include "engine\sprite.h"
 #include "engine\engine.h"
 
+//	Default Constructor for array use
+Sprite::Sprite()
+{
+	x_ = 0;
+	y_ = 0;
+	rotation_ = 0;
+	scaleX_ = 1;
+	scaleY_ = 1;
+}
+
 //	Constructor with default values for each parameter, see engine/sprite.h
 Sprite::Sprite(int xPos, int yPos, int angle, float xScale, float yScale)
 {

@@ -118,41 +118,36 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00005"></a>00005 <span class="preprocessor">#ifndef LS_BITMAP</span>
 <a name="l00006"></a><a class="code" href="bitmap_8h.html#a807ab484214b735ddabe3210ff935f3d">00006</a> <span class="preprocessor"></span><span class="preprocessor">#define LS_BITMAP</span>
 <a name="l00007"></a>00007 <span class="preprocessor"></span>
-<a name="l00011"></a>00011 <span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt; 
-<a name="l00012"></a><a class="code" href="class_bitmap.html">00012</a> <span class="keyword">class </span><a class="code" href="class_bitmap.html" title="Bitmap Resource, comprising of non-platform specific bitmapData, and size data. On the GBA...">Bitmap</a>
-<a name="l00013"></a>00013 {
-<a name="l00014"></a>00014 <span class="keyword">public</span>:
-<a name="l00015"></a>00015 
-<a name="l00017"></a>00017         <a class="code" href="class_bitmap.html#a639b3eb5055babcb2a24c1fc84539cb4" title="Default Constructor for array initialisation.">Bitmap</a>();       
-<a name="l00018"></a>00018 
-<a name="l00023"></a>00023         <a class="code" href="class_bitmap.html#a639b3eb5055babcb2a24c1fc84539cb4" title="Default Constructor for array initialisation.">Bitmap</a>(T* <a class="code" href="class_bitmap.html#afe7336697101154d5e19cc1953760f5d" title="Getter: Gets the bitmapData pointer.">bitmapData</a>, <span class="keywordtype">int</span> <a class="code" href="class_bitmap.html#aa9d9619b37ce2339ee1db4c4a3068fcb" title="Getter: Gets the width of this bitmap.">width</a>, <span class="keywordtype">int</span> <a class="code" href="class_bitmap.html#a08ed36c28aedf05e2cb37cc73fe77022" title="Getter: Gets the height of this bitmap.">height</a>);   
-<a name="l00024"></a>00024 
-<a name="l00025"></a>00025 
-<a name="l00028"></a>00028         <span class="keywordtype">int</span> <a class="code" href="class_bitmap.html#aa9d9619b37ce2339ee1db4c4a3068fcb" title="Getter: Gets the width of this bitmap.">width</a>();    
-<a name="l00029"></a>00029 
-<a name="l00032"></a>00032         <span class="keywordtype">int</span> <a class="code" href="class_bitmap.html#a08ed36c28aedf05e2cb37cc73fe77022" title="Getter: Gets the height of this bitmap.">height</a>();   
-<a name="l00033"></a>00033 
-<a name="l00036"></a>00036         <span class="keywordtype">void</span> <a class="code" href="class_bitmap.html#aa9d9619b37ce2339ee1db4c4a3068fcb" title="Getter: Gets the width of this bitmap.">width</a>(<span class="keywordtype">int</span> w);
-<a name="l00037"></a>00037 
-<a name="l00040"></a>00040         <span class="keywordtype">void</span> <a class="code" href="class_bitmap.html#a08ed36c28aedf05e2cb37cc73fe77022" title="Getter: Gets the height of this bitmap.">height</a>(<span class="keywordtype">int</span> h);     
-<a name="l00041"></a>00041 
-<a name="l00044"></a>00044         T* <a class="code" href="class_bitmap.html#afe7336697101154d5e19cc1953760f5d" title="Getter: Gets the bitmapData pointer.">bitmapData</a>();
-<a name="l00045"></a>00045 
-<a name="l00049"></a>00049         <span class="keywordtype">void</span> <a class="code" href="class_bitmap.html#afe7336697101154d5e19cc1953760f5d" title="Getter: Gets the bitmapData pointer.">bitmapData</a>(T* data);       
-<a name="l00050"></a>00050 
-<a name="l00051"></a>00051 <span class="keyword">private</span>:
-<a name="l00052"></a><a class="code" href="class_bitmap.html#a6f70d201f71c812dac30ac163281fd72">00052</a>         <span class="keywordtype">int</span> <a class="code" href="class_bitmap.html#a6f70d201f71c812dac30ac163281fd72">width_</a>, <a class="code" href="class_bitmap.html#a33d3c580113e2bf4a8b4767db2b936e2" title="The width and height of this resource in pixels.">height_</a>;    
-<a name="l00053"></a><a class="code" href="class_bitmap.html#a063f3b42510eef125294a08767147574">00053</a>         T* <a class="code" href="class_bitmap.html#a063f3b42510eef125294a08767147574" title="A pointer to the bitmap data for this bitmap resource.">bitmapData_</a>;                 
-<a name="l00054"></a>00054 };
-<a name="l00055"></a>00055 
-<a name="l00056"></a>00056 <span class="preprocessor">#endif</span>
+<a name="l00010"></a><a class="code" href="class_bitmap.html">00010</a> <span class="keyword">class </span><a class="code" href="class_bitmap.html" title="Bitmap Resource, comprising of non-platform specific bitmapData, and size data. On the GBA...">Bitmap</a>
+<a name="l00011"></a>00011 {
+<a name="l00012"></a>00012 <span class="keyword">public</span>:
+<a name="l00013"></a>00013 
+<a name="l00015"></a>00015         <a class="code" href="class_bitmap.html#aa6ef6d8c0b66664350ef4dd062db3aec" title="Default Constructor for array initialisation.">Bitmap</a>();       
+<a name="l00016"></a>00016 
+<a name="l00020"></a>00020         <a class="code" href="class_bitmap.html#aa6ef6d8c0b66664350ef4dd062db3aec" title="Default Constructor for array initialisation.">Bitmap</a>(<span class="keywordtype">int</span> <a class="code" href="class_bitmap.html#ac62a2cfe38ad61efc376d41fc6a86626" title="Getter: Gets the width of this bitmap.">width</a>, <span class="keywordtype">int</span> <a class="code" href="class_bitmap.html#aa3c108177eab78db3bcadafa59d8ea4f" title="Getter: Gets the height of this bitmap.">height</a>);  
+<a name="l00021"></a>00021 
+<a name="l00022"></a>00022 
+<a name="l00025"></a>00025         <span class="keywordtype">int</span> <a class="code" href="class_bitmap.html#ac62a2cfe38ad61efc376d41fc6a86626" title="Getter: Gets the width of this bitmap.">width</a>();    
+<a name="l00026"></a>00026 
+<a name="l00029"></a>00029         <span class="keywordtype">int</span> <a class="code" href="class_bitmap.html#aa3c108177eab78db3bcadafa59d8ea4f" title="Getter: Gets the height of this bitmap.">height</a>();   
+<a name="l00030"></a>00030 
+<a name="l00033"></a>00033         <span class="keywordtype">void</span> <a class="code" href="class_bitmap.html#ac62a2cfe38ad61efc376d41fc6a86626" title="Getter: Gets the width of this bitmap.">width</a>(<span class="keywordtype">int</span> w);
+<a name="l00034"></a>00034 
+<a name="l00037"></a>00037         <span class="keywordtype">void</span> <a class="code" href="class_bitmap.html#aa3c108177eab78db3bcadafa59d8ea4f" title="Getter: Gets the height of this bitmap.">height</a>(<span class="keywordtype">int</span> h);             
+<a name="l00038"></a>00038 
+<a name="l00039"></a>00039 <span class="keyword">private</span>:
+<a name="l00040"></a><a class="code" href="class_bitmap.html#a6e45022cf15e49b51ae32d10b2f4e510">00040</a>         <span class="keywordtype">int</span> <a class="code" href="class_bitmap.html#a6e45022cf15e49b51ae32d10b2f4e510" title="The width of this resource in pixels.">width_</a>;             
+<a name="l00041"></a><a class="code" href="class_bitmap.html#a167d66c03101425f60bdb9ea0b2b67ea">00041</a>         <span class="keywordtype">int</span> <a class="code" href="class_bitmap.html#a167d66c03101425f60bdb9ea0b2b67ea" title="The height of this resource in pixels.">height_</a>;    
+<a name="l00042"></a>00042 };
+<a name="l00043"></a>00043 
+<a name="l00044"></a>00044 <span class="preprocessor">#endif</span>
 </pre></div></div><!-- contents -->
 </div>
   <div id="nav-path" class="navpath">
     <ul>
       <li class="navelem"><a class="el" href="bitmap_8h.html">bitmap.h</a>      </li>
 
-    <li class="footer">Generated on Sun Mar 25 2012 00:57:34 for LimitSky by
+    <li class="footer">Generated on Sun Mar 25 2012 21:49:38 for LimitSky by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.0 </li>
    </ul>

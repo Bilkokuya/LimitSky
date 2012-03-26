@@ -27,6 +27,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\engine\engine.cpp" />
+    <ClCompile Include="src\engine\graphics\displaylist.cpp" />
     <ClCompile Include="src\engine\graphics\sprite.cpp" />
     <ClCompile Include="src\engine\graphics\tile.cpp" />
     <ClCompile Include="src\engine\graphics\tilemap.cpp" />

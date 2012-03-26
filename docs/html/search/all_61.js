@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['addsprite',['addSprite',['../class_display_list.html#ae80fef809c309ea0312ff8550f1d74b0',1,'DisplayList']]],
   ['animation_2eh',['animation.h',['../animation_8h.html',1,'']]],
   ['animcounter',['animCounter',['../class_player.html#aa4536c3254fa3b774cd5b04483a3255b',1,'Player']]],
   ['animcounterstart',['animCounterStart',['../class_player.html#af6cb41cc776191c988c8fa835fd12bc4',1,'Player']]],
