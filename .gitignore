@@ -6,3 +6,5 @@
 /LimitSky_UnitTest.vcxproj
 /LimitSky_UnitTest.vcxproj.filters
 /LimitSky_UnitTest.vcxproj.user
+/build/
+/dist/
