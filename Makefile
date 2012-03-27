@@ -24,7 +24,13 @@ SOURCES		:=	lib/common \
 				src/gba \
 DATA		:=
 GRAPHICS	:=	
-INCLUDES	:=
+INCLUDES	:=  include/common \
+				include/gba \
+				include/unittest \
+				lib/common \
+				lib/gba \
+				lib/unittest \
+
 
 #---------------------------------------------------------------------------------
 # options for code generation

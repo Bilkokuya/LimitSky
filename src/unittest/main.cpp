@@ -1,9 +1,7 @@
 #include <iostream>
 #include "gtest/gtest.h"
 
-//#include "testcases\engine\enginetest.h"
-//#include "testcases\engine\spritetest.h"
-//#include "testcases\engine\bitmaptest.h"
+#include "tests/stagetest.h"
 
 int main(int argc, char** argv) 
 {

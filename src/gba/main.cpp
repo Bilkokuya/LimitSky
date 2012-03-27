@@ -1,5 +1,5 @@
 #include "../../lib/gba/gba.h"
-#include "../../include\gba\GBABackground.h"
+#include "../../include/gba/GBABackground.h"
 
 GBABackground backgrounds[4] = {
 	GBABackground(0,0,0),
