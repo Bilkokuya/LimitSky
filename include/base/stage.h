@@ -2,6 +2,8 @@
 #define LS_STAGE
 
 #include "sprite.h"
+#include "background.h"
+#include "oammanager.h"
 
 ///\brief The stage processes sprites and tiles into the display memory on the screen
 ///			\n It contains an 128 long array of all sprites being drawn currently
@@ -83,8 +85,8 @@ private:
 	int width_;		///< width of the stage to render (should be equal to screen width)
 	int height_;	///< height of the stage to render (should be equal to screen height)
 	Sprite** sprites_;			///< A dynamic array of sprites currently being rendered to the screen, held as pointers
-	Background backgrounds[4];	///< The four background layers for tiles
-	OAMManager oamManager;		///< The oamManager to allocate sprites into the correct place in VRAM
+	Background backgrounds_[4];	///< The four background layers for tiles
+	OAMManager oamManager_;		///< The oamManager to allocate sprites into the correct place in VRAM
 
 };
 
