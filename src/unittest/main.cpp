@@ -2,6 +2,7 @@
 #include "gtest/gtest.h"
 
 #include "tests/stagetest.h"
+#include "tests/spritetest.h"
 
 int main(int argc, char** argv) 
 {
