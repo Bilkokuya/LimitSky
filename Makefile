@@ -22,11 +22,11 @@ SOURCES		:=	lib/common \
 				lib/gba \
 				src/common \
 				src/gba \
+				src/gba/base
 DATA		:=
 GRAPHICS	:=	
-INCLUDES	:=  include/common \
-				include/gba \
-				include/unittest \
+INCLUDES	:=  include/base \
+				include/game \
 				lib/common \
 				lib/gba \
 				lib/unittest \

@@ -1,11 +1,11 @@
 #include "../../lib/gba/gba.h"
-#include "../../include/gba/GBABackground.h"
+#include "../../include/base/background.h"
 
-GBABackground backgrounds[4] = {
-	GBABackground(0,0,0),
-	GBABackground(1,0,0),
-	GBABackground(2,0,0),
-	GBABackground(3,0,5)
+Background backgrounds[4] = {
+	Background(),
+	Background(),
+	Background(),
+	Background()
 };
 
 int main()
