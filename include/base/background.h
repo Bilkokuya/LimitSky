@@ -14,6 +14,19 @@ public:
 	void setTile(int x, int y, int tile);
 	void loadTile(int tilenum, const unsigned char* tiledata);
 
+	int x();
+	int y();
+	void x(int x);
+	void y(int y);
+	void move(int dx, int dy);
+	void moveTo(int x, int y);
+
+	int number();
+	int charblock();
+	int screenblock();
+	int zPriority();
+	
+
 private:
 	int number_;
 	int x_;
@@ -24,6 +37,7 @@ private:
 
 	void init(int number, int xOffset, int yOffset, int zPriority, int charblock, int screenblock);
 	void updateMemory();
+	void updatePosition();
 };
 
 #endif
