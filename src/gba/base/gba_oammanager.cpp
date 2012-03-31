@@ -14,6 +14,6 @@ void OAMManager::drawSprite(int index, Sprite* sprite)
 	SetObject(index,
 		ATTR0_SHAPE(1) | ATTR0_8BPP | ATTR0_REG,
 		ATTR1_SIZE(1),
-		ATTR2_PRIO(1)
+		ATTR2_PRIO(sprite->zPriority())
 		);
 }

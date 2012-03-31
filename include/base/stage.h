@@ -23,13 +23,22 @@ public:
 	Sprite** sprites();
 
 	///\brief Initialises the Display and Loads all palette and tile data into Tile Memory (Backgrounds)
-	void init();
+	void initDisplay();
+
+	void initBackgrounds();
+
+	void initSprites();
+
+	void initPalettes();
 
 	///\brief Updates the stage data, brining in the new sprites to be used and tiles from the tilemaps
 	void update();
 
 	///\brief Sends all sprite data to the OAM and sets all relevant tiles in the backgrounds
 	void draw();
+
+	///\brief Adds a new background to the stage, max 4 on the GBA
+	void addBackground(Background* background);
 
  	///\brief Getter: gets the current x position
 	///\return The x position of the top left corner
@@ -79,13 +88,16 @@ public:
 	///\param height The new height of the stage
 	void setDimensions(int width, int height);
 
+	Background** backgrounds_;	///< The four background layers for tiles
+
 private:
 	int x_;			///< x position of the top left corner
 	int y_;			///< y position of the top left corner
 	int width_;		///< width of the stage to render (should be equal to screen width)
 	int height_;	///< height of the stage to render (should be equal to screen height)
 	Sprite** sprites_;			///< A dynamic array of sprites currently being rendered to the screen, held as pointers
-	Background backgrounds_[4];	///< The four background layers for tiles
+	int spritesIndex_;
+	int backgroundsIndex_;
 	OAMManager oamManager_;		///< The oamManager to allocate sprites into the correct place in VRAM
 
 };

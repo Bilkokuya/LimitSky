@@ -84,6 +84,7 @@ private:
 	int rotation_;	///< Rotation in degrees from the positive x-axis
 	float scaleX_;	///< Scale in the x-axis, where 1 is no scaling
 	float scaleY_;	///< Scale in the y-axis, where 1 is no scaling
+	int zPriority_;
 
 	///\brief Helper function that wraps the rotation around 360 degrees
 	///			Ensures that the rotation functions do not bring values that will ever be out of range 0->360.
