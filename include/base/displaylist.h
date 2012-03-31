@@ -1,13 +1,15 @@
 #ifndef LS_DISPLAYLIST
 #define LS_DISPLAYLIST
 
+#include <list>
+
 class DisplayList
 {
 public:
-	/////Planned properties
-	// Tree of Sprites
-	// Solid Const Tile Maps
-	// Tree of Map changes since game start (Max 64kB RAM space + overhead)
+	std::list<Sprite*> spriteList_;
+	int* tilemap[4][32][32];
+
+	void addSprite();
 
 private:
 

@@ -67,11 +67,11 @@ public:
 	void moveTo(int x, int y);
 
 
-	///\brief Getter: gets the current width;
+	///\brief Getter: gets the current width
 	///\return The width of the stage
 	int width();
 
-	///\brief Getter: gets the current height;
+	///\brief Getter: gets the current height
 	///\return The height of the stage
 	int height();
 
@@ -89,16 +89,19 @@ public:
 	void setDimensions(int width, int height);
 
 	Background** backgrounds_;	///< The four background layers for tiles
+	int backgroundsIndex_;
 
 private:
-	int x_;			///< x position of the top left corner
-	int y_;			///< y position of the top left corner
-	int width_;		///< width of the stage to render (should be equal to screen width)
-	int height_;	///< height of the stage to render (should be equal to screen height)
-	Sprite** sprites_;			///< A dynamic array of sprites currently being rendered to the screen, held as pointers
+	//static Stage* instance;
+
+	int x_;				///< x position of the top left corner
+	int y_;				///< y position of the top left corner
+	int width_;			///< width of the stage to render (should be equal to screen width)
+	int height_;		///< height of the stage to render (should be equal to screen height)
+	Sprite** sprites_;	///< A dynamic array of sprites currently being rendered to the screen, held as pointers
 	int spritesIndex_;
-	int backgroundsIndex_;
-	OAMManager oamManager_;		///< The oamManager to allocate sprites into the correct place in VRAM
+
+	OAMManager oamManager_;	///< The oamManager to allocate sprites into the correct place in VRAM
 
 };
 
