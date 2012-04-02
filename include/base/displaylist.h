@@ -2,16 +2,20 @@
 #define LS_DISPLAYLIST
 
 #include <list>
+#include "sprite.h"
 
 class DisplayList
 {
 public:
+	DisplayList();
+
 	std::list<Sprite*> spriteList_;
-	int* tilemap[4][32][32];
+	const unsigned short* tilemap_;
 
 	void addSprite();
 
 private:
 
 };
+
 #endif

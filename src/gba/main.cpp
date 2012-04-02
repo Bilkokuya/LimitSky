@@ -12,6 +12,17 @@ const uint8_t fakeTile [64] = {
 	1, 0, 0, 0, 0, 0, 0, 1,
 	1, 1, 1, 1, 1, 1, 1, 1,
 };
+const uint8_t fakeTile2 [64] = {
+	1, 1, 1, 1, 1, 1, 1, 1,
+	1, 1, 0, 1, 1, 0, 1, 1,
+	1, 0, 0, 1, 1, 0, 0, 1,
+	1, 1, 0, 1, 1, 0, 1, 1,
+	1, 1, 0, 1, 1, 0, 1, 1,
+	1, 0, 0, 1, 1, 0, 0, 1,
+	1, 1, 0, 1, 1, 0, 1, 1,
+	1, 1, 1, 1, 1, 1, 1, 1,
+};
+
 
 Stage stage = Stage();
 
@@ -23,11 +34,14 @@ int main()
 	
 	for (int i = 0; i < 4; ++i){
 		stage.backgrounds_[i] -> loadTile(1,fakeTile);
+		stage.backgrounds_[i] -> loadTile(2,fakeTile2);
 	}
 
 	for (int i = 0; i < 4; ++i){
 		stage.backgrounds_[i] -> setTile(3,3,1);
 	}
+
+	stage.update();
 
 	while(true);
 }

@@ -21,8 +21,12 @@ BUILD		:=	build
 SOURCES		:=	lib/common \
 				lib/gba \
 				src/common \
+				src/common/base \
+				src/common/game \
 				src/gba \
-				src/gba/base
+				src/gba/base \
+				src/gba/game
+				
 DATA		:=
 GRAPHICS	:=	
 INCLUDES	:=  include/base \
@@ -42,6 +46,7 @@ CFLAGS	:=	-g -Wall -O3\
  		-fomit-frame-pointer\
 		-ffast-math \
 		$(ARCH) \
+		-DCC_GBA \
 
 CFLAGS	+=	$(INCLUDE)
 

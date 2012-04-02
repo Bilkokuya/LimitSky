@@ -54,6 +54,7 @@ Sprite** Stage::sprites()
 void Stage::initDisplay()
 {
 	REG_DISPCNT = DCNT_MODE0 | DCNT_OBJ | DCNT_OBJ_1D | DCNT_BG0 | DCNT_BG1 | DCNT_BG2 | DCNT_BG3;
+	displayList = new DisplayList();
 }
 
 //	Initialises the backgrounds and palettes
@@ -83,6 +84,12 @@ void Stage::initPalettes()
 //	Updates the spritelists and tile data
 void Stage::update()
 {
+	//	Set the tiles from the displayList, to the display
+	for (int i=0; i < 32; i++){
+		for (int j = 0; j < 32; j++){
+			backgrounds_[2]->setTile(i,j, displayList->tilemap_[i*32 + j]);
+		}
+	}
 }
 
 //	Draws the sprite data into the OAM and tiles into the backgrounds
