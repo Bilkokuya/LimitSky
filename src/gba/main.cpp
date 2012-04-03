@@ -1,28 +1,7 @@
 #include "../../lib/gba/gba.h"
 #include "../../include/base/background.h"
 #include "../../include/base/stage.h"
-
-const uint8_t fakeTile [64] = {
-	1, 1, 1, 1, 1, 1, 1, 1,
-	1, 0, 0, 0, 0, 0, 0, 1,
-	1, 0, 0, 0, 0, 0, 0, 1,
-	1, 0, 0, 0, 0, 0, 0, 1,
-	1, 0, 0, 0, 0, 0, 0, 1,
-	1, 0, 0, 0, 0, 0, 0, 1,
-	1, 0, 0, 0, 0, 0, 0, 1,
-	1, 1, 1, 1, 1, 1, 1, 1,
-};
-const uint8_t fakeTile2 [64] = {
-	1, 1, 1, 1, 1, 1, 1, 1,
-	1, 1, 0, 1, 1, 0, 1, 1,
-	1, 0, 0, 1, 1, 0, 0, 1,
-	1, 1, 0, 1, 1, 0, 1, 1,
-	1, 1, 0, 1, 1, 0, 1, 1,
-	1, 0, 0, 1, 1, 0, 0, 1,
-	1, 1, 0, 1, 1, 0, 1, 1,
-	1, 1, 1, 1, 1, 1, 1, 1,
-};
-
+#include "../../resource/tiles/tiles.h"
 
 Stage stage = Stage();
 
@@ -33,8 +12,8 @@ int main()
 	SetPaletteBG(1,RGB(30,30,30));
 	
 	for (int i = 0; i < 4; ++i){
-		stage.backgrounds_[i] -> loadTile(1,fakeTile);
-		stage.backgrounds_[i] -> loadTile(2,fakeTile2);
+		stage.backgrounds_[i] -> loadTile(1,tiles[0]);
+		stage.backgrounds_[i] -> loadTile(2,tiles[1]);
 	}
 
 	for (int i = 0; i < 4; ++i){

@@ -1,5 +1,6 @@
 #include "../../../include/base/background.h"
 #include "../../../lib/gba/gba.h"
+#include "../../../include/base/tile.h"
 
 #define BASE_REG_CONTROL REGISTER(uint16_t, 0x4000008)
 #define BASE_REG_HOFFSET REGISTER(uint16_t, 0x4000010)
@@ -52,9 +53,15 @@ void Background::setTile(int x, int y, int tile)
 	SetTile(screenblock_, x, y, tile);
 }
 
-void Background::loadTile(int tile, const uint8_t* tiledata)
+void Background::loadTile(int tilenum, const uint8_t* tiledata)
 {
-	LoadTile8(charblock_, tile, tiledata);
+	LoadTile8(charblock_, tilenum, tiledata);
+}
+
+void Background::loadTile(int tilenum, Tile tile)
+{
+
+	LoadTile8(charblock_, tilenum,Tile.tiledata_);
 }
 
 //	Returns the xOffset
