@@ -1,6 +1,8 @@
 #include "../../include/base/stage.h"
 #include "../../include/base/displaylist.h"
 #include "../../lib/gba/gba.h"
+#include "../../resource/tiles/tiles.h"
+#include "../../include/base/tile.h"
 
 #define MAX_SPRITES 128	//	Maximum number of sprites that can be on screen at once
 #define MAX_BACKGROUNDS 4
@@ -87,7 +89,7 @@ void Stage::update()
 	//	Set the tiles from the displayList, to the display
 	for (int i=0; i < 32; i++){
 		for (int j = 0; j < 32; j++){
-			backgrounds_[2]->setTile(i,j, displayList->tilemap_[i*32 + j]);
+			backgrounds_[2]->setTile(i,j, tiles[ displayList->tilemap_[i*32 + j]].charblockIndex_[backgrounds_[2]->charblock()] );
 		}
 	}
 }

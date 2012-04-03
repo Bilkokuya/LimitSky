@@ -60,8 +60,8 @@ void Background::loadTile(int tilenum, const uint8_t* tiledata)
 
 void Background::loadTile(int tilenum, Tile tile)
 {
-
-	LoadTile8(charblock_, tilenum,Tile.tiledata_);
+	tile.charblockIndex_[charblock_] = tilenum;
+	LoadTile8(charblock_, tilenum,tile.tiledata_);
 }
 
 //	Returns the xOffset

@@ -1,9 +1,10 @@
-#define CC_GBA
 #include "../tiledata/tiledata.h"
 #include "../../include/base/tile.h"
 
-const Tile tiles [2] = 
+const Tile tiles [4] = 
 {
-	Tile(fakeTile),
-	Tile(fakeTile2)
+	Tile(tileDirt),
+	Tile(tileGrass),
+	Tile(tileSoil),
+	Tile(tileTallGrass)
 };
