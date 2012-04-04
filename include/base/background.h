@@ -2,8 +2,6 @@
 #ifndef LS_BACKGROUND
 #define LS_BACKGROUND
 
-#include "tile.h"
-
 class Background
 {
 public:
@@ -15,7 +13,6 @@ public:
 
 	void setTile(int x, int y, int tile);
 	void loadTile(int tilenum, const unsigned char* tiledata);
-	void loadTile(int tilenum, Tile tile);
 
 	int x();
 	int y();

@@ -1,28 +1,14 @@
-#include "../../lib/gba/gba.h"
-#include "../../include/base/background.h"
-#include "../../include/base/stage.h"
-#include "../../resource/tiles/tiles.h"
+#define TRUE 1
+#define FALSE 0
 
-Stage stage = Stage();
+#include "../../include/base/display.h"
+#include "../../lib/gba/gba.h"
 
 int main()
 {
-	//	Set basic background colour to orange
-	for (int i = 0; i < 6; i++){
-		SetPaletteBG(i, palette[i]);
-	}
-	
-	for (int i = 0; i < 4; ++i){
-		for (int j = 0; j < 4; j++){
-			stage.backgrounds_[i] -> loadTile(j,tiles[j]);
-		}
-	}
-
-	for (int i = 0; i < 4; ++i){
-		stage.backgrounds_[i] -> setTile(3,3,2);
-	}
-
-	stage.update();
+	Display display = Display(0,0,SCREEN_WIDTH, SCREEN_HEIGHT);
 
 	while(true);
+
+	return 0;
 }

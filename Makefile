@@ -18,22 +18,12 @@ include $(DEVKITARM)/gba_rules
 #---------------------------------------------------------------------------------
 TARGET		:=	dist/$(shell basename $(CURDIR))
 BUILD		:=	build
-SOURCES		:=	lib/common \
-				lib/gba \
-				src/common \
-				src/common/base \
-				src/common/game \
+SOURCES		:=	lib/gba \
 				src/gba \
 				src/gba/base \
-				src/gba/game
-				
 DATA		:=
 GRAPHICS	:=	
-INCLUDES	:=  include/base \
-				include/game \
-				lib/common \
-				lib/gba \
-				lib/unittest \
+INCLUDES	:=
 
 
 #---------------------------------------------------------------------------------
