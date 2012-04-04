@@ -36,20 +36,19 @@ int	Sprite::y()
 //	Setter for the x co-ordinate
 void Sprite::x(int xPosition) 
 { 
-	x_ = xPosition;
+	moveTo(xPosition, y_);
 }
 
 //	Setter for the y co-ordinate
 void Sprite::y(int yPosition) 
 { 
-	y_ = yPosition;
+	moveTo(x_, yPosition);
 }
 
 //	Moves the sprite by dx and dy
 void Sprite::move(int dx, int dy)
 {
-	x_ += dx;
-	y_ += dy;
+	moveTo(x_ + dx, y_ + dy);
 }
 
 //	Moves the sprite to location x,y

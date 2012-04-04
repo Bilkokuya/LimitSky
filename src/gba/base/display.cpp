@@ -2,6 +2,9 @@
 #include "../../../lib/gba/gba.h"
 #include "../../../resource/tilemaps/tilemaps.h"
 
+//	Maximum number of OAM sprites the GBA can handle on screen at once
+#define MAX_SPRITES 128
+
 //	Simple background offset modification, to easily add extra backgrounds etc
 #define NUM_BACKGROUNDS 4
 const int bgOffsets[NUM_BACKGROUNDS][2] = {
@@ -40,17 +43,27 @@ void Display::render()
 	//	Draw any existing objects, by iterating over the list of sprites
 	std::list<Sprite*>::iterator it;
 	int nextSprite = 0;	//	Next available sprite index to load up
+
 	for (it = spriteList_.begin(); it != spriteList_.end(); ++it){
 		Sprite* s = *it;
 		//Set the sprite if it is currently on the screen
-		if ( (s->x() < x_) || (s->x() > (x_ + width_)) ) continue;
-		if ( (s->y() < y_) || (s->y() > (y_ + height_)) ) continue;
+		if ( (((s->x()) + 8) < x_) || (s->x() > (x_ + width_)) ) continue;
+		if ( (((s->y()) + 8) < y_) || (s->y() > (y_ + height_)) ) continue;
+
+		int x = s->x() - x_;
+		int y = s->y() - y_;
+
+		if (x < 0) x += 512;
+		if (y < 0) y += 256;
+
 		SetObject(nextSprite,
-			ATTR0_Y( s->y() )	 | ATTR0_SHAPE( s->shape() )	| ATTR0_8BPP | ATTR0_REG,
-			ATTR1_X( s->x() )	 | ATTR1_SIZE( s->size() ),
-			ATTR2_ID( s->tile() )| ATTR2_PRIO( s->zPriority() )
+			ATTR0_Y( y )	| ATTR0_SHAPE( s->shape() )	| ATTR0_8BPP | ATTR0_REG,
+			ATTR1_X( x )	| ATTR1_SIZE( s->size() ),
+			ATTR2_ID( s->tile() )	| ATTR2_PRIO( s->zPriority() )
 			);
+
 		nextSprite++;
+		if(nextSprite > MAX_SPRITES) break;
 	}
 
 
