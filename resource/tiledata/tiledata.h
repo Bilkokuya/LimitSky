@@ -1,7 +1,8 @@
 #ifndef LS_TILEDATA
 #define LS_TILEDATA
 
-const unsigned short palette[6] = {
+#define PALETTE_LENGTH 6
+const unsigned short bgpalette[PALETTE_LENGTH] = {
 	0xF600, 0xF0F0, 0xFFFF, 0xFF66, 0x66FF, 0x6F6F
 };
 

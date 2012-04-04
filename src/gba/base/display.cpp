@@ -2,8 +2,10 @@
 #include "../../../lib/gba/gba.h"
 #include "../../../resource/tilemaps/tilemaps.h"
 
-//	Maximum number of OAM sprites the GBA can handle on screen at once
-#define MAX_SPRITES 128
+
+#define MAX_SPRITES 128		//	Maximum number of OAM sprites the GBA can handle on screen at once
+#define X_WRAPAROUND 512	//	Value x becomes when wrapping below 0
+#define Y_WRAPAROUND 256	//	Value y becomes when wrapping below 0
 
 //	Simple background offset modification, to easily add extra backgrounds etc
 #define NUM_BACKGROUNDS 4
@@ -23,6 +25,8 @@ Display::Display(int x, int y, int width, int height)
 	height_ = height;
 	tilemap_ = testTilemap;
 
+	//	Initialises the main GBA display registers for drawing tiles
+	//		(Individual background registers are initialised by the background objects themselves)
 	REG_DISPCNT = DCNT_MODE0 | DCNT_OBJ | DCNT_OBJ_1D | DCNT_BG0 | DCNT_BG1 | DCNT_BG2 | DCNT_BG3;
 
 	//	Initialise the GBA's background registers
@@ -33,8 +37,25 @@ Display::Display(int x, int y, int width, int height)
 	SetPaletteBG(0, 0xFF00);
 }
 
-//	Render all Tiles to the Screen
 void Display::render()
+{
+	renderSprites();
+}
+
+void Display::renderTiles()
+{
+	int vertical_tiles = height_ / 8;
+	int horizontal_tiles=  width_ / 8;
+
+	for (int y = 0; y < vertical_tiles; ++y){
+		for (int x = 0; x < horizontal_tiles; ++x){
+			backgrounds_[3].setTile( x, y, tilemap_[(y*MAP_WIDTH) + x]);
+		}
+	}
+}
+
+//	Render all Tiles to the Screen
+void Display::renderSprites()
 {
 	//	Hide all the objects
 	for (int i = 0; i < NUM_OBJECTS; ++i)
@@ -45,32 +66,56 @@ void Display::render()
 	int nextSprite = 0;	//	Next available sprite index to load up
 
 	for (it = spriteList_.begin(); it != spriteList_.end(); ++it){
-		Sprite* s = *it;
+		Sprite* sprite = *it;
 		//Set the sprite if it is currently on the screen
-		if ( (((s->x()) + 8) < x_) || (s->x() > (x_ + width_)) ) continue;
-		if ( (((s->y()) + 8) < y_) || (s->y() > (y_ + height_)) ) continue;
+		if ( (((sprite->x()) + 8) < x_) || (sprite->x() > (x_ + width_)) ) continue;
+		if ( (((sprite->y()) + 8) < y_) || (sprite->y() > (y_ + height_)) ) continue;
 
-		int x = s->x() - x_;
-		int y = s->y() - y_;
+		int x = sprite->x() - x_;	//	x position to draw to (range 0-> X_WRAPAROUND)
+		int y = sprite->y() - y_;	//	y position to draw to (range 0-> Y_WRAPAROUND0
 
-		if (x < 0) x += 512;
-		if (y < 0) y += 256;
+		if (x < 0) x += X_WRAPAROUND;
+		if (y < 0) y += Y_WRAPAROUND;
 
+		//	Setup the new object values, to be pushed into VRAM at the end of the frame (not performed by this display)
 		SetObject(nextSprite,
-			ATTR0_Y( y )	| ATTR0_SHAPE( s->shape() )	| ATTR0_8BPP | ATTR0_REG,
-			ATTR1_X( x )	| ATTR1_SIZE( s->size() ),
-			ATTR2_ID( s->tile() )	| ATTR2_PRIO( s->zPriority() )
+			ATTR0_Y( y )	| ATTR0_SHAPE( sprite->shape() )	| ATTR0_8BPP | ATTR0_REG,
+			ATTR1_X( x )	| ATTR1_SIZE( sprite->size() ),
+			ATTR2_ID( sprite->tile() )	| ATTR2_PRIO( sprite->zPriority() )
 			);
 
 		nextSprite++;
 		if(nextSprite > MAX_SPRITES) break;
 	}
-
-
-
 }
 
 void Display::registerSprite(Sprite* sprite)
 {
 	spriteList_.push_back( sprite );
+}
+
+void Display::registerSpriteToFront(Sprite* sprite)
+{
+	spriteList_.push_front( sprite );
+}
+
+int Display::x()
+{
+	return x_;
+}
+
+int Display::y()
+{
+	return y_;
+}
+
+void Display::move(int dx, int dy)
+{
+	moveTo( (x_ + dx), (y_ + dy) );
+}
+
+void Display::moveTo(int x, int y)
+{
+	x_ = x;
+	y_ = y;
 }
