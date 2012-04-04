@@ -5,18 +5,20 @@ Sprite::Sprite()
 {
 	x_ = 0;
 	y_ = 0;
+	size_ = 0;
+	shape_ = 0;
+	zPriority_ = 0;
 }
 
 //	Constructor with default values for each parameter, see engine/sprite.h
-Sprite::Sprite(int xPos, int yPos, int angle, float xScale, float yScale)
+Sprite::Sprite(int xPos, int yPos)
 {
 	x_ = xPos;
 	y_ = yPos;
-}
+	size_ = 0;
+	shape_ = 0;
+	zPriority_ = 0;
 
-int Sprite::zPriority()
-{
-	return zPriority_;
 }
 
 //	Getter for the x co-ordinate
@@ -57,3 +59,36 @@ void Sprite::moveTo(int x, int y)
 	y_ = y;
 }
 
+int Sprite::zPriority()
+{
+	return zPriority_;
+}
+
+int Sprite::size()
+{
+	return size_;
+}
+
+int Sprite::shape()
+{
+	return shape_;
+}
+
+void Sprite::size(int s)
+{
+	size_ = s;
+}
+
+void Sprite::shape(int s)
+{
+	shape_ = s;
+}
+
+int Sprite::tile()
+{
+	return tileNum_;
+}
+void Sprite::tile(int t)
+{
+	tileNum_ = t;
+}

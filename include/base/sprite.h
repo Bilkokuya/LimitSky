@@ -20,6 +20,16 @@ public:
 	//	Priority Accessor
 	int zPriority();
 
+	//	Dimension Accessors
+	int size();
+	int shape();
+	void size(int s);
+	void shape(int s);
+
+	//	Tile Data Accessor
+	int tile();
+	void tile(int t);
+
 private:
 	int x_, y_;			//	x and y position, relative to the world
 	int size_, shape_;	//	Determines the number of tiles wide and high it is

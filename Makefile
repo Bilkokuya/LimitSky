@@ -21,6 +21,8 @@ BUILD		:=	build
 SOURCES		:=	lib/gba \
 				src/gba \
 				src/gba/base \
+				src/common \
+
 DATA		:=
 GRAPHICS	:=	
 INCLUDES	:=
