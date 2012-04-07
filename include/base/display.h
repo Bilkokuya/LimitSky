@@ -20,6 +20,8 @@ public:
 
 	int x();
 	int y();
+	void x(int xPos);
+	void y(int yPos);
 	void move(int dx, int dy);
 	void moveTo(int x, int y);
 

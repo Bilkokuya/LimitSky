@@ -72,23 +72,19 @@ int Background::y()
 //	Sets new xOffset
 void Background::x(int x)
 {
-	x_ = x;
-	updatePosition();
+	moveTo(x, y_);
 }
 
 //	Sets new yOffset
 void Background::y(int y)
 {
-	y_ = y;
-	updatePosition();
+	moveTo(x_, y);
 }
 
 //	Offsets by dx and dy
 void Background::move(int dx, int dy)
 {
-	x_ += dx;
-	y_ += dy;
-	updatePosition();
+	moveTo((x_ + dx), (y_ + dy));
 }
 
 //	Offsets to position x,y

@@ -1,7 +1,7 @@
 #include "../../../include/base/display.h"
 #include "../../../lib/gba/gba.h"
 #include "../../../resource/tilemaps/tilemaps.h"
-
+#include "../../../resource/tiledata/tiledata.h"
 
 #define MAX_SPRITES 128		//	Maximum number of OAM sprites the GBA can handle on screen at once
 #define X_WRAPAROUND 512	//	Value x becomes when wrapping below 0
@@ -34,22 +34,37 @@ Display::Display(int x, int y, int width, int height)
 		backgrounds_[i] = Background(i, bgOffsets[i][0], bgOffsets[i][1]);
 
 	//	Initialise the palette
-	SetPaletteBG(0, 0xFF00);
+	for (int i = 0; i < PALETTE_LENGTH; ++i){
+		SetPaletteBG(i, bgpalette[i]);
+	}
+
+	backgrounds_[3].loadTile(0,tileGrass);
+	backgrounds_[3].loadTile(1,tileDirt);
+	backgrounds_[3].loadTile(2,tileSoil);
+	backgrounds_[3].loadTile(3,tileTallGrass);
+
 }
 
 void Display::render()
 {
+	renderTiles();
 	renderSprites();
 }
 
 void Display::renderTiles()
 {
-	int vertical_tiles = height_ / 8;
-	int horizontal_tiles=  width_ / 8;
+	int vTiles = (height_ / 8) + 1;	//	Number of vertical tiles
+	int hTiles=  (width_ / 8) + 1;
+	int xTile = x_ / 8;	//	First tile to start on in the x axis
+	int yTile = y_ / 8;
 
-	for (int y = 0; y < vertical_tiles; ++y){
-		for (int x = 0; x < horizontal_tiles; ++x){
-			backgrounds_[3].setTile( x, y, tilemap_[(y*MAP_WIDTH) + x]);
+	//	Overwrite the existing tiles for each position (uses less resources than expected)
+	for (int y = 0; y < vTiles; ++y){
+		for (int x = 0; x < hTiles; ++x){
+
+			int position = ((y+yTile)*MAP_WIDTH) + (x+xTile); // Position of this tile in the tilemap
+			backgrounds_[3].setTile( x, y, tilemap_[position]);
+
 		}
 	}
 }
@@ -109,6 +124,16 @@ int Display::y()
 	return y_;
 }
 
+void Display::x(int xPos)
+{
+	moveTo( xPos, y_);
+}
+
+void Display::y(int yPos)
+{
+	moveTo( x_, yPos);
+}
+
 void Display::move(int dx, int dy)
 {
 	moveTo( (x_ + dx), (y_ + dy) );
@@ -118,4 +143,10 @@ void Display::moveTo(int x, int y)
 {
 	x_ = x;
 	y_ = y;
+
+	int xOffset = x_%8;
+	int yOffset = y_%8;
+	for (int i = 0; i < NUM_BACKGROUNDS; ++i){
+		backgrounds_[i].moveTo(xOffset, yOffset);
+	}
 }
