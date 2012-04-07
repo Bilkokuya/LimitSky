@@ -1,4 +1,4 @@
-#include "../../include/base/sprite.h"
+#include "../../include/sprite.h"
 
 //	Default Constructor for array use
 Sprite::Sprite()

@@ -7,6 +7,7 @@
 
 #include "sprite.h"
 #include "background.h"
+#include "blockmap.h"
 
 class Display
 {
@@ -31,6 +32,7 @@ private:
 	std::list<Sprite*> spriteList_;	//	a vector containing all sprites possible to render
 	const unsigned char* tilemap_;	//	the const world map that describes which tiles are where
 	unsigned char* tilechanges_;	//	the map of non-const changes the player has made to the world
+	BlockMap blockMap_;
 
 	void renderSprites();
 	void renderTiles();

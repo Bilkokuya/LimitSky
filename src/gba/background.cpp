@@ -1,5 +1,5 @@
-#include "../../../include/base/background.h"
-#include "../../../lib/gba/gba.h"
+#include "../../include/background.h"
+#include "../../lib/gba/gba.h"
 
 #define BASE_REG_CONTROL REGISTER(uint16_t, 0x4000008)
 #define BASE_REG_HOFFSET REGISTER(uint16_t, 0x4000010)
