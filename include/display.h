@@ -7,17 +7,20 @@
 
 #include "sprite.h"
 #include "background.h"
-#include "blockmap.h"
+#include "tilemap.h"
+#include "camera.h"
 
 class Display
 {
 public:
-	Display(int x, int y, int width, int height);
+	Display(int x, int y, int width, int height, Camera* camera);
 
 	void render();
 
 	void registerSprite(Sprite* sprite);
 	void registerSpriteToFront(Sprite* sprite);
+
+	void registerTilemap(int index,  Tilemap* tilemap);
 
 	int x();
 	int y();
@@ -30,12 +33,16 @@ private:
 	int x_, y_, width_, height_;	//	width and height determine the size to area of the world to render, and x,y determine the top left corner
 	Background backgrounds_[4];		//	the background registers of the GBA, for easy access
 	std::list<Sprite*> spriteList_;	//	a vector containing all sprites possible to render
-	const unsigned char* tilemap_;	//	the const world map that describes which tiles are where
-	unsigned char* tilechanges_;	//	the map of non-const changes the player has made to the world
-	BlockMap blockMap_;
+	Tilemap* tilemaps_[4];
+	Camera* camera_;
 
 	void renderSprites();
 	void renderTiles();
+
+	void initDisplay();
+	void initBackgrounds();
+	void initPalettes();
+	void initTiles();
 };
 
 #endif

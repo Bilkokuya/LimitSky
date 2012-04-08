@@ -7,6 +7,7 @@
 #include "../../lib/gba/gba.h"
 #include "../../include/sprite.h"
 #include "../../resource/tiledata/tiledata.h"
+#include "../../include/world.h"
 
 
 const unsigned char tile[64] = {
@@ -22,7 +23,11 @@ const unsigned char tile[64] = {
 
 int main()
 {
-	Display display = Display(0,0,SCREEN_WIDTH, SCREEN_HEIGHT);
+	Camera camera = Camera();
+	Display display = Display(0,0,SCREEN_WIDTH, SCREEN_HEIGHT, &camera);
+	World world = World();
+
+	display.registerTilemap(3, &world.terrain_);
 
 	for (int i = 0; i < 256; i++)
 		LoadTile8(4,i,tile);
@@ -33,8 +38,10 @@ int main()
 	s->tile(2);
 	display.registerSprite(s);
 
+	camera.setFocus(s);
+
 	for (int i = 0; i < 5; ++i){
-		Sprite* sprite = new Sprite(i, rand()%SCREEN_HEIGHT);
+		Sprite* sprite = new Sprite(rand()%SCREEN_WIDTH, rand()%SCREEN_HEIGHT);
 		sprite->tile(2);
 		display.registerSprite(sprite);
 	}
@@ -48,25 +55,27 @@ int main()
 		//	Movement of the display on a key press
 		if (lasthit != REG_P1){
 			//Logic Updates
-			if ((REG_P1 & KEY_LEFT) == 0)		display.move(-1,0);
-			else if ((REG_P1 & KEY_RIGHT)==0)	display.move(1,0);
-			else if ((REG_P1 & KEY_UP) == 0)	display.move(0,-1);
-			else if ((REG_P1 & KEY_DOWN) == 0)	display.move(0,1);
+			if ((REG_P1 & KEY_LEFT) == 0)		s->move(-1,0);
+			else if ((REG_P1 & KEY_RIGHT)==0)	s->move(1,0);
+			else if ((REG_P1 & KEY_UP) == 0)	s->move(0,-1);
+			else if ((REG_P1 & KEY_DOWN) == 0)	s->move(0,1);
 		}
 		lasthit = 0; // Set to REG_P1 to stop holding of keys.
 
 		//	Keep the display in bounds of the tilemap it draws from
 		if (display.x() < 0) display.x(0);
-		if (display.x() > ((64*8) - 8*30)) display.x(8*64 - 8*30);
+		if (display.x() > ((32*8) - 8*30)) display.x(8*32 - 8*30);
 
 		if (display.y() < 0) display.y(0);
-		if (display.y() > ((32*8) - 8*22)) display.y(8*32 - 8*22);
-
+		if (display.y() > ((32*8) - 8*20)) display.y(8*32 - 8*20);
+		camera.updatePosition();
 		
 		//Rendering
 		display.render();
 		WaitVSync();
 		UpdateObjects();
+
+		
 	}
 
 	return 0;

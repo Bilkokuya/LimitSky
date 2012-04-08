@@ -2,12 +2,11 @@
 #include "../../lib/gba/gba.h"
 #include "../../resource/tilemaps/tilemaps.h"
 #include "../../resource/tiledata/tiledata.h"
-#include "../../include/block.h"
-#include "../../include/blockmap.h"
 
 #define MAX_SPRITES 128		//	Maximum number of OAM sprites the GBA can handle on screen at once
 #define X_WRAPAROUND 512	//	Value x becomes when wrapping below 0
 #define Y_WRAPAROUND 256	//	Value y becomes when wrapping below 0
+
 #define XTILES 30
 #define YTILES 24
 
@@ -20,99 +19,84 @@ const int bgOffsets[NUM_BACKGROUNDS][2] = {
 	{0,0}
 };
 
-
-Display::Display(int x, int y, int width, int height)
+Display::Display(int x, int y, int width, int height, Camera* camera)
 {
 	x_ = x;
 	y_ = y;
 	width_ = width;
 	height_ = height;
-	tilemap_ = worldTilemap;
-	blockMap_ = BlockMap(worldMap);
+	camera_ = camera;
 
+	initDisplay();
+	initBackgrounds();
+	initPalettes();
+	initTiles();
 
+	//registerTilemap( 3, new Tilemap(worldMap, MAP_WIDTH, MAP_HEIGHT));
+}
+
+void Display::initDisplay()
+{
 	//	Initialises the main GBA display registers for drawing tiles
 	//		(Individual background registers are initialised by the background objects themselves)
 	REG_DISPCNT = DCNT_MODE0 | DCNT_OBJ | DCNT_OBJ_1D | DCNT_BG0 | DCNT_BG1 | DCNT_BG2 | DCNT_BG3;
+}
 
+void Display::initBackgrounds()
+{
 	//	Initialise the GBA's background registers
 	for(int i = 0; i < NUM_BACKGROUNDS; ++i)
 		backgrounds_[i] = Background(i, bgOffsets[i][0], bgOffsets[i][1]);
+}
 
+void Display::initPalettes()
+{
 	//	Initialise the palette
 	for (int i = 0; i < PALETTE_LENGTH; ++i){
 		SetPaletteBG(i, bgpalette[i]);
 	}
+}
 
-	backgrounds_[3].loadTile(0,tileGrass);
+//	Loads up all the tiles into memory
+void Display::initTiles()
+{
+	for (int i = 0; i < 4; ++i)
+		tilemaps_[i] = 0;
+
+	backgrounds_[3].loadTile(0,tileGrassBL);
 	backgrounds_[3].loadTile(1,tileDirt);
-	backgrounds_[3].loadTile(2,tileSoil);
+	backgrounds_[3].loadTile(2,tileSky);
 	backgrounds_[3].loadTile(3,tileTallGrass);
-
-
-	int nextTile = 10;
-
-	for (int i = 0; i < 4; ++i){
-		
-		grass.isLoaded_[3] = true;
-		grass.loadedIndex_[3][i] = nextTile;
-		backgrounds_[3].loadTile(grass.loadedIndex_[3][i],grass.tileData_[i]);
-		nextTile++;
-	}
-	for (int i = 0; i < 4; ++i){
-		
-		soil.isLoaded_[3] = true;
-		soil.loadedIndex_[3][i] = nextTile;
-		backgrounds_[3].loadTile(soil.loadedIndex_[3][i],soil.tileData_[i]);
-		nextTile++;
-	}
-	for (int i = 0; i < 4; ++i){
-		
-		dirt.isLoaded_[3] = true;
-		dirt.loadedIndex_[3][i] = nextTile;
-		backgrounds_[3].loadTile(dirt.loadedIndex_[3][i],dirt.tileData_[i]);
-		nextTile++;
-	}
-
+	backgrounds_[3].loadTile(4,tileSoil);
 }
 
 void Display::render()
-{
-	renderTiles();
+{	
+	moveTo(camera_->x(), camera_->y());
+
 	renderSprites();
+	renderTiles();
+	
 }
 
 void Display::renderTiles()
 {
-	int hBlocks = (width_ / 16) + 1;	//	Number of horizontal tiles
-	int vBlocks = (height_ / 16) + 1;	
-	int xBlock = x_ / 16;	//	First tile to start on in the x axis
-	int yBlock = y_ / 16;
+	int xStart = x_/8;
+	int yStart = y_/8;
+	int xEnd = ((x_ + width_) /8) + 1;
+	int yEnd = ((y_ + height_) /8) + 1;
 
-	//	Overwrite the existing tiles for each position (uses less resources than expected)
-	for (int y = 0; y < vBlocks; ++y){
-		for (int x = 0; x < hBlocks; ++x){
-			/*
-			int position = (((y+yBlock)*MAP_WIDTH) + (x+xBlock)*2); // Position of this tile in the tilemap
-			
-			backgrounds_[3].setTile( (x*2), (y*2), tilemap_[position]);
-			backgrounds_[3].setTile( (x*2)+1, (y*2), tilemap_[position+1]);
+	for (int i = 0; i < 4; i++){
+		if (tilemaps_[i] == 0) continue;
 
-			position += (MAP_WIDTH/2);
-			backgrounds_[3].setTile( (x*2), (y*2) + 1, tilemap_[position]);
-			backgrounds_[3].setTile( (x*2)+1, (y*2) + 1, tilemap_[position+1]);
-			*/
-
-			int position = (((y+yBlock)*MAP_WIDTH) + (x+xBlock)*2);
-			Block b = blockMap_.blockAt(position);
-
-			backgrounds_[3].setTile( (x*2), (y*2), b.loadedIndex_[3][0]);
-			backgrounds_[3].setTile( (x*2)+1, (y*2), b.loadedIndex_[3][1]);
-
-			backgrounds_[3].setTile( (x*2), (y*2) + 1, b.loadedIndex_[3][2]);
-			backgrounds_[3].setTile( (x*2)+1, (y*2) + 1, b.loadedIndex_[3][3]);
+		for (int y = yStart; y < yEnd; ++y){
+			for (int x = xStart; x < xEnd; ++x){
+				backgrounds_[i].setTile( (x-xStart), (y-yStart), tilemaps_[i]->getTileAt(x,y) );
+			}
 		}
+
 	}
+
 }
 
 //	Render all Tiles to the Screen
@@ -160,6 +144,14 @@ void Display::registerSpriteToFront(Sprite* sprite)
 	spriteList_.push_front( sprite );
 }
 
+void Display::registerTilemap(int index, Tilemap* tilemap)
+{
+	if (index > 4) index = 4;
+	if (index < 0) index = 0;
+
+	tilemaps_[index] = tilemap;
+}
+
 int Display::x()
 {
 	return x_;
@@ -190,8 +182,8 @@ void Display::moveTo(int x, int y)
 	x_ = x;
 	y_ = y;
 
-	int xOffset = x_%16;
-	int yOffset = y_%16;
+	int xOffset = x_%8;
+	int yOffset = y_%8;
 	for (int i = 0; i < NUM_BACKGROUNDS; ++i){
 		backgrounds_[i].moveTo(xOffset, yOffset);
 	}
