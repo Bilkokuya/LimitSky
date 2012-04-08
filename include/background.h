@@ -11,7 +11,8 @@ public:
 	
 	Background(int number, int xOffset, int yOffset, int zPriority, int charblock, int screenblock);
 
-	void setTile(int x, int y, int tile);
+	void setTile(int index, int tile);
+	void toScreen();
 	void loadTile(int tilenum, const unsigned char* tiledata);
 
 	int x();
@@ -33,6 +34,7 @@ private:
 	int charblock_;
 	int screenblock_;
 	int zPriority_;
+	unsigned short screendata_[1024];
 
 	void init(int number, int xOffset, int yOffset, int zPriority, int charblock, int screenblock);
 	void updateMemory();

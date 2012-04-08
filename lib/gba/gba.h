@@ -355,6 +355,8 @@ void UpdateObjects();
 // Copy data into video RAM, 16 bits at a time.
 void CopyToVRAM(volatile uint16_t *dest, const uint16_t *src, int num_words);
 
+void CopyToVRAM(volatile uint16_t *dest, uint16_t *src, int num_words);
+
 // Graphics utility functions (short enough to be worth inlining)
 
 // Construct an RGB colour value
@@ -449,6 +451,11 @@ static inline void SetTile(int screenblock, int x, int y, int tile_num)
 
 // Load a complete screenblock into video RAM.
 static inline void LoadScreenblock(int screenblock, const uint16_t screenblock_data[1024])
+{
+	CopyToVRAM(REG_VIDEO_BASE + (screenblock * 1024), screenblock_data, 1024);
+}
+
+static inline void SetScreenBlock(int screenblock, uint16_t screenblock_data[1024])
 {
 	CopyToVRAM(REG_VIDEO_BASE + (screenblock * 1024), screenblock_data, 1024);
 }

@@ -10,6 +10,7 @@ public:
 	Tilemap(const unsigned char* tiledata, int width, int height);
 
 	unsigned char getTileAt(int x, int y);
+	unsigned char getTileAt(int index);
 
 private:
 	int width_;

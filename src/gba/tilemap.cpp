@@ -16,6 +16,11 @@ Tilemap::Tilemap(const unsigned char* tiledata, int width, int height)
 
 unsigned char Tilemap::getTileAt(int x, int y)
 {
-	return ( tiledata_[(y*width_) + x] );
+	return (getTileAt( (y*width_) + x) );
+}
+
+unsigned char Tilemap::getTileAt(int index)
+{
+	return tiledata_[index];
 }
 

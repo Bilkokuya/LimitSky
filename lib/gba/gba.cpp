@@ -110,3 +110,12 @@ void CopyToVRAM(volatile uint16_t *dest, const uint16_t *src, int num_words)
 		*dest++ = *src++;
 	}
 }
+
+//	For Non-Const Array Copying
+void CopyToVRAM(volatile uint16_t *dest, uint16_t *src, int num_words)
+{
+	while (num_words-- > 0)
+	{
+		*dest++ = *src++;
+	}
+}

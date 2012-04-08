@@ -47,9 +47,14 @@ void Background::updatePosition()
 	*vOffsetReg = y_;
 }
 
-void Background::setTile(int x, int y, int tile)
+void Background::setTile(int index, int tile)
 {
-	SetTile(screenblock_, x, y, tile);
+	screendata_[index] = tile;
+}
+
+void Background::toScreen()
+{
+	SetScreenBlock(screenblock_, screendata_);
 }
 
 void Background::loadTile(int tilenum, const uint8_t* tiledata)

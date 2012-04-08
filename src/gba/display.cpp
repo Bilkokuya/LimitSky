@@ -2,6 +2,7 @@
 #include "../../lib/gba/gba.h"
 #include "../../resource/tilemaps/tilemaps.h"
 #include "../../resource/tiledata/tiledata.h"
+#include "../../lib/gba/font.h"
 
 #define MAX_SPRITES 128		//	Maximum number of OAM sprites the GBA can handle on screen at once
 #define X_WRAPAROUND 512	//	Value x becomes when wrapping below 0
@@ -12,11 +13,11 @@
 
 //	Simple background offset modification, to easily add extra backgrounds etc
 #define NUM_BACKGROUNDS 4
-const int bgOffsets[NUM_BACKGROUNDS][2] = {
-	{0,0},
-	{0,0},
-	{0,3},
-	{0,0}
+const int bgOffsets[NUM_BACKGROUNDS][3] = {
+	{0,0,3},
+	{0,0,3},
+	{0,3,1},
+	{0,0,0}
 };
 
 Display::Display(int x, int y, int width, int height, Camera* camera)
@@ -46,7 +47,8 @@ void Display::initBackgrounds()
 {
 	//	Initialise the GBA's background registers
 	for(int i = 0; i < NUM_BACKGROUNDS; ++i)
-		backgrounds_[i] = Background(i, bgOffsets[i][0], bgOffsets[i][1]);
+		backgrounds_[i] = Background(i, bgOffsets[i][0], bgOffsets[i][1], bgOffsets[i][2]);
+
 }
 
 void Display::initPalettes()
@@ -68,6 +70,9 @@ void Display::initTiles()
 	backgrounds_[3].loadTile(2,tileSky);
 	backgrounds_[3].loadTile(3,tileTallGrass);
 	backgrounds_[3].loadTile(4,tileSoil);
+
+	for (int i = 0; i < 128; ++i)
+		backgrounds_[0].loadTile(i,font_medium[i]);
 }
 
 void Display::render()
@@ -91,12 +96,16 @@ void Display::renderTiles()
 
 		for (int y = yStart; y < yEnd; ++y){
 			for (int x = xStart; x < xEnd; ++x){
-				backgrounds_[i].setTile( (x-xStart), (y-yStart), tilemaps_[i]->getTileAt(x,y) );
+
+				backgrounds_[i].setTile( (x-xStart) + (32*(y-yStart)), tilemaps_[i]->getTileAt(x,y) );
 			}
 		}
 
 	}
 
+	for (int i = 0; i < 4; ++i){
+		backgrounds_[i].toScreen();
+	}
 }
 
 //	Render all Tiles to the Screen

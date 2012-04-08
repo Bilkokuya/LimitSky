@@ -6,7 +6,10 @@
 class UI
 {
 public:
+	UI();
 
+	Tilemap text_;
+	Tilemap background_;
 private:
 };
 #endif
