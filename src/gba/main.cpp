@@ -36,9 +36,10 @@ int main()
 
 	Sprite* s = new Sprite(5,10);
 	s->tile(2);
+
 	display.registerSprite(s);
 
-	camera.setFocus(s);
+	camera = Camera(240,160,0,0,500,300,s);
 
 	for (int i = 0; i < 5; ++i){
 		Sprite* sprite = new Sprite(rand()%SCREEN_WIDTH, rand()%SCREEN_HEIGHT);
