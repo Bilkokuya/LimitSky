@@ -18,7 +18,8 @@ include $(DEVKITARM)/gba_rules
 #---------------------------------------------------------------------------------
 TARGET		:=	dist/$(shell basename $(CURDIR))
 BUILD		:=	build
-SOURCES		:=	lib/gba \
+SOURCES		:=	lib \
+				src \
 				src/gba \
 				src/gba/base \
 				src/common \
