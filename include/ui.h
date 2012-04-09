@@ -8,8 +8,11 @@ class UI
 public:
 	UI();
 
-	Tilemap text_;
-	Tilemap background_;
+	bool hasTextChanged_;
+	unsigned short* text_;
+
+	const unsigned short* background_;
+
 private:
 };
 #endif

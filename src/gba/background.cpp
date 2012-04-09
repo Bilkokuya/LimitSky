@@ -21,6 +21,9 @@ Background::Background(int number, int xOffset, int yOffset, int zPriority, int 
 
 void Background::init(int number, int xOffset, int yOffset, int zPriority, int charblock, int screenblock)
 {
+	if (zPriority > 3) zPriority = 3;
+	if (zPriority < 0) zPriority = 0;
+
 	number_ = number;
 	x_ = xOffset;
 	y_ = yOffset;
@@ -34,7 +37,7 @@ void Background::init(int number, int xOffset, int yOffset, int zPriority, int c
 void Background::updateMemory()
 {
 	volatile uint16_t* controlReg = &BASE_REG_CONTROL + (number_);
-	*controlReg = BG_CBB(charblock_) | BG_SBB(screenblock_) | BG_8BPP | BG_REG_32x32;
+	*controlReg = BG_CBB(charblock_) | BG_SBB(screenblock_) | BG_8BPP | BG_REG_32x32 | BG_PRIO(zPriority_);
 
 	updatePosition();
 }
@@ -47,14 +50,14 @@ void Background::updatePosition()
 	*vOffsetReg = y_;
 }
 
-void Background::setTile(int index, int tile)
+void Background::setTile(int x, int y, int tile)
 {
-	screendata_[index] = tile;
+	SetTile(screenblock_, x,y, tile);
 }
 
 void Background::toScreen()
 {
-	SetScreenBlock(screenblock_, screendata_);
+	//SetScreenBlock(screenblock_, screendata_);
 }
 
 void Background::loadTile(int tilenum, const uint8_t* tiledata)

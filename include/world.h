@@ -8,8 +8,12 @@ class World
 public:
 	World();
 	
-	Tilemap terrain_;
-	Tilemap crops_;
+	const unsigned short* terrain_;
+	unsigned short* terrainChanges_;
+
+	const unsigned short* crops_;
+	unsigned short* cropsChanges_;
+
 private:
 
 };

@@ -24,13 +24,10 @@ const unsigned char tile[64] = {
 
 int main()
 {
-	Camera camera = Camera();
-	Display display = Display(0,0,SCREEN_WIDTH, SCREEN_HEIGHT, &camera);
 	World world = World();
 	UI ui = UI();
-
-	display.registerTilemap(3, &world.terrain_);
-	display.registerTilemap(0, &ui.text_);
+	Camera camera = Camera();
+	Display display = Display(0,0,SCREEN_WIDTH, SCREEN_HEIGHT, &world, &ui, &camera);
 
 	for (int i = 0; i < 256; i++)
 		LoadTile8(4,i,tile);

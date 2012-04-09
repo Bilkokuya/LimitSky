@@ -11,13 +11,13 @@ Sprite::Sprite()
 }
 
 //	Constructor with default values for each parameter, see engine/sprite.h
-Sprite::Sprite(int xPos, int yPos)
+Sprite::Sprite(int xPos, int yPos, int zPriority)
 {
 	x_ = xPos;
 	y_ = yPos;
 	size_ = 0;
 	shape_ = 0;
-	zPriority_ = 0;
+	zPriority_ = zPriority;
 
 }
 

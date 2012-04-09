@@ -7,7 +7,7 @@ public:
 	//	Default constructor for array use
 	Sprite();
 	//	Constructor for normal use
-	Sprite(int xPos, int yPos);
+	Sprite(int xPos, int yPos, int zPriority = 2);
 
 	//	Position Accesors
 	int	x();

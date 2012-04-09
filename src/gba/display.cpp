@@ -14,19 +14,21 @@
 //	Simple background offset modification, to easily add extra backgrounds etc
 #define NUM_BACKGROUNDS 4
 const int bgOffsets[NUM_BACKGROUNDS][3] = {
-	{0,0,3},
-	{0,0,3},
-	{0,3,1},
-	{0,0,0}
+	{0,0,0},
+	{0,0,1},
+	{0,3,3},
+	{0,0,3}
 };
 
-Display::Display(int x, int y, int width, int height, Camera* camera)
+Display::Display(int x, int y, int width, int height, World* world, UI* ui, Camera* camera)
 {
 	x_ = x;
 	y_ = y;
 	width_ = width;
 	height_ = height;
 	camera_ = camera;
+	world_ = world;
+	ui_ = ui;
 
 	initDisplay();
 	initBackgrounds();
@@ -62,9 +64,6 @@ void Display::initPalettes()
 //	Loads up all the tiles into memory
 void Display::initTiles()
 {
-	for (int i = 0; i < 4; ++i)
-		tilemaps_[i] = 0;
-
 	backgrounds_[3].loadTile(0,tileGrassBL);
 	backgrounds_[3].loadTile(1,tileDirt);
 	backgrounds_[3].loadTile(2,tileSky);
@@ -73,6 +72,8 @@ void Display::initTiles()
 
 	for (int i = 0; i < 128; ++i)
 		backgrounds_[0].loadTile(i,font_medium[i]);
+
+	backgrounds_[1].loadTile(1,tileSky);
 }
 
 void Display::render()
@@ -80,31 +81,15 @@ void Display::render()
 	moveTo(camera_->x(), camera_->y());
 
 	renderSprites();
-	renderTiles();
-	
+	renderUI();	
 }
 
-void Display::renderTiles()
+void Display::renderUI()
 {
-	int xStart = x_/8;
-	int yStart = y_/8;
-	int xEnd = ((x_ + width_) /8) + 1;
-	int yEnd = ((y_ + height_) /8) + 1;
-
-	for (int i = 0; i < 4; i++){
-		if (tilemaps_[i] == 0) continue;
-
-		for (int y = yStart; y < yEnd; ++y){
-			for (int x = xStart; x < xEnd; ++x){
-
-				backgrounds_[i].setTile( (x-xStart) + (32*(y-yStart)), tilemaps_[i]->getTileAt(x,y) );
-			}
+	for (int y = 0; y < 20; ++y){
+		for (int x = 0; x < 30; ++x){
+			backgrounds_[1].setTile(x,y, ui_->background_[y*30 + x]);
 		}
-
-	}
-
-	for (int i = 0; i < 4; ++i){
-		backgrounds_[i].toScreen();
 	}
 }
 
@@ -153,14 +138,6 @@ void Display::registerSpriteToFront(Sprite* sprite)
 	spriteList_.push_front( sprite );
 }
 
-void Display::registerTilemap(int index, Tilemap* tilemap)
-{
-	if (index > 4) index = 4;
-	if (index < 0) index = 0;
-
-	tilemaps_[index] = tilemap;
-}
-
 int Display::x()
 {
 	return x_;
@@ -193,7 +170,7 @@ void Display::moveTo(int x, int y)
 
 	int xOffset = x_%8;
 	int yOffset = y_%8;
-	for (int i = 0; i < NUM_BACKGROUNDS; ++i){
+	for (int i = 2; i < NUM_BACKGROUNDS; ++i){
 		backgrounds_[i].moveTo(xOffset, yOffset);
 	}
 }

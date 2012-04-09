@@ -5,6 +5,9 @@
 
 #include <list>
 
+#include "world.h"
+#include "ui.h"
+
 #include "sprite.h"
 #include "background.h"
 #include "tilemap.h"
@@ -13,14 +16,12 @@
 class Display
 {
 public:
-	Display(int x, int y, int width, int height, Camera* camera);
+	Display(int x, int y, int width, int height, World* world, UI* ui, Camera* camera);
 
 	void render();
 
 	void registerSprite(Sprite* sprite);
 	void registerSpriteToFront(Sprite* sprite);
-
-	void registerTilemap(int index,  Tilemap* tilemap);
 
 	int x();
 	int y();
@@ -33,11 +34,13 @@ private:
 	int x_, y_, width_, height_;	//	width and height determine the size to area of the world to render, and x,y determine the top left corner
 	Background backgrounds_[4];		//	the background registers of the GBA, for easy access
 	std::list<Sprite*> spriteList_;	//	a vector containing all sprites possible to render
-	Tilemap* tilemaps_[4];
+
 	Camera* camera_;
+	World* world_;
+	UI* ui_;
 
 	void renderSprites();
-	void renderTiles();
+	void renderUI();
 
 	void initDisplay();
 	void initBackgrounds();
