@@ -23,6 +23,7 @@ SOURCES		:=	lib \
 				src/gba \
 				src/gba/base \
 				src/common \
+				resource/tiles \
 
 DATA		:=
 GRAPHICS	:=	
