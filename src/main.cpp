@@ -9,10 +9,10 @@ void wrapInRange(int min, int max, int& i);
 
 int main()
 {
+	Sprite s = Sprite(0,0,0,0,1,0);
+	Camera camera = Camera(SCREEN_WIDTH, SCREEN_HEIGHT, 0,0, MAPWIDTH*8, 32*8, &s);
+	Display display = Display(0,0,SCREEN_WIDTH,SCREEN_HEIGHT, &camera);
 
-	Display display = Display(0,0,SCREEN_WIDTH,SCREEN_HEIGHT, new Camera());
-
-	Sprite s = Sprite(20,5,0,0,1,1);
 	display.registerSprite(&s);
 
 	LoadTile8(4,1,&terraintilesTiles[256]);
@@ -48,56 +48,28 @@ int main()
 		//	Controls
 		if ((REG_P1 & KEY_RIGHT) == 0){
 			xOff++;
+			s.move(1,0);
+
 		}else if ((REG_P1 & KEY_LEFT) == 0){
 			xOff--;
+			s.move(-1,0);
 		} 
 		if ((REG_P1 & KEY_UP) == 0){
 			yOff--;
+			s.move(0,-1);
+
 		}else if ((REG_P1 & KEY_DOWN) == 0){
 			yOff++;
+			s.move(0,1);
 		}
 
-		//	Keep in map bounds
-		if (xOff > (8*MAPWIDTH - 30*8)) xOff = (8*MAPWIDTH - 30*8);
-		if (xOff < 0) xOff = 0;
-		if (yOff > (8*32 - (20*8))) yOff = 8*32 - (20*8);
-		if (yOff < 0) yOff = 0;
-
-		//	Move Buffers when necessary
-		if (xOff <= left){
-			left -= 8;
-			right -= 8;
-			lBuff--;
-			rBuff--;
-			xTiles--;
-
-		}else if (xOff >= right){
-			left += 8;
-			right += 8;
-			lBuff++;
-			rBuff++;
-			xTiles++;
-		}
-
-		// Keep buffers in range 0->31
-		wrapInRange(0,31,lBuff);
-		wrapInRange(0,31,rBuff);
-
-		//	Draw the buffers
-		for (int i = 0; i < 32; ++i){
-			SetTile(27, lBuff, i, map[((i)*MAPWIDTH) + xOff/8 ]);
-			SetTile(27, rBuff, i, map[((i)*MAPWIDTH) + xOff/8 + 30 ]);
-		}
+		camera.updatePosition();
 
 		display.render();
 		WaitVSync();
-		REG_BG3HOFS = xOff;
-		REG_BG3VOFS = yOff;
+		UpdateObjects();
+		//REG_BG3HOFS = xOff;
+		//REG_BG3VOFS = yOff;
 	}
 }
 
-void wrapInRange(int min, int max, int& i)
-{
-	if (i > max) i = min;
-	else if (i < min) i = max;
-}

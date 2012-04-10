@@ -4,6 +4,7 @@
 #include "../resource/tiles/palette.h"
 #include "../resource/tiles/terraintiles.h"
 #include "../include/background.h"
+#include "../resource/maps/map.h"
 
 #define NUM_BGS 4			//	Number of backgrounds
 #define NUM_SPRITES 128		// Maximum number of OAM sprites
@@ -18,6 +19,11 @@ Display::Display(int x, int y, int width, int height, Camera* camera)
 	width_ = width;
 	height_ = height;
 	camera_ = camera;
+
+	lBuff_ = 30;
+	rBuff_ = 31;
+	right_ = 8;
+	left_ = -8;
 
 	initRegisters();
 	initPalettes();
@@ -64,11 +70,35 @@ void Display::render()
 
 void Display::renderTiles()
 {
-	for (int y = 0; y < 20; ++y){
-		for (int x = 0; x < 30; ++x){
-			//Render the buffers - see current main
+	//	Move Buffers when necessary
+		if (x_ <= left_){
+			left_ -= 8;
+			right_ -= 8;
+			lBuff_--;
+			rBuff_--;
+
+		}else if (x_ >= right_){
+			left_ += 8;
+			right_+= 8;
+			lBuff_++;
+			rBuff_++;
 		}
-	}
+
+		// Keep buffers in range 0->31
+		wrapInRange(0,31,lBuff_);
+		wrapInRange(0,31,rBuff_);
+
+		//	Draw the buffers
+		for (int i = 0; i < 32; ++i){
+			bgs_[3].setTile(lBuff_, i, map[(i*MAPWIDTH) + (x_/8)]);
+			bgs_[3].setTile(rBuff_, i, map[(i*MAPWIDTH) + (x_/8) + 30]);
+		}
+}
+
+void Display::wrapInRange(int min, int max, int& i)
+{
+	if (i > max) i = min;
+	else if (i < min) i = max;
 }
 
 //	Render all Tiles to the Screen
@@ -146,10 +176,7 @@ void Display::moveTo(int x, int y)
 	x_ = x;
 	y_ = y;
 
-	int xOffset = x_%8;
-	int yOffset = y_%8;
-
-	/*for (int i = 2; i < NUM_BGS; ++i){
-		bgs_[i].moveTo(xOffset, yOffset);
-	}*/
+	for (int i = 2; i < NUM_BGS; ++i){
+		bgs_[i].moveTo(x_, y_);
+	}
 }
