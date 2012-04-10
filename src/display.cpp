@@ -3,8 +3,11 @@
 #include "../lib/font.h"
 #include "../resource/tiles/palette.h"
 #include "../resource/tiles/terraintiles.h"
+#include "../include/background.h"
 
-#define MAX_SPRITES 128		//	Maximum number of OAM sprites the GBA can handle on screen at once
+#define NUM_BGS 4			//	Number of backgrounds
+#define NUM_SPRITES 128		// Maximum number of OAM sprites
+
 #define X_WRAPAROUND 512	//	Value x becomes when wrapping below 0
 #define Y_WRAPAROUND 256	//	Value y becomes when wrapping below 0
 
@@ -26,10 +29,12 @@ void Display::initRegisters()
 	//	Initialises the main GBA display registers for drawing tiles
 	//		(Individual background registers are initialised by the background objects themselves)
 	REG_DISPCNT = DCNT_MODE0 | DCNT_OBJ | DCNT_OBJ_1D | DCNT_BG0 | DCNT_BG1 | DCNT_BG2 | DCNT_BG3;
-	REG_BG0CNT = BG_CBB(0) | BG_SBB(30) | BG_8BPP | BG_REG_32x32;
-	REG_BG1CNT = BG_CBB(0) | BG_SBB(29) | BG_8BPP | BG_REG_32x32;
-	REG_BG2CNT = BG_CBB(0) | BG_SBB(28) | BG_8BPP | BG_REG_32x32;
-	REG_BG3CNT = BG_CBB(0) | BG_SBB(27) | BG_8BPP | BG_REG_32x32;
+	
+	//	Initialise the Background registers
+	bgs_[0] = Background(0,0,0,2);
+	bgs_[1] = Background(1,0,0,2);
+	bgs_[2] = Background(2,0,0,0);
+	bgs_[3] = Background(3,0,0,0);
 }
 
 
@@ -45,7 +50,7 @@ void Display::initPalettes()
 void Display::initTiles()
 {
 	for (int i = 0; i < terraintilesTilesLen; i+=64){
-		LoadTile8(0,i, &terraintilesTiles[i]);
+		bgs_[4].loadTile(i, &terraintilesTiles[i]);
 	}
 }
 
@@ -97,7 +102,7 @@ void Display::renderSprites()
 			);
 
 		nextSprite++;
-		if(nextSprite > MAX_SPRITES) break;
+		if(nextSprite > NUM_SPRITES) break;
 	}
 }
 
@@ -144,7 +149,7 @@ void Display::moveTo(int x, int y)
 	int xOffset = x_%8;
 	int yOffset = y_%8;
 
-	for (int i = 2; i < 4; ++i){
-		backgrounds_[i].moveTo(xOffset, yOffset);
-	}
+	/*for (int i = 2; i < NUM_BGS; ++i){
+		bgs_[i].moveTo(xOffset, yOffset);
+	}*/
 }

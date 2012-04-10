@@ -3,6 +3,7 @@
 #include "../resource/tiles/terraintiles.h"
 #include "../resource/tiles/palettes.h"
 #include "../include/display.h"
+#include "../include/sprite.h"
 
 void wrapInRange(int min, int max, int& i);
 
@@ -11,23 +12,23 @@ int main()
 
 	Display display = Display(0,0,SCREEN_WIDTH,SCREEN_HEIGHT, new Camera());
 
-	REG_DISPCNT = DCNT_MODE0 | DCNT_OBJ | DCNT_OBJ_1D | DCNT_BG0 | DCNT_BG1 | DCNT_BG2 | DCNT_BG3;
-	REG_BG0CNT = BG_CBB(0) | BG_SBB(30) | BG_8BPP | BG_REG_32x32;
-	REG_BG1CNT = BG_CBB(0) | BG_SBB(29) | BG_8BPP | BG_REG_32x32;
-	REG_BG2CNT = BG_CBB(0) | BG_SBB(28) | BG_8BPP | BG_REG_32x32;
-	REG_BG3CNT = BG_CBB(0) | BG_SBB(27) | BG_8BPP | BG_REG_32x32;
+	Sprite s = Sprite(20,5,0,0,1,1);
+	display.registerSprite(&s);
+
+	LoadTile8(4,1,&terraintilesTiles[256]);
 
 	for (int i = 0; i < terraintilesTilesLen; i += 64){
-		LoadTile8(0, i/64, &terraintilesTiles[i]);
+		LoadTile8(3, i/64, &terraintilesTiles[i]);
 	}
 
 	for (int i = 0; i < palettesPalLen; ++i){
 		SetPaletteBG(i, palettesPal[i]);
+		SetPaletteObj(i, palettesPal[i]);
 	}
 
 	for (int i = 0; i < 32; ++i){
 		for (int j = 0; j < 32; ++j){
-			SetTile(30,j,i, map[i*MAPWIDTH + j]);
+			SetTile(27,j,i, map[i*MAPWIDTH + j]);
 		}
 	}
 
@@ -84,13 +85,14 @@ int main()
 
 		//	Draw the buffers
 		for (int i = 0; i < 32; ++i){
-			SetTile(30, lBuff, i, map[((i)*MAPWIDTH) + xOff/8 ]);
-			SetTile(30, rBuff, i, map[((i)*MAPWIDTH) + xOff/8 + 30 ]);
+			SetTile(27, lBuff, i, map[((i)*MAPWIDTH) + xOff/8 ]);
+			SetTile(27, rBuff, i, map[((i)*MAPWIDTH) + xOff/8 + 30 ]);
 		}
 
+		display.render();
 		WaitVSync();
-		REG_BG0HOFS = xOff;
-		REG_BG0VOFS = yOff;
+		REG_BG3HOFS = xOff;
+		REG_BG3VOFS = yOff;
 	}
 }
 
