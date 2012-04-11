@@ -12,10 +12,11 @@
 class Display
 {
 public:
-	Display(int x, int y, int width, int height, Camera* camera);
+	Display(int x, int y, int width, int height);
 
 	void render();
 
+	void registerCamera(Camera* camera);
 	void registerSprite(Sprite* sprite);
 	void registerSpriteToFront(Sprite* sprite);
 

@@ -13,9 +13,8 @@ Camera::Camera()
 	focus_ = 0;
 }
 
-Camera::Camera(int width, int height, int xMin, int yMin, int xMax, int yMax, Sprite* s)
+Camera::Camera(int width, int height, int xMin, int yMin, int xMax, int yMax)
 {
-	setFocus(s);
 	setBounds(xMin, yMin, xMax, yMax);
 	width_ = width;
 	height_ = height;

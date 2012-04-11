@@ -7,7 +7,7 @@ class Camera
 {
 public:
 	Camera();
-	Camera(int width, int height, int xMin, int yMin, int xMax, int yMax, Sprite* s);
+	Camera(int width, int height, int xMin, int yMin, int xMax, int yMax);
 
 	void updatePosition();
 	void setBounds(int xMin, int yMin, int xMax, int yMax);

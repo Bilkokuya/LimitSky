@@ -1,7 +1,7 @@
 #include "../include/display.h"
 #include "../lib/gba.h"
 #include "../lib/font.h"
-#include "../resource/tiles/palette.h"
+#include "../resource/tiles/palettes.h"
 #include "../resource/tiles/terraintiles.h"
 #include "../include/background.h"
 #include "../resource/maps/map.h"
@@ -12,13 +12,12 @@
 #define X_WRAPAROUND 512	//	Value x becomes when wrapping below 0
 #define Y_WRAPAROUND 256	//	Value y becomes when wrapping below 0
 
-Display::Display(int x, int y, int width, int height, Camera* camera)
+Display::Display(int x, int y, int width, int height)
 {
 	x_ = x;
 	y_ = y;
 	width_ = width;
 	height_ = height;
-	camera_ = camera;
 
 	lBuff_ = 31;
 	rBuff_ = 30;
@@ -28,6 +27,7 @@ Display::Display(int x, int y, int width, int height, Camera* camera)
 	initRegisters();
 	initPalettes();
 	initTiles();
+	
 }
 
 void Display::initRegisters()
@@ -46,17 +46,23 @@ void Display::initRegisters()
 
 void Display::initPalettes()
 {
-	//	Initialise the palette
-	for (int i = 0; i < palettePalLen; ++i){
-		SetPaletteBG(i, palettePal[i]);
+	for (int i = 0; i < palettesPalLen; ++i){
+		SetPaletteBG(i, palettesPal[i]);
+		SetPaletteObj(i, palettesPal[i]);
 	}
 }
 
 //	Loads up all the tiles into memory
 void Display::initTiles()
 {
-	for (int i = 0; i < terraintilesTilesLen; i+=64){
-		bgs_[4].loadTile(i, &terraintilesTiles[i]);
+	for (int i = 0; i < (terraintilesTilesLen/64); ++i){
+		bgs_[3].loadTile(i, &terraintilesTiles[i*64]);
+	}
+
+	for (int i = 0; i < 32; ++i){
+		for (int j = 0; j < 32; ++j){
+			bgs_[3].setTile(j,i, map[i*MAPWIDTH + j]);
+		}
 	}
 }
 
@@ -134,6 +140,12 @@ void Display::renderSprites()
 		nextSprite++;
 		if(nextSprite > NUM_SPRITES) break;
 	}
+}
+
+
+void Display::registerCamera(Camera* camera)
+{
+	camera_ = camera;
 }
 
 void Display::registerSprite(Sprite* sprite)
