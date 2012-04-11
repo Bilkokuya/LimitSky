@@ -5,7 +5,7 @@
 #include "../include/display.h"
 #include "../include/sprite.h"
 
-void wrapInRange(int min, int max, int& i);
+bool isDown(int key);
 
 int main()
 {
@@ -32,44 +32,31 @@ int main()
 		}
 	}
 
-	int xOff = 0;
-	int yOff = 0;
-
-	int lBuff = 31;
-	int rBuff = 30;
-
-	int right = 8;
-	int left = -8;
-
-	int xTiles = 0;
-
 	while(true)
 	{
 		//	Controls
-		if ((REG_P1 & KEY_RIGHT) == 0){
-			xOff++;
+		if (isDown(KEY_RIGHT)){
 			s.move(1,0);
 
-		}else if ((REG_P1 & KEY_LEFT) == 0){
-			xOff--;
+		}else if (isDown(KEY_LEFT)){
 			s.move(-1,0);
 		} 
-		if ((REG_P1 & KEY_UP) == 0){
-			yOff--;
+		if (isDown(KEY_UP)){
 			s.move(0,-1);
 
-		}else if ((REG_P1 & KEY_DOWN) == 0){
-			yOff++;
+		}else if (isDown(KEY_DOWN)){
 			s.move(0,1);
 		}
 
 		camera.updatePosition();
-
 		display.render();
+
 		WaitVSync();
 		UpdateObjects();
-		//REG_BG3HOFS = xOff;
-		//REG_BG3VOFS = yOff;
 	}
 }
 
+bool isDown(int key)
+{
+	return ((REG_P1 & key) == 0);
+}
