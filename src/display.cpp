@@ -20,8 +20,8 @@ Display::Display(int x, int y, int width, int height, Camera* camera)
 	height_ = height;
 	camera_ = camera;
 
-	lBuff_ = 30;
-	rBuff_ = 31;
+	lBuff_ = 31;
+	rBuff_ = 30;
 	right_ = 8;
 	left_ = -8;
 
@@ -90,8 +90,8 @@ void Display::renderTiles()
 
 		//	Draw the buffers
 		for (int i = 0; i < 32; ++i){
-			bgs_[3].setTile(lBuff_, i, map[(i*MAPWIDTH) + (x_/8)]);
-			bgs_[3].setTile(rBuff_, i, map[(i*MAPWIDTH) + (x_/8) + 30]);
+			bgs_[3].setTile(lBuff_, i, map[(i*MAPWIDTH) + (x_/8) ]);
+			bgs_[3].setTile(rBuff_, i, map[(i*MAPWIDTH) + (x_/8) +30]);
 		}
 }
 
