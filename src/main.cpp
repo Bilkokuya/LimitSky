@@ -4,6 +4,7 @@
 #include "../resource/tiles/palettes.h"
 #include "../include/display.h"
 #include "../include/sprite.h"
+#include "../include/player.h"
 
 bool isDown(int key);
 
@@ -14,7 +15,7 @@ int main()
 	Camera camera = Camera(SCREEN_WIDTH, SCREEN_HEIGHT, 0,0, MAPWIDTH*8, 32*8);
 	display.registerCamera(&camera);
 	
-	Sprite player = Sprite(0,0,0,0,1,0);
+	Player player = Player(0,0);
 	camera.setFocus(&player);
 	display.registerSprite(&player);
 

@@ -27,7 +27,6 @@ Display::Display(int x, int y, int width, int height)
 	initRegisters();
 	initPalettes();
 	initTiles();
-	
 }
 
 void Display::initRegisters()
@@ -120,12 +119,12 @@ void Display::renderSprites()
 
 	for (it = spriteList_.begin(); it != spriteList_.end(); ++it){
 		Sprite* sprite = *it;
-		//Set the sprite if it is currently on the screen
+		//	Set the sprite if it is currently on the screen
 		if ( (((sprite->x()) + 8) < x_) || (sprite->x() > (x_ + width_)) ) continue;
 		if ( (((sprite->y()) + 8) < y_) || (sprite->y() > (y_ + height_)) ) continue;
 
 		int x = sprite->x() - x_;	//	x position to draw to (range 0-> X_WRAPAROUND)
-		int y = sprite->y() - y_;	//	y position to draw to (range 0-> Y_WRAPAROUND0
+		int y = sprite->y() - y_;	//	y position to draw to (range 0-> Y_WRAPAROUND)
 
 		if (x < 0) x += X_WRAPAROUND;
 		if (y < 0) y += Y_WRAPAROUND;
