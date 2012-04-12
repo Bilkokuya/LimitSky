@@ -5,8 +5,7 @@
 #include "../include/display.h"
 #include "../include/sprite.h"
 #include "../include/player.h"
-
-bool isDown(int key);
+#include "../include/world.h"
 
 int main()
 {
@@ -15,7 +14,10 @@ int main()
 	Camera camera = Camera(SCREEN_WIDTH, SCREEN_HEIGHT, 0,0, MAPWIDTH*8, 32*8);
 	display.registerCamera(&camera);
 	
-	Player player = Player(0,0);
+	World world = World(map);
+	display.registerWorld(&world);
+
+	Player player = Player(0,0, &world);
 	camera.setFocus(&player);
 	display.registerSprite(&player);
 
@@ -23,19 +25,7 @@ int main()
 
 	while(true)
 	{
-		//	Controls
-		if (isDown(KEY_RIGHT)){
-			player.move(1,0);
-
-		}else if (isDown(KEY_LEFT)){
-			player.move(-1,0);
-		} 
-		if (isDown(KEY_UP)){
-			player.move(0,-1);
-
-		}else if (isDown(KEY_DOWN)){
-			player.move(0,1);
-		}
+		player.update();
 
 		camera.updatePosition();
 		display.render();
@@ -43,9 +33,4 @@ int main()
 		WaitVSync();
 		UpdateObjects();
 	}
-}
-
-bool isDown(int key)
-{
-	return ((REG_P1 & key) == 0);
 }

@@ -98,6 +98,14 @@ void Display::renderTiles()
 			bgs_[3].setTile(lBuff_, i, map[(i*MAPWIDTH) + (x_/8) ]);
 			bgs_[3].setTile(rBuff_, i, map[(i*MAPWIDTH) + (x_/8) +30]);
 		}
+
+		//render changes
+		for (int i = 0; i < world_->numberOfChanges_[0]; ++i){
+			int x = world_->changes_[0][i][0];
+			int y = world_->changes_[0][i][1];
+			int tile = world_->changes_[0][i][2];
+			bgs_[3].setTile(x,y,tile);
+		}
 }
 
 void Display::wrapInRange(int min, int max, int& i)
@@ -145,6 +153,11 @@ void Display::renderSprites()
 void Display::registerCamera(Camera* camera)
 {
 	camera_ = camera;
+}
+
+void Display::registerWorld(World* world)
+{
+	world_ = world;
 }
 
 void Display::registerSprite(Sprite* sprite)

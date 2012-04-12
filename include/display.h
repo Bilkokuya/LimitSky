@@ -8,6 +8,7 @@
 #include "sprite.h"
 #include "camera.h"
 #include "background.h"
+#include "world.h"
 
 class Display
 {
@@ -17,6 +18,7 @@ public:
 	void render();
 
 	void registerCamera(Camera* camera);
+	void registerWorld(World* world);
 	void registerSprite(Sprite* sprite);
 	void registerSpriteToFront(Sprite* sprite);
 
@@ -32,6 +34,7 @@ private:
 	std::list<Sprite*> spriteList_;	//	a vector containing all sprites possible to render
 	Background bgs_[4];			//	The 4 background registers of the GBA
 	Camera* camera_;
+	World* world_;
 
 	int lBuff_, rBuff_;
 	int left_, right_;

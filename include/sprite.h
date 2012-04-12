@@ -30,7 +30,7 @@ public:
 	int tile();
 	void tile(int t);
 
-private:
+protected:
 	int x_, y_;			//	x and y position, relative to the world
 	int size_, shape_;	//	Determines the number of tiles wide and high it is
 	int zPriority_;		//	Draw priority in the range 0->3, with 3 on top
