@@ -20,6 +20,9 @@ private:
 	World* world_;
 
 	void processControls();
+	void checkOverlap();
+	bool canMove(int x, int y);
+	void move(int dx, int dy);
 
 };
 

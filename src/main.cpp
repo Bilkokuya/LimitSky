@@ -6,6 +6,7 @@
 #include "../include/sprite.h"
 #include "../include/player.h"
 #include "../include/world.h"
+#include "../include/controls.h"
 
 int main()
 {
@@ -32,5 +33,6 @@ int main()
 
 		WaitVSync();
 		UpdateObjects();
+		updateControlDelay();
 	}
 }

@@ -5,6 +5,7 @@
 #include "../resource/tiles/terraintiles.h"
 #include "../include/background.h"
 #include "../resource/maps/map.h"
+#include "../resource/blocks.h"
 
 #define NUM_BGS 4			//	Number of backgrounds
 #define NUM_SPRITES 128		// Maximum number of OAM sprites
@@ -36,10 +37,10 @@ void Display::initRegisters()
 	REG_DISPCNT = DCNT_MODE0 | DCNT_OBJ | DCNT_OBJ_1D | DCNT_BG0 | DCNT_BG1 | DCNT_BG2 | DCNT_BG3;
 	
 	//	Initialise the Background registers
-	bgs_[0] = Background(0,0,0,2);
-	bgs_[1] = Background(1,0,0,2);
-	bgs_[2] = Background(2,0,0,0);
-	bgs_[3] = Background(3,0,0,0);
+	bgs_[0] = Background(0,0,0,0);
+	bgs_[1] = Background(1,0,0,0);
+	bgs_[2] = Background(2,0,5,2);
+	bgs_[3] = Background(3,0,0,3);
 }
 
 
@@ -54,9 +55,12 @@ void Display::initPalettes()
 //	Loads up all the tiles into memory
 void Display::initTiles()
 {
-	for (int i = 0; i < (terraintilesTilesLen/64); ++i){
-		bgs_[3].loadTile(i, &terraintilesTiles[i*64]);
+	for (int n = 0; n < 2; ++n){
+		for (int i = 0; i < (terraintilesTilesLen/64); ++i){
+			bgs_[3-n].loadTile(i+(2*n), &terraintilesTiles[i*64]);
+		}
 	}
+
 
 	for (int i = 0; i < 32; ++i){
 		for (int j = 0; j < 32; ++j){
@@ -94,18 +98,25 @@ void Display::renderTiles()
 		wrapInRange(0,31,rBuff_);
 
 		//	Draw the buffers
-		for (int i = 0; i < 32; ++i){
-			bgs_[3].setTile(lBuff_, i, map[(i*MAPWIDTH) + (x_/8) ]);
-			bgs_[3].setTile(rBuff_, i, map[(i*MAPWIDTH) + (x_/8) +30]);
+		for (int n = 0; n < 2; ++n){
+			for (int i = 0; i < 32; ++i){
+				bgs_[3-n].setTile(lBuff_, i, world_->maps_[n][(i*MAPWIDTH) + (x_/8) ]);
+				bgs_[3-n].setTile(rBuff_, i, world_->maps_[n][(i*MAPWIDTH) + (x_/8) +30]);
+			}
+		}
+		//Render changes made in the last frame
+		for (int n = 0; n < 2; ++n){
+			for (int i = 0; i < world_->numberOfChanges_[n]; ++i){
+				int x = (world_->changes_[n][i][0])%32;
+				int y = (world_->changes_[n][i][1])%32;
+				int block = world_->changes_[n][i][2];
+
+				bgs_[(3-n)].setBlock(x, y, block);
+
+			}
+			world_->numberOfChanges_[n] = 0;
 		}
 
-		//render changes
-		for (int i = 0; i < world_->numberOfChanges_[0]; ++i){
-			int x = world_->changes_[0][i][0];
-			int y = world_->changes_[0][i][1];
-			int tile = world_->changes_[0][i][2];
-			bgs_[3].setTile(x,y,tile);
-		}
 }
 
 void Display::wrapInRange(int min, int max, int& i)
@@ -203,4 +214,5 @@ void Display::moveTo(int x, int y)
 	for (int i = 2; i < NUM_BGS; ++i){
 		bgs_[i].moveTo(x_, y_);
 	}
+	bgs_[2].move(0,5);
 }

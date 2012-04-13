@@ -7,7 +7,8 @@ class World
 {
 public:
 	unsigned char numberOfChanges_[2];		//	Number of changes made in this frame
-	unsigned char changes_[2][1200][3];	//	Changes made this frame, held as [terrain(0) or crops(1)][changeNumber][(terrain/crops,x,y, tile)]
+	unsigned char changes_[2][1200][3];		//	Changes made this frame, held as [terrain(0) or crops(1)][changeNumber][(terrain/crops,x,y, block)]
+	unsigned char* maps_[2];
 
 	World(const unsigned char* map);
 	
@@ -20,12 +21,12 @@ public:
 	int getTerrain(int x, int y);
 
 private:
-	unsigned char* crops_;
-	unsigned char* terrain_;
+	
 
-	void setTerrain(int x, int y, int tile);
-	void setObject(int x, int y, int tile);
-	void addChange(int i, int x, int y, int tile);
+	void setTerrain(int x, int y, int block);
+	void setObject(int x, int y, int block);
+
+	void addChange(int i, int x, int y, int block);
 };
 
 #endif

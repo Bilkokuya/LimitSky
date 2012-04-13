@@ -12,6 +12,7 @@ public:
 	Background(int number, int xOffset, int yOffset, int zPriority, int charblock, int screenblock);
 
 	void setTile(int x, int y, int tile);
+	void setBlock(int x, int y, int block);
 	void toScreen();
 	void loadTile(int tilenum, const unsigned char* tiledata);
 
@@ -31,6 +32,7 @@ private:
 	int number_;
 	int x_;
 	int y_;
+	int xOffset_, yOffset_;
 	int charblock_;
 	int screenblock_;
 	int zPriority_;

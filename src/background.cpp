@@ -1,5 +1,6 @@
 #include "../include/background.h"
 #include "../lib/gba.h"
+#include "../resource/blocks.h"
 
 #define BASE_REG_CONTROL REGISTER(uint16_t, 0x4000008)
 #define BASE_REG_HOFFSET REGISTER(uint16_t, 0x4000010)
@@ -27,6 +28,8 @@ void Background::init(int number, int xOffset, int yOffset, int zPriority, int c
 	number_ = number;
 	x_ = xOffset;
 	y_ = yOffset;
+	xOffset_ = xOffset_;
+	yOffset_ = yOffset_;
 	zPriority_ = zPriority;
 	charblock_ = charblock;
 	screenblock_ = screenblock;
@@ -53,6 +56,14 @@ void Background::updatePosition()
 void Background::setTile(int x, int y, int tile)
 {
 	SetTile(screenblock_, x,y, tile);
+}
+
+void Background::setBlock(int x, int y, int block)
+{
+	setTile( x,   y,	blocks[block].tile_ );
+	setTile( x+1, y,	blocks[block].tile_ + 1);
+	setTile( x,   y+1,	blocks[block].tile_ + 16);
+	setTile( x+1, y+1,	blocks[block].tile_ + 17);
 }
 
 void Background::toScreen()
@@ -98,8 +109,8 @@ void Background::move(int dx, int dy)
 //	Offsets to position x,y
 void Background::moveTo(int x, int y)
 {
-	x_ = x;
-	y_ = y;
+	x_ = (x + xOffset_);
+	y_ = (y + yOffset_);
 	updatePosition();
 }
 
