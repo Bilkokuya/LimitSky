@@ -9,6 +9,7 @@
 #include "camera.h"
 #include "background.h"
 #include "world.h"
+#include "ui.h"
 
 class Display
 {
@@ -19,6 +20,7 @@ public:
 
 	void registerCamera(Camera* camera);
 	void registerWorld(World* world);
+	void registerUI(UI* ui);
 	void registerSprite(Sprite* sprite);
 	void registerSpriteToFront(Sprite* sprite);
 
@@ -35,6 +37,7 @@ private:
 	Background bgs_[4];			//	The 4 background registers of the GBA
 	Camera* camera_;
 	World* world_;
+	UI* ui_;
 
 	int lBuff_, rBuff_;
 	int left_, right_;

@@ -12,10 +12,12 @@ Player::Player(): Sprite()
 }
 
 
-Player::Player(int x, int y, World* world): Sprite(x,y,0,0,2,2)
+Player::Player(int x, int y, World* world, UI* ui): Sprite(x,y,0,0,2,2)
 {
 	world_ = world;
 	tool_ = 0;
+	ui_ = ui;
+	displayTool();
 }
 
 
@@ -36,7 +38,7 @@ void Player::checkOverlap()
 
 bool Player::canMove(int dx, int dy)
 {
-	if (world_->getObject(((x_+dx)/16)*2, (((y_+dy)/16)*2)) != 0){
+	if (world_->getObject(((x_+4+dx)/16)*2, (((y_+4+dy)/16)*2)) != 0){
 		return false;
 	}else{
 		return true;
@@ -79,6 +81,7 @@ void Player::processControls()
 		++tool_;
 		if (tool_ > 3) tool_ = 0;
 		setControlDelay(NEXT_TOOL, 20);
+		displayTool();
 	}
 
 	if (isControl(INTERACT)){
@@ -90,11 +93,11 @@ void Player::processControls()
 			setControlDelay(USE_TOOL, 20);
 
 		}else if (tool_ == 1){
-			world_->plantSeeds(((x_/16) + direction_[0])*2, ((y_/16) + direction_[1])*2);
+			world_->waterCrops(((x_/16) + direction_[0])*2, ((y_/16) + direction_[1])*2);
 			setControlDelay(USE_TOOL, 20);
 
 		}else if (tool_ == 2){
-			world_->waterCrops(((x_/16) + direction_[0])*2, ((y_/16) + direction_[1])*2);
+			world_->plantSeeds(((x_/16) + direction_[0])*2, ((y_/16) + direction_[1])*2);
 			setControlDelay(USE_TOOL, 20);
 
 		}else if (tool_ == 3){
@@ -106,3 +109,13 @@ void Player::processControls()
 	
 }
 
+void Player::displayTool()
+{
+	switch (tool_){
+		case 0: ui_->drawText("Tilling   "); break;
+		case 1: ui_->drawText("Watering  "); break;
+		case 2: ui_->drawText("Planting  "); break;
+		case 3: ui_->drawText("Harvesting"); break;
+		default: return;
+	}
+}

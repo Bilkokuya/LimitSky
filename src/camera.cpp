@@ -30,16 +30,17 @@ void Camera::updatePosition()
 {
 	//	Move to the new position
 	if (focus_){
+		//	Center the focus in the middle of the screen (so display starts drawing at focus-x - width/2)
 		x_ = focus_->x() - width_/2;
 		y_ = focus_->y() - height_/2;
 	}
 
 	//	Ensure it is within bounds
-	if ((x_) < xMin_) x_ = xMin_;
-	else if ((x_) > xMax_) x_ = xMax_;
+	if ( x_ < xMin_ ) x_ = xMin_;
+	else if ( x_ > xMax_ ) x_ = xMax_;
 	
-	if ((y_) < yMin_) y_ = yMin_;
-	else if ((y_) > yMax_) y_ = yMax_;
+	if ( y_ < yMin_ ) y_ = yMin_;
+	else if ( y_ > yMax_ ) y_ = yMax_;
 }
 
 void Camera::setBounds(int xMin, int yMin, int xMax, int yMax)

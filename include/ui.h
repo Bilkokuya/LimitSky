@@ -1,18 +1,19 @@
 #ifndef LS_UI
 #define LS_UI
 
-#include "tilemap.h"
-
 class UI
 {
 public:
 	UI();
+	void drawText(const char string[10] );
 
-	bool hasTextChanged_;
+	int numberOfChanges_[2];
+	int changes_[2][100][3];
 	unsigned short* text_;
-
 	const unsigned short* background_;
 
 private:
+
+	
 };
 #endif

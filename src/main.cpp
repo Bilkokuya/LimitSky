@@ -12,13 +12,16 @@ int main()
 {
 	Display display = Display(0,0,SCREEN_WIDTH,SCREEN_HEIGHT);
 
-	Camera camera = Camera(SCREEN_WIDTH, SCREEN_HEIGHT, 0,0, MAPWIDTH*8, 32*8);
+	Camera camera = Camera(SCREEN_WIDTH, SCREEN_HEIGHT, 0,0, MAPWIDTH*8, (32-20)*8);
 	display.registerCamera(&camera);
 	
 	World world = World(map);
 	display.registerWorld(&world);
 
-	Player player = Player(0,0, &world);
+	UI ui = UI();
+	display.registerUI(&ui);
+
+	Player player = Player(0,0, &world, &ui);
 	camera.setFocus(&player);
 	display.registerSprite(&player);
 

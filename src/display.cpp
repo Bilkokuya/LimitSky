@@ -61,6 +61,9 @@ void Display::initTiles()
 		}
 	}
 
+	for (int i = 0; i < 128; ++i){
+		bgs_[0].loadTile(i, font_medium[i]);
+	}
 
 	for (int i = 0; i < 32; ++i){
 		for (int j = 0; j < 32; ++j){
@@ -104,6 +107,7 @@ void Display::renderTiles()
 				bgs_[3-n].setTile(rBuff_, i, world_->maps_[n][(i*MAPWIDTH) + (x_/8) +30]);
 			}
 		}
+
 		//Render changes made in the last frame
 		for (int n = 0; n < 2; ++n){
 			for (int i = 0; i < world_->numberOfChanges_[n]; ++i){
@@ -117,6 +121,16 @@ void Display::renderTiles()
 			world_->numberOfChanges_[n] = 0;
 		}
 
+		
+		//Render ui changes made
+		for (int i = 0; i < ui_->numberOfChanges_[1]; ++i){
+			int x = ui_->changes_[1][i][0];
+			int y = ui_->changes_[1][i][1];
+			int tile = ui_->changes_[1][i][2];
+
+			bgs_[0].setTile(x,y,tile);
+		}
+		ui_->numberOfChanges_[1] = 0;
 }
 
 void Display::wrapInRange(int min, int max, int& i)
@@ -164,6 +178,11 @@ void Display::renderSprites()
 void Display::registerCamera(Camera* camera)
 {
 	camera_ = camera;
+}
+
+void Display::registerUI(UI* ui)
+{
+	ui_ = ui;
 }
 
 void Display::registerWorld(World* world)
