@@ -8,15 +8,28 @@
 
 Player::Player(): Sprite()
 {
-	tool_ = 0;
+	zPriority_ = 3;
+	selectedTool_ = 0;
+	tools_[0] = new ToolHoe(world_);
+	tools_[1] = new ToolWateringCan(world_);
+	tools_[2] = new ToolScythe(world_);
+	tools_[3] = new ToolSeeds(world_);
 }
 
 
 Player::Player(int x, int y, World* world, UI* ui): Sprite(x,y,0,0,2,2)
 {
 	world_ = world;
-	tool_ = 0;
 	ui_ = ui;
+
+	zPriority_ = 3;
+
+	selectedTool_ = 0;
+	tools_[0] = new ToolHoe(world_);
+	tools_[1] = new ToolWateringCan(world_);
+	tools_[2] = new ToolScythe(world_);
+	tools_[3] = new ToolSeeds(world_);
+
 	displayTool();
 }
 
@@ -24,21 +37,17 @@ Player::Player(int x, int y, World* world, UI* ui): Sprite(x,y,0,0,2,2)
 void Player::update()
 {
 	processControls();
-	checkOverlap();
-}
-
-void Player::checkOverlap()
-{
-	if (world_->getObject(((x_/16) + direction_[0])*2, ((y_/16) + direction_[1])*2) != 0){
-		zPriority_ = 3;
-	}else{
-		zPriority_ = 2;
-	}
 }
 
 bool Player::canMove(int dx, int dy)
 {
-	if (world_->getObject(((x_+4+dx)/16)*2, (((y_+4+dy)/16)*2)) != 0){
+	if ((world_->getObject(((x_+8+dx)/16)*2, (((y_+8+dy)/16)*2)) != 0)
+		||
+		(world_->getObject(((x_+dx)/16)*2, (((y_+8+dy)/16)*2)) != 0)
+		||
+		(world_->getObject(((x_+8+dx)/16)*2, (((y_+dy)/16)*2)) != 0)
+		||
+		(world_->getObject(((x_+dx)/16)*2, (((y_+dy)/16)*2)) != 0)){
 		return false;
 	}else{
 		return true;
@@ -78,32 +87,19 @@ void Player::processControls()
 	}
 
 	if (isControl(NEXT_TOOL)){
-		++tool_;
-		if (tool_ > 3) tool_ = 0;
+		++selectedTool_;
+		if (selectedTool_ > 3) selectedTool_ = 0;
 		setControlDelay(NEXT_TOOL, 20);
 		displayTool();
 	}
 
 	if (isControl(INTERACT)){
-	
+		tools_[selectedTool_]->interact((((x_+4)/16) + direction_[0])*2, (((y_+4)/16) + direction_[1])*2);
+		setControlDelay(INTERACT, 20);
 
 	}else if (isControl(USE_TOOL)){
-		if (tool_ == 0){
-			world_->tillSoil(((x_/16) + direction_[0])*2, ((y_/16) + direction_[1])*2);
-			setControlDelay(USE_TOOL, 20);
-
-		}else if (tool_ == 1){
-			world_->waterCrops(((x_/16) + direction_[0])*2, ((y_/16) + direction_[1])*2);
-			setControlDelay(USE_TOOL, 20);
-
-		}else if (tool_ == 2){
-			world_->plantSeeds(((x_/16) + direction_[0])*2, ((y_/16) + direction_[1])*2);
-			setControlDelay(USE_TOOL, 20);
-
-		}else if (tool_ == 3){
-			world_->harvestCrops(((x_/16) + direction_[0])*2, ((y_/16) + direction_[1])*2);
-			setControlDelay(USE_TOOL, 20);
-		}
+		tools_[selectedTool_]->useTool((((x_+4)/16) + direction_[0])*2, (((y_+4)/16) + direction_[1])*2);
+		setControlDelay(USE_TOOL, 20);
 	}
 
 	
@@ -111,7 +107,7 @@ void Player::processControls()
 
 void Player::displayTool()
 {
-	switch (tool_){
+	switch (selectedTool_){
 		case 0: ui_->drawText("Tilling   "); break;
 		case 1: ui_->drawText("Watering  "); break;
 		case 2: ui_->drawText("Planting  "); break;

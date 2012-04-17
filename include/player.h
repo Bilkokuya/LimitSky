@@ -4,6 +4,7 @@
 #include "sprite.h"
 #include "world.h"
 #include "ui.h"
+#include "tools.h"
 
 class Player: public Sprite
 {
@@ -17,10 +18,11 @@ public:
 
 private:
 	static const int MOVE_SPEED = 1;
-	int tool_;
+	int selectedTool_;
 	int direction_[2];
 	World* world_;
 	UI* ui_;
+	Tool* tools_[4];
 
 	void processControls();
 	void checkOverlap();
