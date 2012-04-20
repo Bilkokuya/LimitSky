@@ -29,6 +29,7 @@ private:
 	bool canMove(int x, int y);
 	void move(int dx, int dy);
 	void displayTool();
+	void keepInBounds(int xA, int yA, int xV, int yV);
 };
 
 #endif

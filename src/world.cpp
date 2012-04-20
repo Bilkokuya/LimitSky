@@ -12,13 +12,40 @@ World::World(const unsigned char* map)
 	}
 }
 
+void World::growPlants()
+{
+	// grow all plants sitting on watered terrain
+	for (int y = 0; y < MAPHEIGHT; ++y){
+		for (int x = 0; x < MAPWIDTH; ++x){
+			int terrain = getTerrain(x,y);
+			int crop = getObject(x,y);
+
+			switch (terrain){
+				case 3: setTerrain(x,y,2);break;
+				case 5: setTerrain(x,y,4);break;
+				default: break;
+			}
+			if (terrain == 5){
+				switch (crop){
+					case 8: setObject(x,y,9);break;
+					case 9: setObject(x,y,10);break;
+					case 10: setObject(x,y,11);break;
+					default: break;
+				}
+			}
+		}
+	}
+
+	// de-water all terrain
+}
+
 void World::tillSoil(int x, int y)
 {
 	int block = 0;
 	switch (getTerrain(x,y)){
-		case 0: block = 1; break;
-		case 2: block = 3; break;
-		case 4: block = 4; break;
+		case 1: block = 2; break;
+		case 2: block = 4; break;
+		case 3: block = 5; break;
 		default: return;
 	}
 
@@ -29,8 +56,8 @@ void World::waterCrops(int x, int y)
 {
 	int block = 0;
 	switch (getTerrain(x,y)){
-		case 2: block = 2; break;
-		case 6: block = 4; break;
+		case 2: block = 3; break;
+		case 4: block = 5; break;
 		default: return;
 	}
 
@@ -44,7 +71,10 @@ void World::harvestCrops(int x, int y)
 
 void World::plantSeeds(int x, int y)
 {
-	setObject(x, y, 1);
+	if (((getTerrain(x,y) == 4) || (getTerrain(x,y) == 5))
+		&& (getObject(x,y) == 0)){
+		setObject(x, y, 8);
+	}
 }
 
 int World::getObject(int x, int y)
@@ -70,13 +100,5 @@ void World::setObject(int x, int y, int block)
 
 void World::addChange(int i, int x, int y, int block)
 {
-	changes_[i][numberOfChanges_[i]][0] = x;
-	changes_[i][numberOfChanges_[i]][1] = y;
-	changes_[i][numberOfChanges_[i]][2] = block;
-	numberOfChanges_[i]++;
-
-	maps_[i][y*MAPWIDTH + x] = blocks[block].tile_;
-	maps_[i][y*MAPWIDTH + x+1] = blocks[block].tile_+1;
-	maps_[i][(y+1)*MAPWIDTH + x] = blocks[block].tile_ + 16;
-	maps_[i][(y+1)*MAPWIDTH + x+1] = blocks[block].tile_ + 17;
+	maps_[i][y*MAPWIDTH + x] = block;
 }

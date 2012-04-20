@@ -1,7 +1,7 @@
 #ifndef LS_WORLD
 #define LS_WORLD
 
-#include "../resource/maps/map.h"
+#include "../resource/maps/blockmap.h"
 
 class World
 {
@@ -16,6 +16,7 @@ public:
 	void harvestCrops(int x, int y);
 	void plantSeeds(int x, int y);
 	void tillSoil(int x, int y);
+	void growPlants();
 
 	int getObject(int x, int y);
 	int getTerrain(int x, int y);

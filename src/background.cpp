@@ -28,8 +28,8 @@ void Background::init(int number, int xOffset, int yOffset, int zPriority, int c
 	number_ = number;
 	x_ = xOffset;
 	y_ = yOffset;
-	xOffset_ = xOffset_;
-	yOffset_ = yOffset_;
+	xOffset_ = xOffset;
+	yOffset_ = yOffset;
 	zPriority_ = zPriority;
 	charblock_ = charblock;
 	screenblock_ = screenblock;
@@ -109,8 +109,8 @@ void Background::move(int dx, int dy)
 //	Offsets to position x,y
 void Background::moveTo(int x, int y)
 {
-	x_ = (x + xOffset_);
-	y_ = (y + yOffset_);
+	x_ = ((x + xOffset_))%16;
+	y_ = ((y + yOffset_))%16;
 	updatePosition();
 }
 

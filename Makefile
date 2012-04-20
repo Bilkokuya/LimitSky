@@ -20,9 +20,9 @@ TARGET		:=	dist/$(shell basename $(CURDIR))
 BUILD		:=	build
 SOURCES		:=	lib \
 				src \
-				src/gba \
-				src/gba/base \
-				src/common \
+				src/display \
+				src/gameworld \
+				src/utility \
 				resource/tiles \
 
 DATA		:=

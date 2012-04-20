@@ -1,5 +1,8 @@
 #include "../include/camera.h"
 
+#include <math.h>
+#include <cstdlib>
+
 Camera::Camera()
 {
 	x_ = 0;
@@ -30,6 +33,27 @@ void Camera::updatePosition()
 {
 	//	Move to the new position
 	if (focus_){
+		/*
+		float dx = (focus_->x() - width_/2) - x_;
+		float dy = (focus_->y() - height_/2) - y_;
+
+		float magnitude = sqrt((float)((dx*dx)+(dy*dy)));
+		float speed = 0;
+		if (magnitude < 40) speed = 0;
+		else if (magnitude < 60) speed = 0.5;
+		else speed = 1;
+
+		if ((abs(dx) < 10) || (abs(dy) < 10)) speed = 0;
+		
+
+		float ddx = dx/magnitude;
+		float ddy = dy/magnitude;
+		
+
+		x_ += (speed * ddx);
+		y_ += (speed * ddy);
+		*/
+
 		//	Center the focus in the middle of the screen (so display starts drawing at focus-x - width/2)
 		x_ = focus_->x() - width_/2;
 		y_ = focus_->y() - height_/2;

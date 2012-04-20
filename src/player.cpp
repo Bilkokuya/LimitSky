@@ -27,8 +27,8 @@ Player::Player(int x, int y, World* world, UI* ui): Sprite(x,y,0,0,2,2)
 	selectedTool_ = 0;
 	tools_[0] = new ToolHoe(world_);
 	tools_[1] = new ToolWateringCan(world_);
-	tools_[2] = new ToolScythe(world_);
-	tools_[3] = new ToolSeeds(world_);
+	tools_[2] = new ToolSeeds(world_);
+	tools_[3] = new ToolScythe(world_);
 
 	displayTool();
 }
@@ -41,17 +41,18 @@ void Player::update()
 
 bool Player::canMove(int dx, int dy)
 {
-	if ((world_->getObject(((x_+8+dx)/16)*2, (((y_+8+dy)/16)*2)) != 0)
-		||
-		(world_->getObject(((x_+dx)/16)*2, (((y_+8+dy)/16)*2)) != 0)
-		||
-		(world_->getObject(((x_+8+dx)/16)*2, (((y_+dy)/16)*2)) != 0)
-		||
-		(world_->getObject(((x_+dx)/16)*2, (((y_+dy)/16)*2)) != 0)){
-		return false;
-	}else{
-		return true;
+	int free[2] = {0,9};
+	for (int y = 0; y < 9; y += 8){
+		for (int x = 0; x < 9; x += 8){
+			int block = world_->getObject(((x_+x+dx)/16), (((y_+y+dy)/16)));
+			bool b = false;
+			for (int i = 0; i < 2; ++i){
+				if (block == free[i]) b = true;
+			}
+			if (!b) return false;
+		}
 	}
+	return true;
 }
 
 void Player::move(int dx, int dy)
@@ -59,6 +60,16 @@ void Player::move(int dx, int dy)
 	if (canMove(dx, dy)){
 		Sprite::move(dx, dy);
 	}
+
+	keepInBounds(8,8,MAPWIDTH*16 - 8, MAPHEIGHT*16 - 8);
+}
+
+void Player::keepInBounds(int xA, int yA, int xV, int yV)
+{
+	if ( x_ < xA) x_ = xA;
+	if ( (x_+8) > xV) x_ = xV - 8;
+	if ( y_ < yA) y_ = yA;
+	if ( (y_ + 8) > yV) y_ = yV - 8;
 }
 
 
@@ -98,7 +109,7 @@ void Player::processControls()
 		setControlDelay(INTERACT, 20);
 
 	}else if (isControl(USE_TOOL)){
-		tools_[selectedTool_]->useTool((((x_+4)/16) + direction_[0])*2, (((y_+4)/16) + direction_[1])*2);
+		tools_[selectedTool_]->useTool((((x_+4)/16) + direction_[0]), (((y_+4)/16) + direction_[1]));
 		setControlDelay(USE_TOOL, 20);
 	}
 

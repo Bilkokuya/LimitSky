@@ -11,6 +11,8 @@
 #include "world.h"
 #include "ui.h"
 
+#include "../lib/gba.h"
+
 class Display
 {
 public:
@@ -23,6 +25,13 @@ public:
 	void registerUI(UI* ui);
 	void registerSprite(Sprite* sprite);
 	void registerSpriteToFront(Sprite* sprite);
+
+	void loadPalette(const uint16_t* palette);
+	void transformPalette(int* transform);
+
+	int red(uint16_t colour);
+	int green(uint16_t colour);
+	int blue(uint16_t colour);
 
 	int x();
 	int y();
@@ -38,13 +47,18 @@ private:
 	Camera* camera_;
 	World* world_;
 	UI* ui_;
+	const uint16_t* palette_;
+
+
 
 	int lBuff_, rBuff_;
 	int left_, right_;
 
 
 	void renderSprites();
-	void renderTiles();
+	void renderTerrain();
+	void renderCrops();
+	void renderUI();
 
 	void initRegisters();
 	void initPalettes();

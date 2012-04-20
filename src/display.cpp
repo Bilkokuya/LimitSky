@@ -4,7 +4,7 @@
 #include "../resource/tiles/palettes.h"
 #include "../resource/tiles/terraintiles.h"
 #include "../include/background.h"
-#include "../resource/maps/map.h"
+#include "../resource/maps/blockmap.h"
 #include "../resource/blocks.h"
 
 #define NUM_BGS 4			//	Number of backgrounds
@@ -21,13 +21,50 @@ Display::Display(int x, int y, int width, int height)
 	height_ = height;
 
 	lBuff_ = 31;
-	rBuff_ = 30;
-	right_ = 8;
-	left_ = -8;
+	rBuff_ = 29;
+	right_ = 16;
+	left_ = -16;
 
 	initRegisters();
 	initPalettes();
 	initTiles();
+}
+
+int Display::red(uint16_t colour)
+{
+	return ( (colour & 0x001F) );
+}
+
+int Display::green(uint16_t colour)
+{
+	return ( (colour & 0x003E0)>>5 );
+}
+
+int Display::blue(uint16_t colour)
+{
+	return ( (colour & 0x7C00)>>10 );
+}
+
+void Display::loadPalette(const uint16_t* palette)
+{
+	palette_ = palette;
+}
+
+void Display::transformPalette(int* transform)
+{
+	for (int i = 0; i < 256; ++i){
+		int c[3];
+		c[0] = red(palette_[i]) - transform[0];
+		c[1] = green(palette_[i]) - transform[1];
+		c[2] = blue(palette_[i]) - transform[2];
+
+		for (int j = 0; j < 3; ++j){
+			if (c[j] < 0) c[j] = 0;
+			if (c[j] > 31) c[j] = 31;
+		}
+
+		SetPaletteBG(i, RGB(c[0],c[1],c[2]));
+	}
 }
 
 void Display::initRegisters()
@@ -46,6 +83,7 @@ void Display::initRegisters()
 
 void Display::initPalettes()
 {
+	loadPalette(palettesPal);
 	for (int i = 0; i < palettesPalLen; ++i){
 		SetPaletteBG(i, palettesPal[i]);
 		SetPaletteObj(i, palettesPal[i]);
@@ -57,7 +95,7 @@ void Display::initTiles()
 {
 	for (int n = 0; n < 2; ++n){
 		for (int i = 0; i < (terraintilesTilesLen/64); ++i){
-			bgs_[3-n].loadTile(i+(2*n), &terraintilesTiles[i*64]);
+			bgs_[3-n].loadTile(i, &terraintilesTiles[i*64]);
 		}
 	}
 
@@ -65,64 +103,58 @@ void Display::initTiles()
 		bgs_[0].loadTile(i, font_medium[i]);
 	}
 
-	for (int i = 0; i < 32; ++i){
-		for (int j = 0; j < 32; ++j){
-			bgs_[3].setTile(j,i, map[i*MAPWIDTH + j]);
+	for (int i = 0; i < 16; ++i){
+		for (int j = 0; j < 16; ++j){
+			bgs_[3].setBlock(2*j, 2*i, map[(i*MAPWIDTH) + j]);
+
 		}
 	}
 }
 
+int frame = 0;
 void Display::render()
 {	
 	moveTo(camera_->x(), camera_->y());
 
 	renderSprites();
-	renderTiles();
+	
+	if (((x_%16)==0) || ((y_%16)==0)){
+		renderTerrain();
+		renderCrops();
+	}else if ((frame%2) == 0){
+		renderTerrain();
+	}else{
+		renderCrops();
+	}
+
+	if ((frame%4) == 0){
+		renderUI();
+	}
+
+	frame++;
 }
 
-void Display::renderTiles()
+void Display::renderTerrain()
 {
-	//	Move Buffers when necessary
-		if (x_ <= left_){
-			left_ -= 8;
-			right_ -= 8;
-			lBuff_--;
-			rBuff_--;
-
-		}else if (x_ >= right_){
-			left_ += 8;
-			right_+= 8;
-			lBuff_++;
-			rBuff_++;
+	for (int y = 0; y < 16; ++y){
+		for (int x = 0; x < 16; ++x){
+			bgs_[3].setBlock(x*2, y*2, world_->maps_[0][(((y_/16) + y)*MAPWIDTH) + (x_/16) + x]);
 		}
+	}
+}
 
-		// Keep buffers in range 0->31
-		wrapInRange(0,31,lBuff_);
-		wrapInRange(0,31,rBuff_);
-
-		//	Draw the buffers
-		for (int n = 0; n < 2; ++n){
-			for (int i = 0; i < 32; ++i){
-				bgs_[3-n].setTile(lBuff_, i, world_->maps_[n][(i*MAPWIDTH) + (x_/8) ]);
-				bgs_[3-n].setTile(rBuff_, i, world_->maps_[n][(i*MAPWIDTH) + (x_/8) +30]);
-			}
+void Display::renderCrops()
+{
+	for (int y = 0; y < 16; ++y){
+		for (int x = 0; x < 16; ++x){
+			bgs_[2].setBlock(x*2, y*2, world_->maps_[1][(((y_/16) + y)*MAPWIDTH) + (x_/16) + x]);
 		}
+	}
+}
 
-		//Render changes made in the last frame
-		for (int n = 0; n < 2; ++n){
-			for (int i = 0; i < world_->numberOfChanges_[n]; ++i){
-				int x = (world_->changes_[n][i][0])%32;
-				int y = (world_->changes_[n][i][1])%32;
-				int block = world_->changes_[n][i][2];
-
-				bgs_[(3-n)].setBlock(x, y, block);
-
-			}
-			world_->numberOfChanges_[n] = 0;
-		}
-
-		
-		//Render ui changes made
+void Display::renderUI()
+{
+	//Render ui changes made
 		for (int i = 0; i < ui_->numberOfChanges_[1]; ++i){
 			int x = ui_->changes_[1][i][0];
 			int y = ui_->changes_[1][i][1];
@@ -183,6 +215,11 @@ void Display::registerCamera(Camera* camera)
 void Display::registerUI(UI* ui)
 {
 	ui_ = ui;
+	for (int i = 0; i < 20; ++i){
+		for (int j = 0; j < 30; ++j){
+			bgs_[1].setTile(j,i, ui_->background_[i*30 + j]);
+		}
+	}
 }
 
 void Display::registerWorld(World* world)
@@ -233,5 +270,4 @@ void Display::moveTo(int x, int y)
 	for (int i = 2; i < NUM_BGS; ++i){
 		bgs_[i].moveTo(x_, y_);
 	}
-	bgs_[2].move(0,5);
 }

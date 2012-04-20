@@ -1,7 +1,9 @@
 #include "../include/ui.h"
 
-UI::UI()
+UI::UI(const unsigned short* background)
 {
+	background_ = background;
+
 	text_ = new unsigned short[600];
 	for (int i = 0; i < 600; ++i){
 		text_[i] = 0;
