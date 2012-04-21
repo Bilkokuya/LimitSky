@@ -42,15 +42,19 @@ void Player::update()
 bool Player::canMove(int dx, int dy)
 {
 	int free[2] = {0,8}; // can walk on empty, and on seeds
-	for (int y = 0; y < 9; y += 8){
-		for (int x = 0; x < 9; x += 8){
-			int block = world_->getObject(((x_+x+dx)/16), (((y_+y+dy)/16)));
-			bool b = false;
-			for (int i = 0; i < 2; ++i){
-				if (block == free[i]) b = true;
-			}
-			if (!b) return false;
+	int points[4][2] = {
+		{4,4},
+		{12,4},
+		{4,12},
+		{12,12},
+	};
+	for (int p = 0; p < 4; ++p){
+		int block = world_->getObject(((x_+points[p][0]+dx)/16), (((y_+points[p][1]+dy)/16)));
+		bool b = false;
+		for (int i = 0; i < 2; ++i){
+			if (block == free[i]) b = true;
 		}
+		if (!b) return false;
 	}
 	return true;
 }
@@ -67,9 +71,9 @@ void Player::move(int dx, int dy)
 void Player::keepInBounds(int xA, int yA, int xV, int yV)
 {
 	if ( x_ < xA) x_ = xA;
-	if ( (x_+8) > xV) x_ = xV - 8;
+	if ( (x_+16) > xV) x_ = xV - 8;
 	if ( y_ < yA) y_ = yA;
-	if ( (y_ + 8) > yV) y_ = yV - 8;
+	if ( (y_ + 16) > yV) y_ = yV - 8;
 }
 
 
