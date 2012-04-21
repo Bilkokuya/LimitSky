@@ -5,7 +5,7 @@ World::World(const unsigned char* map)
 {
 	maps_[0] = new unsigned char[MAPWIDTH * MAPHEIGHT];
 	maps_[1] = new unsigned char[MAPWIDTH * MAPHEIGHT];
-
+	
 	for (int i = 0; i < MAPWIDTH*MAPHEIGHT; ++i){
 		maps_[0][i] = map[i];
 		maps_[1][i] = 0;

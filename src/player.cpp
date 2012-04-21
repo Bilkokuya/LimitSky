@@ -17,7 +17,7 @@ Player::Player(): Sprite()
 }
 
 
-Player::Player(int x, int y, World* world, UI* ui): Sprite(x,y,0,0,2,2)
+Player::Player(int x, int y, World* world, UI* ui): Sprite(x,y,1,0,0,2)
 {
 	world_ = world;
 	ui_ = ui;
@@ -41,7 +41,7 @@ void Player::update()
 
 bool Player::canMove(int dx, int dy)
 {
-	int free[2] = {0,9};
+	int free[2] = {0,8}; // can walk on empty, and on seeds
 	for (int y = 0; y < 9; y += 8){
 		for (int x = 0; x < 9; x += 8){
 			int block = world_->getObject(((x_+x+dx)/16), (((y_+y+dy)/16)));
@@ -79,21 +79,25 @@ void Player::processControls()
 		move( MOVE_SPEED, 0 );
 		direction_[0] = 1;
 		direction_[1] = 0;
+		tileNum_ = 4;
 
 	}else if (isControl(MOVE_LEFT)){
 		move( -MOVE_SPEED, 0 );
 		direction_[0] = -1;
 		direction_[1] = 0;
+		tileNum_ = 12;
 
 	}else if (isControl(MOVE_UP)){
 		move( 0 , -MOVE_SPEED );
 		direction_[0] = 0;
 		direction_[1] = -1;
+		tileNum_ = 8;
 
 	}else if (isControl(MOVE_DOWN)){
 		move( 0 , MOVE_SPEED );
 		direction_[0] = 0;
 		direction_[1] = 1;
+		tileNum_ = 0;
 
 	}
 

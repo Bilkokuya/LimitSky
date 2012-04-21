@@ -7,8 +7,8 @@ int controls[NUM_CONTROLS] ={
 		KEY_LEFT,
 		KEY_RIGHT,
 		KEY_R,
-		KEY_B,
 		KEY_A,
+		KEY_B,
 		KEY_START,
 		KEY_SELECT
 	};

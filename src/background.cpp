@@ -109,8 +109,8 @@ void Background::move(int dx, int dy)
 //	Offsets to position x,y
 void Background::moveTo(int x, int y)
 {
-	x_ = ((x + xOffset_))%16;
-	y_ = ((y + yOffset_))%16;
+	x_ = (x%16) + xOffset_;
+	y_ = (y%16) + yOffset_;
 	updatePosition();
 }
 

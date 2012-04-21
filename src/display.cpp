@@ -2,7 +2,9 @@
 #include "../lib/gba.h"
 #include "../lib/font.h"
 #include "../resource/tiles/palettes.h"
+#include "../resource/tiles/spritepalette.h"
 #include "../resource/tiles/terraintiles.h"
+#include "../resource/tiles/spritetiles.h"
 #include "../include/background.h"
 #include "../resource/maps/blockmap.h"
 #include "../resource/blocks.h"
@@ -20,8 +22,8 @@ Display::Display(int x, int y, int width, int height)
 	width_ = width;
 	height_ = height;
 
-	lBuff_ = 31;
-	rBuff_ = 29;
+	lBuff_ = 0;
+	rBuff_ = 30;
 	right_ = 16;
 	left_ = -16;
 
@@ -54,9 +56,9 @@ void Display::transformPalette(int* transform)
 {
 	for (int i = 0; i < 256; ++i){
 		int c[3];
-		c[0] = red(palette_[i]) - transform[0];
-		c[1] = green(palette_[i]) - transform[1];
-		c[2] = blue(palette_[i]) - transform[2];
+		c[0] = red(palettesPal[i]) - transform[0];
+		c[1] = green(palettesPal[i]) - transform[1];
+		c[2] = blue(palettesPal[i]) - transform[2];
 
 		for (int j = 0; j < 3; ++j){
 			if (c[j] < 0) c[j] = 0;
@@ -65,13 +67,27 @@ void Display::transformPalette(int* transform)
 
 		SetPaletteBG(i, RGB(c[0],c[1],c[2]));
 	}
+	//	Sprite palette transform - refactor all this to avoid this crazy duplication
+	for (int i = 0; i < 256; ++i){
+		int c[3];
+		c[0] = red(spritepalettePal[i]) - transform[0];
+		c[1] = green(spritepalettePal[i]) - transform[1];
+		c[2] = blue(spritepalettePal[i]) - transform[2];
+
+		for (int j = 0; j < 3; ++j){
+			if (c[j] < 0) c[j] = 0;
+			if (c[j] > 31) c[j] = 31;
+		}
+
+		SetPaletteObj(i, RGB(c[0],c[1],c[2]));
+	}
 }
 
 void Display::initRegisters()
 {
 	//	Initialises the main GBA display registers for drawing tiles
 	//		(Individual background registers are initialised by the background objects themselves)
-	REG_DISPCNT = DCNT_MODE0 | DCNT_OBJ | DCNT_OBJ_1D | DCNT_BG0 | DCNT_BG1 | DCNT_BG2 | DCNT_BG3;
+	REG_DISPCNT = DCNT_MODE0 | DCNT_OBJ | DCNT_BG0 | DCNT_BG1 | DCNT_BG2 | DCNT_BG3;
 	
 	//	Initialise the Background registers
 	bgs_[0] = Background(0,0,0,0);
@@ -86,66 +102,85 @@ void Display::initPalettes()
 	loadPalette(palettesPal);
 	for (int i = 0; i < palettesPalLen; ++i){
 		SetPaletteBG(i, palettesPal[i]);
-		SetPaletteObj(i, palettesPal[i]);
+		SetPaletteObj(i, spritepalettePal[i]);
 	}
 }
 
 //	Loads up all the tiles into memory
 void Display::initTiles()
 {
+	//	Load map tiles
 	for (int n = 0; n < 2; ++n){
 		for (int i = 0; i < (terraintilesTilesLen/64); ++i){
 			bgs_[3-n].loadTile(i, &terraintilesTiles[i*64]);
 		}
 	}
 
+	//	Load font to UI (Background 0)
 	for (int i = 0; i < 128; ++i){
 		bgs_[0].loadTile(i, font_medium[i]);
 	}
 
+	/*
+	//	Render the map for the first frame
 	for (int i = 0; i < 16; ++i){
 		for (int j = 0; j < 16; ++j){
 			bgs_[3].setBlock(2*j, 2*i, map[(i*MAPWIDTH) + j]);
 
 		}
+	}*/
+
+	//	Load the sprite tiles into CB 4
+	for (int i = 0; i < (spritetilesTilesLen/64); ++i){
+		LoadTile8(4, i, &spritetilesTiles[i*64]);
 	}
 }
 
 int frame = 0;
+
+void Display::update()
+{
+	moveTo(camera_->x(), camera_->y());
+}
+
 void Display::render()
 {	
-	moveTo(camera_->x(), camera_->y());
-
 	renderSprites();
-	
-	if (((x_%16)==0) || ((y_%16)==0)){
-		renderTerrain();
-		renderCrops();
-	}else if ((frame%2) == 0){
-		renderTerrain();
-	}else{
-		renderCrops();
-	}
 
-	if ((frame%4) == 0){
+	renderTerrain();
+	
+
+	if ((frame%8)==0)
 		renderUI();
-	}
 
 	frame++;
 }
 
 void Display::renderTerrain()
 {
+	int yStart = (y_/16) * MAPWIDTH;
+	int xStart = (x_/16);
+	int start = xStart + yStart;
+
+	int xP = 0;
+	int yP = 0;
+	int yy = 0;
 	for (int y = 0; y < 16; ++y){
 		for (int x = 0; x < 16; ++x){
-			bgs_[3].setBlock(x*2, y*2, world_->maps_[0][(((y_/16) + y)*MAPWIDTH) + (x_/16) + x]);
+			int position = start + yy + x;
+			bgs_[3].setBlock(xP, yP, world_->maps_[0][position]);
+			bgs_[2].setBlock(xP, yP, world_->maps_[1][position]);
+			xP += 2;
 		}
+		xP = 0;
+		yP += 2;
+		yy += MAPWIDTH;
 	}
 }
 
 void Display::renderCrops()
 {
-	for (int y = 0; y < 16; ++y){
+	for (int y = 0; y < 12; ++y){
 		for (int x = 0; x < 16; ++x){
 			bgs_[2].setBlock(x*2, y*2, world_->maps_[1][(((y_/16) + y)*MAPWIDTH) + (x_/16) + x]);
 		}

@@ -10,22 +10,20 @@
 
 int main()
 {
-	Display display = Display(0,0,SCREEN_WIDTH,SCREEN_HEIGHT);
+	Display display(0,0,SCREEN_WIDTH,SCREEN_HEIGHT);
 
-	Camera camera = Camera(SCREEN_WIDTH, SCREEN_HEIGHT, 0,0, MAPWIDTH*8, (32-20)*8);
+	Camera camera(SCREEN_WIDTH, SCREEN_HEIGHT, 0,0, MAPWIDTH*8, (32-20)*8);
 	display.registerCamera(&camera);
 	
-	World world = World(map);
+	World world(map);
 	display.registerWorld(&world);
 
-	UI ui = UI(uiBackground);
+	UI ui(uiBackground);
 	display.registerUI(&ui);
 
-	Player player = Player(0,0, &world, &ui);
+	Player player(20,20, &world, &ui);
 	camera.setFocus(&player);
 	display.registerSprite(&player);
-
-	LoadTile8(4,1,&terraintilesTiles[256]);
 
 	int trans[3] = {0};
 	int time = 1;
@@ -34,6 +32,7 @@ int main()
 	{
 		player.update();
 
+		// time control stuff needing refactored
 		if ( time > (10)*30){
 			if ( (time%30) == 0){
 				trans[0] += k;
@@ -53,14 +52,17 @@ int main()
 			trans[1] = 0;
 			trans[2] = 0;
 			display.transformPalette( trans );
-		}
+		}//end of messy time controls
 
 		camera.updatePosition();
+		display.update();
+		updateControlDelay();
 		display.render();
 
 		WaitVSync();
 		UpdateObjects();
-		updateControlDelay();
+		
+
 		++time;
 	}
 }

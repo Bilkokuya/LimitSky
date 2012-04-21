@@ -19,6 +19,7 @@ public:
 	Display(int x, int y, int width, int height);
 
 	void render();
+	void update();
 
 	void registerCamera(Camera* camera);
 	void registerWorld(World* world);
@@ -48,8 +49,6 @@ private:
 	World* world_;
 	UI* ui_;
 	const uint16_t* palette_;
-
-
 
 	int lBuff_, rBuff_;
 	int left_, right_;
