@@ -47,11 +47,6 @@ int Display::blue(uint16_t colour)
 	return ( (colour & 0x7C00)>>10 );
 }
 
-void Display::loadPalette(const uint16_t* palette)
-{
-	palette_ = palette;
-}
-
 void Display::transformPalette(int* transform)
 {
 	for (int i = 0; i < 256; ++i){
@@ -99,7 +94,6 @@ void Display::initRegisters()
 
 void Display::initPalettes()
 {
-	loadPalette(palettesPal);
 	for (int i = 0; i < palettesPalLen; ++i){
 		SetPaletteBG(i, palettesPal[i]);
 		SetPaletteObj(i, spritepalettePal[i]);
@@ -120,15 +114,6 @@ void Display::initTiles()
 	for (int i = 0; i < 128; ++i){
 		bgs_[0].loadTile(i, font_medium[i]);
 	}
-
-	/*
-	//	Render the map for the first frame
-	for (int i = 0; i < 16; ++i){
-		for (int j = 0; j < 16; ++j){
-			bgs_[3].setBlock(2*j, 2*i, map[(i*MAPWIDTH) + j]);
-
-		}
-	}*/
 
 	//	Load the sprite tiles into CB 4
 	for (int i = 0; i < (spritetilesTilesLen/64); ++i){

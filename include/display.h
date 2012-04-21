@@ -27,7 +27,6 @@ public:
 	void registerSprite(Sprite* sprite);
 	void registerSpriteToFront(Sprite* sprite);
 
-	void loadPalette(const uint16_t* palette);
 	void transformPalette(int* transform);
 
 	int red(uint16_t colour);
@@ -48,7 +47,6 @@ private:
 	Camera* camera_;
 	World* world_;
 	UI* ui_;
-	const uint16_t* palette_;
 
 	int lBuff_, rBuff_;
 	int left_, right_;

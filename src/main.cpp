@@ -25,6 +25,8 @@ int main()
 	camera.setFocus(&player);
 	display.registerSprite(&player);
 
+	//	refactor these idiotic time transformation things
+	//	develop a proper - reliable time system
 	int trans[3] = {0};
 	int time = 1;
 	int k = 1;
@@ -61,7 +63,6 @@ int main()
 
 		WaitVSync();
 		UpdateObjects();
-		
 
 		++time;
 	}

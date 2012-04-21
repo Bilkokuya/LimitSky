@@ -53,6 +53,9 @@ void Background::updatePosition()
 	*vOffsetReg = y_;
 }
 
+/* These have been inlined to try to avoid expensive function calls in rendering
+*	Results appear to be good with better display and less flickering
+
 void Background::setTile(int x, int y, int tile)
 {
 	SetTile(screenblock_, x,y, tile);
@@ -64,12 +67,7 @@ void Background::setBlock(int x, int y, int block)
 	setTile( x+1, y,	blocks[block].tile_ + 1);
 	setTile( x,   y+1,	blocks[block].tile_ + 16);
 	setTile( x+1, y+1,	blocks[block].tile_ + 17);
-}
-
-void Background::toScreen()
-{
-	//SetScreenBlock(screenblock_, screendata_);
-}
+}*/
 
 void Background::loadTile(int tilenum, const uint8_t* tiledata)
 {
