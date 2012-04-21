@@ -109,12 +109,12 @@ void Player::processControls()
 	}
 
 	if (isControl(INTERACT)){
-		tools_[selectedTool_]->interact((((x_+4)/16) + direction_[0])*2, (((y_+4)/16) + direction_[1])*2);
+		tools_[selectedTool_]->interact((((x_+8)/16) + direction_[0])*2, (((y_+8)/16) + direction_[1])*2);
 		setControlDelay(INTERACT, 20);
 
 	}else if (isControl(USE_TOOL)){
-		tools_[selectedTool_]->useTool((((x_+4)/16) + direction_[0]), (((y_+4)/16) + direction_[1]));
-		setControlDelay(USE_TOOL, 20);
+		tools_[selectedTool_]->useTool((((x_+8)/16) + direction_[0]), (((y_+8)/16) + direction_[1]));
+		setControlDelay(USE_TOOL, 10);
 	}
 
 	
