@@ -8,35 +8,36 @@
 
 Player::Player(): Sprite()
 {
-	zPriority_ = 3;
-	selectedTool_ = 0;
-	tools_[0] = new ToolHoe(world_);
-	tools_[1] = new ToolWateringCan(world_);
-	tools_[2] = new ToolScythe(world_);
-	tools_[3] = new ToolSeeds(world_);
+	init();
 }
 
 
-Player::Player(int x, int y, World* world, UI* ui): Sprite(x,y,1,0,0,2)
+Player::Player(int x, int y, World* world): Sprite(x,y,1,0,0,2)
 {
 	world_ = world;
-	ui_ = ui;
+	init();
+}
 
+//	Initialisation common to both constructors
+void Player::init()
+{
+	seeds_ = 5;
 	zPriority_ = 3;
-
 	selectedTool_ = 0;
 	tools_[0] = new ToolHoe(world_);
 	tools_[1] = new ToolWateringCan(world_);
-	tools_[2] = new ToolSeeds(world_);
-	tools_[3] = new ToolScythe(world_);
-
-	displayTool();
+	tools_[2] = new ToolScythe(world_, &seeds_);
+	tools_[3] = new ToolSeeds(world_, &seeds_);
 }
-
 
 void Player::update()
 {
 	processControls();
+}
+
+Tool* Player::getTool()
+{
+	return ( tools_[selectedTool_] );
 }
 
 bool Player::canMove(int dx, int dy)
@@ -68,12 +69,13 @@ void Player::move(int dx, int dy)
 	keepInBounds(8,8,MAPWIDTH*16 - 8, MAPHEIGHT*16 - 8);
 }
 
+
 void Player::keepInBounds(int xA, int yA, int xV, int yV)
 {
 	if ( x_ < xA) x_ = xA;
-	if ( (x_+16) > xV) x_ = xV - 8;
+	if ( (x_ + 16) > xV) x_ = xV - 16;
 	if ( y_ < yA) y_ = yA;
-	if ( (y_ + 16) > yV) y_ = yV - 8;
+	if ( (y_ + 16) > yV) y_ = yV - 16;
 }
 
 
@@ -109,7 +111,7 @@ void Player::processControls()
 		++selectedTool_;
 		if (selectedTool_ > 3) selectedTool_ = 0;
 		setControlDelay(NEXT_TOOL, 20);
-		displayTool();
+		//displayTool();
 	}
 
 	if (isControl(INTERACT)){
@@ -119,18 +121,5 @@ void Player::processControls()
 	}else if (isControl(USE_TOOL)){
 		tools_[selectedTool_]->useTool((((x_+8)/16) + direction_[0]), (((y_+8)/16) + direction_[1]));
 		setControlDelay(USE_TOOL, 10);
-	}
-
-	
-}
-
-void Player::displayTool()
-{
-	switch (selectedTool_){
-		case 0: ui_->drawText("Tilling   "); break;
-		case 1: ui_->drawText("Watering  "); break;
-		case 2: ui_->drawText("Planting  "); break;
-		case 3: ui_->drawText("Harvesting"); break;
-		default: return;
 	}
 }

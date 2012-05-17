@@ -32,6 +32,7 @@ void Camera::setFocus( Sprite* s)
 void Camera::updatePosition()
 {
 	//	Move to the new position
+	//	Without a focus, it will stay still
 	if (focus_){
 		
 		float dx = (focus_->x() - width_/2) - x_;
@@ -44,20 +45,13 @@ void Camera::updatePosition()
 		else if (magnitude < 60) speed = 0.5;
 		else speed = 1.2;
 
-		if (((abs(dx) < 10) || (abs(dy) < 10)) && magnitude < 60) speed = 0;
-		
-
+		if ( ( (abs((int)dx) < 10) || (abs((int)dy) < 10) ) && (magnitude < 60) ) speed = 0;
+	
 		float ddx = dx/magnitude;
 		float ddy = dy/magnitude;
-		
 
 		x_ += (speed * ddx);
 		y_ += (speed * ddy);
-		
-
-		//	Center the focus in the middle of the screen (so display starts drawing at focus-x - width/2)
-		//x_ = focus_->x() - width_/2;
-		//y_ = focus_->y() - height_/2;
 	}
 
 	//	Ensure it is within bounds
@@ -78,10 +72,10 @@ void Camera::setBounds(int xMin, int yMin, int xMax, int yMax)
 
 int Camera::x()
 {
-	return x_;
+	return ((int)x_);
 }
 
 int Camera::y()
 {
-	return y_;
+	return ((int)y_);
 }

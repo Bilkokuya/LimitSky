@@ -18,12 +18,12 @@ int main()
 	World world(map);
 	display.registerWorld(&world);
 
-	UI ui(uiBackground);
-	display.registerUI(&ui);
-
-	Player player(20,20, &world, &ui);
+	Player player(20,20, &world);
 	camera.setFocus(&player);
 	display.registerSprite(&player);
+
+	UI ui(uiBackground, &player);
+	display.registerUI(&ui);
 
 	//	refactor these idiotic time transformation things
 	//	develop a proper - reliable time system
@@ -56,6 +56,7 @@ int main()
 			display.transformPalette( trans );
 		}//end of messy time controls
 
+		ui.update();
 		camera.updatePosition();
 		display.update();
 		updateControlDelay();

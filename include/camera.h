@@ -17,7 +17,7 @@ public:
 	int y();
 
 private:
-	float x_, y_;
+	float x_, y_;	//	The GBA is slow with floats, but the increased movement accuracy is visually noticable
 	int width_, height_;
 	int xMin_, yMin_, xMax_, yMax_;
 	Sprite* focus_;

@@ -1,5 +1,6 @@
 #include "../include/world.h"
 #include "../resource/blocks.h"
+#include <cstdlib>
 
 World::World(const unsigned char* map)
 {
@@ -12,68 +13,45 @@ World::World(const unsigned char* map)
 	}
 }
 
+World::~World()
+{
+	delete[] maps_;
+}
+
 void World::growPlants()
 {
 	// grow all plants sitting on watered terrain
 	for (int y = 0; y < MAPHEIGHT; ++y){
 		for (int x = 0; x < MAPWIDTH; ++x){
+
 			int terrain = getTerrain(x,y);
 			int crop = getObject(x,y);
 
-			switch (terrain){
-				case 3: setTerrain(x,y,2);break;
-				case 5: setTerrain(x,y,4);break;
-				default: break;
-			}
+			//	Grow the crop if the terrain is watered+tilled
 			if (terrain == 5){
 				switch (crop){
-					case 8: setObject(x,y,9);break;
-					case 9: setObject(x,y,10);break;
-					case 10: setObject(x,y,11);break;
+					case 8: setObject(x,y,9);	break; // seeds -> sapling
+					case 9: setObject(x,y,10);	break; // sapling -> white plant
+					case 10: setObject(x,y,11);	break; // white plant -> pumpkin
 					default: break;
 				}
 			}
+
+			//	De-water terrain
+			switch (terrain){
+				case 3: setTerrain(x,y,2);	break;
+				case 5: setTerrain(x,y,4);	break;
+				default: break;
+			}
+
+			//	Additional changes for unplanted soil
+			if (!crop){
+				switch (terrain){
+					case 4: if ((rand()%2) == 0) setTerrain(x,y, 2); break; //	Degrade half of dry and not planted soil into dirt
+					case 2: if ((rand()%3) == 0) setTerrain(x,y, 1); break; //	Degrade regrow 10% of dirt into grass
+				}
+			}
 		}
-	}
-
-	// de-water all terrain
-}
-
-void World::tillSoil(int x, int y)
-{
-	int block = 0;
-	switch (getTerrain(x,y)){
-		case 1: block = 2; break;
-		case 2: block = 4; break;
-		case 3: block = 5; break;
-		default: return;
-	}
-
-	setTerrain(x, y, block);
-}
-
-void World::waterCrops(int x, int y)
-{
-	int block = 0;
-	switch (getTerrain(x,y)){
-		case 2: block = 3; break;
-		case 4: block = 5; break;
-		default: return;
-	}
-
-	setTerrain(x, y, block);
-}
-
-void World::harvestCrops(int x, int y)
-{
-	setObject(x, y, 0);
-}
-
-void World::plantSeeds(int x, int y)
-{
-	if (((getTerrain(x,y) == 4) || (getTerrain(x,y) == 5))
-		&& (getObject(x,y) == 0)){
-		setObject(x, y, 8);
 	}
 }
 
