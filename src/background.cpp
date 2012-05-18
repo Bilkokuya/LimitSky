@@ -95,7 +95,7 @@ void Background::move(int dx, int dy)
 //	Offsets to position x,y
 void Background::moveTo(int x, int y)
 {
-	x_ = (x%16) + xOffset_;
+	x_ = (x%16) + xOffset_; // Mod by 16 for width of a block, to match with the display rendering the entire screen
 	y_ = (y%16) + yOffset_;
 	updatePosition();
 }

@@ -1,3 +1,9 @@
+//	Copyright 2012 Gordon D Mckendrick
+//	LimitSky
+//	Sprite
+//		A simple sprite that draws onto the screen in OAM memory
+//		Abstraction from the GBA implementation with the rendering handled external to this sprite
+
 #ifndef LS_SPRITE
 #define LS_SPRITE
 

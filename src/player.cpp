@@ -25,6 +25,8 @@ void Player::init()
 	seeds_ = 24; // Number of seeds you start with
 	zPriority_ = 3;
 	selectedTool_ = 0;
+
+	//	Give the player the tools they are to start with
 	tools_[0] = new ToolHoe(world_);
 	tools_[1] = new ToolWateringCan(world_);
 	tools_[2] = new ToolScythe(world_, &seeds_);
@@ -66,6 +68,7 @@ bool Player::canMove(int dx, int dy)
 
 void Player::move(int dx, int dy)
 {
+	//	Uses sprite movement to reposition the player
 	if (canMove(dx, dy)){
 		Sprite::move(dx, dy);
 	}
@@ -76,20 +79,21 @@ void Player::move(int dx, int dy)
 
 void Player::keepInBounds(int xA, int yA, int xV, int yV)
 {
-	if ( x_ < xA) x_ = xA;
-	if ( (x_ + 16) > xV) x_ = xV - 16;
-	if ( y_ < yA) y_ = yA;
-	if ( (y_ + 16) > yV) y_ = yV - 16;
+	if ( x_ < xA) x_ = xA;				//	x min
+	if ( (x_ + 16) > xV) x_ = xV - 16;	//	x max, taking account of the width of the player (16)
+	if ( y_ < yA) y_ = yA;				//	y min
+	if ( (y_ + 16) > yV) y_ = yV - 16;	//	y max, taking account of the height of the player (16)
 }
 
 
 void Player::processControls()
 {
+	//	Movement is restricted to one direction at a time
 	if (isControl(MOVE_RIGHT)){
 		move( MOVE_SPEED, 0 );
 		direction_[0] = 1;
 		direction_[1] = 0;
-		tileNum_ = 4;
+		tileNum_ = 4; // set the graphic to show facing right
 
 	}else if (isControl(MOVE_LEFT)){
 		move( -MOVE_SPEED, 0 );

@@ -1,3 +1,8 @@
+//	Copyright 2012 Gordon D Mckendrick
+//	LimitSky
+//	Player
+//		The user controlled player that moves around and works in the world
+
 #ifndef LS_PLAYER
 #define LS_PLAYER
 
@@ -8,21 +13,21 @@
 class Player: public Sprite
 {
 public:
-	int seeds_;
+	int seeds_;	//	Number of seeds to plant
 
 	Player();
 	Player(int x, int y, World* world);
 
-	void update();
+	void update();	//	Updates the position etc based on user input
 	
-	Tool* getTool();
+	Tool* getTool();//	Returns the currently selected tool
 
 private:
-	static const int MOVE_SPEED = 1;
-	int selectedTool_;
-	int direction_[2];
-	World* world_;
-	Tool* tools_[4];
+	static const int MOVE_SPEED = 1;	//	Speed the player can move at
+	int direction_[2];	//	Direction facing as [x, y] where x = 1 faces right, y = 1 faces down
+	World* world_;		//	World the player is walking around in
+	int selectedTool_;	//	The index of the selected tool for the tools_ array
+	Tool* tools_[4];	//	Tools for interacting with the world
 
 	//	Initialisation common to both constructors
 	void init();

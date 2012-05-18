@@ -35,22 +35,24 @@ void Camera::updatePosition()
 	//	Without a focus, it will stay still
 	if (focus_){
 		
-		float dx = (focus_->x() - width_/2) - x_;
+		float dx = (focus_->x() - width_/2) - x_; // Get the difference between the focus z and this x
 		float dy = (focus_->y() - height_/2) - y_;
 
-		float magnitude = sqrt((float)((dx*dx)+(dy*dy)));
+		float magnitude = sqrt((float)((dx*dx)+(dy*dy))); // magnitude vector magnitude (equivilient to pythagorus)
+		
+		//	Set the speed to move the camera by how far the focus is off-center. Allows for a better visual effect
 		float speed = 0;
-
 		if (magnitude < 40) speed = 0;
 		else if (magnitude < 60) speed = 0.5;
 		else speed = 1.2;
 
+		//	Avoid movement if the magnitude is high; yet caused by movement in only one direction (avoids jitter around axis)
 		if ( ( (abs((int)dx) < 10) || (abs((int)dy) < 10) ) && (magnitude < 60) ) speed = 0;
 	
-		float ddx = dx/magnitude;
+		float ddx = dx/magnitude; // get the new x component, so the entire movement is a unit vector
 		float ddy = dy/magnitude;
 
-		x_ += (speed * ddx);
+		x_ += (speed * ddx); // multiply each component by constant speed, and move position towards that.
 		y_ += (speed * ddy);
 	}
 

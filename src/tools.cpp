@@ -93,18 +93,22 @@ void ToolScythe::useTool(int x, int y, int width, int height)
 {
 	if (world_->getTerrain(x,y) == 1) world_->setTerrain(x,y,2); // Cuts grass -> dirt
 
+	//	When harvesting crops, different crops have different seed yields
 	switch( world_->getObject(x,y) ){
-		case 8: 
+		case 8:		//	seeds return their entire value
 			*seeds_ += 1;
 			break;
 
-		case 10: 
+		case 9:		//	saplings will never return their seed
+			break;
+
+		case 10:	//	white pumpkins have a 50% chance of returning the seed
 			if ((rand()%2) ==0){
 				*seeds_ += 1;
 			}
 			break;
 
-		case 11: 
+		case 11:	//	grown pumpkins have a 50% chance to return 2 seeds, otherwise 1
 			if ((rand()%2)==0){
 				*seeds_ += 2;
 			}else{
