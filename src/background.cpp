@@ -2,6 +2,8 @@
 #include "../lib/gba.h"
 #include "../resource/blocks.h"
 
+//	Base registers for memory updates, each background has memory in a consistent offset from these
+//	The values for these registers were taken from Adam Sampon's gba.h file
 #define BASE_REG_CONTROL REGISTER(uint16_t, 0x4000008)
 #define BASE_REG_HOFFSET REGISTER(uint16_t, 0x4000010)
 #define BASE_REG_VOFFSET REGISTER(uint16_t, 0x4000012)
@@ -39,6 +41,7 @@ void Background::init(int number, int xOffset, int yOffset, int zPriority, int c
 
 void Background::updateMemory()
 {
+	// The memory location for the bg control register; calculated as an offset from the Base register based on which bg this is
 	volatile uint16_t* controlReg = &BASE_REG_CONTROL + (number_);
 	*controlReg = BG_CBB(charblock_) | BG_SBB(screenblock_) | BG_8BPP | BG_REG_32x32 | BG_PRIO(zPriority_);
 
@@ -47,27 +50,12 @@ void Background::updateMemory()
 
 void Background::updatePosition()
 {
+	// The memory location for the offsets; calculated as an offset from the Base register based on which bg this is
 	volatile uint16_t* hOffsetReg = &BASE_REG_HOFFSET + (number_ * 2);
 	volatile uint16_t* vOffsetReg = &BASE_REG_VOFFSET + (number_ * 2);
 	*hOffsetReg = x_;
 	*vOffsetReg = y_;
 }
-
-/* These have been inlined to try to avoid expensive function calls in rendering
-*	Results appear to be good with better display and less flickering
-
-void Background::setTile(int x, int y, int tile)
-{
-	SetTile(screenblock_, x,y, tile);
-}
-
-void Background::setBlock(int x, int y, int block)
-{
-	setTile( x,   y,	blocks[block].tile_ );
-	setTile( x+1, y,	blocks[block].tile_ + 1);
-	setTile( x,   y+1,	blocks[block].tile_ + 16);
-	setTile( x+1, y+1,	blocks[block].tile_ + 17);
-}*/
 
 void Background::loadTile(int tilenum, const uint8_t* tiledata)
 {

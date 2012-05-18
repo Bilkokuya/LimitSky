@@ -117,12 +117,14 @@ void Player::processControls()
 		setControlDelay(NEXT_TOOL, 20);
 	}
 
+	//	Currently no tool interacts, but can easily be added to in future by changing implementation of (subclass)Tool::interact();
 	if (isControl(INTERACT)){
 		tools_[selectedTool_]->interact((((x_+8)/16) + direction_[0])*2, (((y_+8)/16) + direction_[1])*2);
 		setControlDelay(INTERACT, 20);
 
 	}else if (isControl(USE_TOOL)){
 		tools_[selectedTool_]->useTool((((x_+8)/16) + direction_[0]), (((y_+8)/16) + direction_[1]));
-		setControlDelay(USE_TOOL, 10);
+		setControlDelay(USE_TOOL, 20);
+		setMovementControlDelay(20);
 	}
 }
