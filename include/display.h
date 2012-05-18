@@ -43,14 +43,12 @@ public:
 private:
 	int x_, y_, width_, height_;	//	width and height determine the size to area of the world to render, and x,y determine the top left corner
 	std::list<Sprite*> spriteList_;	//	a vector containing all sprites possible to render
-	Background bgs_[4];			//	The 4 background registers of the GBA
+	Background bgs_[4];				//	The 4 background registers of the GBA
 	Camera* camera_;
 	World* world_;
 	UI* ui_;
 
-	int lBuff_, rBuff_;
-	int left_, right_;
-
+	void paletteTransform(int* transform, const unsigned short* originalPallete, volatile uint16_t* paletteReg);
 
 	void renderSprites();
 	void renderTerrain();

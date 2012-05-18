@@ -17,10 +17,13 @@ void UI::update()
 {
 	char toolTextReset[DRAW_TOOL_LENGTH] = {0};
 	char scoreTextReset[DRAW_SCORE_LENGTH] = {0};
-	char seedsText[DRAW_SCORE_LENGTH];
-	char seedsNumText[3];
+	char seedsText[DRAW_SCORE_LENGTH] = {0};
+	char seedsNumText[3] = {0};
+
+	int seeds = player_->seeds_;
+	if (seeds > 999) seeds = 999; // only display '999' if there are more than this, but maintain the actual number for functionality.
 	std::strcpy(seedsText, "Seeds: ");
-	std::sprintf(seedsNumText, "%d", player_->seeds_);
+	std::sprintf(seedsNumText, "%d", seeds);
 	std::strcat(seedsText, seedsNumText);
 
 	drawText(DRAW_TOOL_X, DRAW_TOOL_Y, toolTextReset, DRAW_TOOL_LENGTH); // clear tool text

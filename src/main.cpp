@@ -8,6 +8,8 @@
 #include "../include/world.h"
 #include "../include/controls.h"
 
+#define FRAMES_PER_SEC 30
+
 int main()
 {
 	Display display(0,0,SCREEN_WIDTH,SCREEN_HEIGHT);
@@ -35,7 +37,7 @@ int main()
 		player.update();
 
 		// time control stuff needing refactored
-		if ( time > (10)*30){
+		if ( time > 10*FRAMES_PER_SEC){
 			if ( (time%30) == 0){
 				trans[0] += k;
 				trans[1] += k;
@@ -47,7 +49,7 @@ int main()
 				display.transformPalette( trans );
 			}
 		}
-		if (time > (30)*30){
+		if (time > 30*FRAMES_PER_SEC){
 			world.growPlants();
 			time = 0;
 			trans[0] = 0;
@@ -56,11 +58,12 @@ int main()
 			display.transformPalette( trans );
 		}//end of messy time controls
 
-		ui.update();
 		camera.updatePosition();
+		ui.update();
 		display.update();
-		updateControlDelay();
 		display.render();
+
+		updateControlDelay();
 
 		WaitVSync();
 		UpdateObjects();

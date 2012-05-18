@@ -1,5 +1,6 @@
 #include "../include/tools.h"
 #include "../include/world.h"
+#include <cstdlib>
 
 Tool::Tool(){}
 Tool::Tool(World* world, char* name, int length)
@@ -71,10 +72,14 @@ void ToolWateringCan::interact(int x, int y)
 // TOOL SEEDS (plants)
 void ToolSeeds::useTool(int x, int y, int width, int height)
 {
+	if (*seeds_ < 1) return;
+
 	//	if the terrain is tilled, and there is no existing crop there - plant seeds
 	if (((world_->getTerrain(x,y) == 4) || (world_->getTerrain(x,y) == 5))
 		&& (world_->getObject(x,y) == 0)){
+
 		world_->setObject(x, y, 8);
+		*seeds_ -= 1;
 	}
 }
 
@@ -87,6 +92,27 @@ void ToolSeeds::interact(int x, int y)
 void ToolScythe::useTool(int x, int y, int width, int height)
 {
 	if (world_->getTerrain(x,y) == 1) world_->setTerrain(x,y,2); // Cuts grass -> dirt
+
+	switch( world_->getObject(x,y) ){
+		case 8: 
+			*seeds_ += 1;
+			break;
+
+		case 10: 
+			if ((rand()%2) ==0){
+				*seeds_ += 1;
+			}
+			break;
+
+		case 11: 
+			if ((rand()%2)==0){
+				*seeds_ += 2;
+			}else{
+				*seeds_ += 1;
+			}
+			break;
+	}
+	
 	world_->setObject(x, y, 0); // replace crop with blank
 }
 
