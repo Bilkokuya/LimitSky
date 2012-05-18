@@ -1,10 +1,11 @@
 #include "../include/player.h"
 #include "../include/controls.h"
 
-#define LEFT 0
-#define RIGHT 1
-#define UP 2
-#define DOWN 3
+//	movement boundaries
+#define MIN_X_POS 8 // 8 is half the width of the player
+#define MIN_Y_POS 8
+#define MAX_X_POS (MAPWIDTH*16 - 8)
+#define MAX_Y_POS (MAPHEIGHT*16 - 8)
 
 Player::Player(): Sprite()
 {
@@ -21,7 +22,7 @@ Player::Player(int x, int y, World* world): Sprite(x,y,1,0,0,2)
 //	Initialisation common to both constructors
 void Player::init()
 {
-	seeds_ = 5;
+	seeds_ = 24; // Number of seeds you start with
 	zPriority_ = 3;
 	selectedTool_ = 0;
 	tools_[0] = new ToolHoe(world_);
@@ -43,19 +44,22 @@ Tool* Player::getTool()
 bool Player::canMove(int dx, int dy)
 {
 	int free[2] = {0,8}; // can walk on empty, and on seeds
-	int points[4][2] = {
+	int points[4][2] = { // positions on the player to test for hits
 		{4,4},
 		{12,4},
 		{4,12},
 		{12,12},
 	};
+
+	// loop throuh each set of positions to determine if it can move
+	//	return true if all points are free to move, or false if any cannot
 	for (int p = 0; p < 4; ++p){
 		int block = world_->getObject(((x_+points[p][0]+dx)/16), (((y_+points[p][1]+dy)/16)));
-		bool b = false;
+		bool isFree = false;
 		for (int i = 0; i < 2; ++i){
-			if (block == free[i]) b = true;
+			if (block == free[i]) isFree = true;
 		}
-		if (!b) return false;
+		if (!isFree) return false;
 	}
 	return true;
 }
@@ -66,7 +70,7 @@ void Player::move(int dx, int dy)
 		Sprite::move(dx, dy);
 	}
 
-	keepInBounds(8,8,MAPWIDTH*16 - 8, MAPHEIGHT*16 - 8);
+	keepInBounds(MIN_X_POS, MIN_Y_POS, MAX_X_POS, MAX_Y_POS);
 }
 
 
@@ -111,7 +115,6 @@ void Player::processControls()
 		++selectedTool_;
 		if (selectedTool_ > 3) selectedTool_ = 0;
 		setControlDelay(NEXT_TOOL, 20);
-		//displayTool();
 	}
 
 	if (isControl(INTERACT)){

@@ -22,11 +22,6 @@ Display::Display(int x, int y, int width, int height)
 	width_ = width;
 	height_ = height;
 
-	lBuff_ = 0;
-	rBuff_ = 30;
-	right_ = 16;
-	left_ = -16;
-
 	initRegisters();
 	initPalettes();
 	initTiles();
@@ -49,32 +44,25 @@ int Display::blue(uint16_t colour)
 
 void Display::transformPalette(int* transform)
 {
+	paletteTransform( transform, palettesPal, REG_PALETTE_BG);
+	paletteTransform( transform, spritepalettePal, REG_PALETTE_OBJ);
+};
+
+void Display::paletteTransform(int* transform, const unsigned short* originalPallete, volatile uint16_t* paletteReg)
+{
 	for (int i = 0; i < 256; ++i){
 		int c[3];
-		c[0] = red(palettesPal[i]) - transform[0];
-		c[1] = green(palettesPal[i]) - transform[1];
-		c[2] = blue(palettesPal[i]) - transform[2];
+		c[0] = red(originalPallete[i]) - transform[0];
+		c[1] = green(originalPallete[i]) - transform[1];
+		c[2] = blue(originalPallete[i]) - transform[2];
 
+		//	Ensure they are within the 0->31 range for colour components
 		for (int j = 0; j < 3; ++j){
 			if (c[j] < 0) c[j] = 0;
 			if (c[j] > 31) c[j] = 31;
 		}
 
-		SetPaletteBG(i, RGB(c[0],c[1],c[2]));
-	}
-	//	Sprite palette transform - refactor all this to avoid this crazy duplication
-	for (int i = 0; i < 256; ++i){
-		int c[3];
-		c[0] = red(spritepalettePal[i]) - transform[0];
-		c[1] = green(spritepalettePal[i]) - transform[1];
-		c[2] = blue(spritepalettePal[i]) - transform[2];
-
-		for (int j = 0; j < 3; ++j){
-			if (c[j] < 0) c[j] = 0;
-			if (c[j] > 31) c[j] = 31;
-		}
-
-		SetPaletteObj(i, RGB(c[0],c[1],c[2]));
+		paletteReg[i] = RGB(c[0],c[1],c[2]);
 	}
 }
 
